@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 330" role="img" aria-labelledby="title desc">
+<title id="title">Dr Kashmira Pawar KP logo</title>
+<desc id="desc">Playful KP monogram in blue and aqua with a smiling tooth and sparkles.</desc>
+<defs>
+  <linearGradient id="kBlue" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#073FAE"/>
+    <stop offset=".52" stop-color="#0E59D8"/>
+    <stop offset="1" stop-color="#168BEF"/>
+  </linearGradient>
+  <linearGradient id="pSky" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#1697F2"/>
+    <stop offset=".55" stop-color="#2DBBFA"/>
+    <stop offset="1" stop-color="#38D1EE"/>
+  </linearGradient>
+  <linearGradient id="mint" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#7CE9C8"/>
+    <stop offset=".52" stop-color="#58E2D0"/>
+    <stop offset="1" stop-color="#29CFD4"/>
+  </linearGradient>
+  <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+    <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#0E59D8" flood-opacity=".12"/>
+  </filter>
+</defs>
+
+<g filter="url(#soft)">
+  <text x="28" y="242" font-family="Georgia, 'Times New Roman', serif" font-size="236" font-weight="700" fill="url(#kBlue)">K</text>
+  <text x="176" y="242" font-family="Georgia, 'Times New Roman', serif" font-size="196" font-weight="700" fill="url(#pSky)">P</text>
+
+  <!-- smiling tooth inside the P -->
+  <path d="M226 112c-9 0-20 5-25 12-5 8-6 20-4 31 3 19 9 36 18 48 5 7 10 11 16 11s12-4 17-11c9-12 15-29 18-48 2-11 1-23-4-31-5-7-16-12-25-12-4 0-8 1-11 3-3-2-7-3-11-3Z" fill="#fff"/>
+  <path d="M214 153c4-8 10-8 14 0" fill="none" stroke="#0A43A8" stroke-width="4.8" stroke-linecap="round"/>
+  <path d="M240 153c4-8 10-8 14 0" fill="none" stroke="#0A43A8" stroke-width="4.8" stroke-linecap="round"/>
+  <path d="M224 169c8 10 18 10 27 0" fill="none" stroke="#0A43A8" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="215" cy="164" r="4.7" fill="#FFAFBD" opacity=".85"/>
+  <circle cx="255" cy="164" r="4.7" fill="#FFAFBD" opacity=".85"/>
+
+  <!-- mint swoosh -->
+  <path d="M18 196C65 142 105 174 139 208c38 38 94 57 159 34 20-7 38-19 52-34-13 29-35 53-67 67-54 24-114 16-162-10-44-24-73-61-103-45-8 4-14 10-18 16 3-16 8-29 18-40Z" fill="url(#mint)"/>
+  <path d="M21 198C67 153 103 182 137 213c40 36 91 53 149 34" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".95"/>
+
+  <!-- sparkles -->
+  <path d="M246 46l8 18 18 8-18 8-8 18-8-18-18-8 18-8Z" fill="url(#pSky)"/>
+  <path d="M182 106l6 14 14 6-14 6-6 14-6-14-14-6 14-6Z" fill="url(#mint)"/>
+  <path d="M314 228l9 21 21 9-21 9-9 21-9-21-21-9 21-9Z" fill="url(#pSky)"/>
+  <path d="M303 74l5 9 10 2-7 7 2 10-10-5-9 5 2-10-7-7 10-2Z" fill="#1EA7F4"/>
+  <rect x="315" y="105" width="8" height="28" rx="4" transform="rotate(38 319 119)" fill="url(#mint)"/>
+  <rect x="333" y="125" width="8" height="24" rx="4" transform="rotate(78 337 137)" fill="url(#mint)"/>
+  <rect x="322" y="190" width="8" height="26" rx="4" transform="rotate(36 326 203)" fill="url(#mint)"/>
+  <rect x="339" y="211" width="8" height="24" rx="4" transform="rotate(80 343 223)" fill="url(#mint)"/>
+</g>
+</svg>
