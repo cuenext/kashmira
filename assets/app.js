@@ -113,25 +113,52 @@ window.addEventListener('load',()=>body.classList.add('loaded'));
 const instagramShell=document.querySelector('.instagram-live-shell');
 if(instagramShell){
   const inner=instagramShell.querySelector('.instagram-live-inner');
+  let instagramRequested=false;
+  let fallbackTimer=null;
+
   const syncInstagram=()=>{
     const iframe=inner?.querySelector('iframe');
     if(iframe){
+      iframe.setAttribute('title','Dr. Kashmira Pawar Instagram');
       instagramShell.classList.add('instagram-loaded');
       instagramShell.classList.remove('instagram-failed');
+      if(fallbackTimer) clearTimeout(fallbackTimer);
       return true;
     }
     return false;
   };
+
   const igObserver=new MutationObserver(()=>syncInstagram());
   if(inner) igObserver.observe(inner,{childList:true,subtree:true});
-  window.addEventListener('load',()=>{
-    try{window.instgrm?.Embeds?.process();}catch(e){}
-    setTimeout(()=>{
-      if(!syncInstagram()) instagramShell.classList.add('instagram-failed');
-    },5500);
-  });
-}
 
+  const loadInstagram=()=>{
+    if(instagramRequested) return;
+    instagramRequested=true;
+    if(window.instgrm?.Embeds){
+      window.instgrm.Embeds.process();
+    }else{
+      const script=document.createElement('script');
+      script.src='https://www.instagram.com/embed.js';
+      script.async=true;
+      script.onload=()=>{
+        try{window.instgrm?.Embeds?.process();}catch(e){}
+      };
+      script.onerror=()=>instagramShell.classList.add('instagram-failed');
+      document.head.appendChild(script);
+    }
+    fallbackTimer=setTimeout(()=>{
+      if(!syncInstagram()) instagramShell.classList.add('instagram-failed');
+    },7000);
+  };
+
+  const igLoadObserver=new IntersectionObserver(entries=>{
+    if(entries.some(entry=>entry.isIntersecting)){
+      loadInstagram();
+      igLoadObserver.disconnect();
+    }
+  },{rootMargin:'900px 0px'});
+  igLoadObserver.observe(instagramShell);
+}
 
 // v12 interactive care showcase
 const careExperience=document.querySelector('[data-care-experience]');
