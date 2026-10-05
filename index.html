@@ -7,8 +7,8 @@
 <meta name="description" content="Book an appointment with Dr. Kashmira Pawar Jayprakash, Specialist Pediatric Dentist at Al Raha Mall, Abu Dhabi.">
 <meta name="theme-color" content="#eef8ff">
 <link rel="icon" href="assets/kp-logo.svg?v=4" type="image/svg+xml">
-<link rel="stylesheet" href="assets/app.css?v=11">
-<script defer src="assets/app.js?v=11"></script>
+<link rel="stylesheet" href="assets/app.css?v=12">
+<script defer src="assets/app.js?v=12"></script>
 </head>
 <body class="home">
 <a class="skip" href="#main">Skip to content</a>
@@ -98,49 +98,72 @@
   </div>
 </section>
 
-<section class="care care-premium" id="care">
-  <div class="shell care-head reveal">
-    <span class="eyebrow">Care</span>
-    <h2>How I can help.</h2>
-    <p>Specialist pediatric care tailored to your child’s needs.</p>
+<section class="care-showcase" id="care">
+  <div class="shell care-intro reveal">
+    <div>
+      <span class="eyebrow">Pediatric care</span>
+      <h2>Specialist care for little smiles.</h2>
+    </div>
+    <p>From prevention to urgent dental injuries, each visit is planned around your child.</p>
   </div>
-  <div class="shell care-bento">
-    <article class="care-panel care-panel-main reveal">
-      <div class="care-panel-copy">
-        <span class="care-no">01 · Prevention</span>
-        <h3>Healthy habits start early.</h3>
-        <p>Check-ups, fluoride, fissure sealants and guidance for growing teeth.</p>
-      </div>
-      <div class="care-panel-photo">
-        <img src="assets/locations/al-raha-children-room.webp" alt="Children's dental room at Al Raha Mall" loading="lazy">
-      </div>
-      <span class="care-spark care-spark-a">✦</span>
-      <span class="care-spark care-spark-b">✦</span>
-    </article>
 
-    <article class="care-panel care-panel-photo-card reveal">
-      <img src="assets/review/pediatric-clinic/dscf2905.webp" alt="Pediatric dental chair at Al Raha Mall" loading="lazy">
-      <div class="care-photo-shade"></div>
-      <div class="care-photo-copy">
-        <span>02 · Restorative care</span>
-        <h3>Care for little teeth.</h3>
-        <p>Fillings, pediatric crowns and pulp therapy when indicated.</p>
+  <div class="shell care-experience reveal" data-care-experience>
+    <div class="care-tabs" role="tablist" aria-label="Pediatric dental care">
+      <button class="care-tab active" type="button" role="tab" aria-selected="true" data-care-tab="0">
+        <span>01</span>Prevention
+      </button>
+      <button class="care-tab" type="button" role="tab" aria-selected="false" data-care-tab="1">
+        <span>02</span>Restorative
+      </button>
+      <button class="care-tab" type="button" role="tab" aria-selected="false" data-care-tab="2">
+        <span>03</span>Dental trauma
+      </button>
+      <button class="care-tab" type="button" role="tab" aria-selected="false" data-care-tab="3">
+        <span>04</span>Anxiety support
+      </button>
+    </div>
+
+    <div class="care-stage">
+      <div class="care-stage-media">
+        <article class="care-slide active" data-care-slide="0">
+          <img src="assets/review/pediatric-clinic/dscf2896.webp" alt="Child-friendly pediatric dental room" loading="lazy">
+        </article>
+        <article class="care-slide" data-care-slide="1">
+          <img src="assets/review/pediatric-clinic/dscf2905.webp" alt="Pediatric treatment chair at Al Raha Mall" loading="lazy">
+        </article>
+        <article class="care-slide" data-care-slide="2">
+          <img src="assets/review/pediatric-clinic/dscf2892.webp" alt="Pediatric dental clinic equipment" loading="lazy">
+        </article>
+        <article class="care-slide" data-care-slide="3">
+          <img src="assets/review/pediatric-clinic/dscf2894.webp" alt="Dinosaur themed pediatric dental chair" loading="lazy">
+        </article>
+        <span class="care-photo-label">Al Raha Mall · Abu Dhabi</span>
       </div>
-    </article>
 
-    <article class="care-panel care-panel-small care-panel-trauma reveal">
-      <span class="care-no">03 · Dental trauma</span>
-      <div class="care-mini-icon">↗</div>
-      <h3>After an accident.</h3>
-      <p>Assessment for chipped, loose, displaced or injured teeth.</p>
-    </article>
-
-    <article class="care-panel care-panel-small care-panel-anxiety reveal">
-      <span class="care-no">04 · Anxiety support</span>
-      <div class="care-mini-icon smile">☺</div>
-      <h3>A calmer visit.</h3>
-      <p>Age-appropriate behaviour guidance and nitrous oxide when appropriate.</p>
-    </article>
+      <div class="care-stage-copy">
+        <article class="care-copy-slide active" data-care-copy="0">
+          <span class="care-copy-number">01</span>
+          <h3>Strong starts.</h3>
+          <p>Check-ups, fluoride, fissure sealants and guidance for growing teeth.</p>
+        </article>
+        <article class="care-copy-slide" data-care-copy="1">
+          <span class="care-copy-number">02</span>
+          <h3>Restore gently.</h3>
+          <p>Fillings, pediatric crowns and pulp therapy when clinically needed.</p>
+        </article>
+        <article class="care-copy-slide" data-care-copy="2">
+          <span class="care-copy-number">03</span>
+          <h3>When accidents happen.</h3>
+          <p>Assessment for chipped, loose, displaced or injured teeth.</p>
+        </article>
+        <article class="care-copy-slide" data-care-copy="3">
+          <span class="care-copy-number">04</span>
+          <h3>A calmer visit.</h3>
+          <p>Behaviour guidance and nitrous oxide when clinically appropriate.</p>
+        </article>
+        <div class="care-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </div>
   </div>
 </section>
 
