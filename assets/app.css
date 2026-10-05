@@ -763,7 +763,7 @@ button{font:inherit}
   .care-experience.is-playing .care-progress span{animation:none;transform:scaleX(1)}
 }
 
-/* ===== v15 editorial hero portrait ===== */
+/* ===== v16 smaller editorial portrait ===== */
 .hero{
   min-height:100svh;
   padding-top:68px;
@@ -777,108 +777,103 @@ button{font:inherit}
   margin:0 auto;
   display:flex;
   align-items:center;
-  padding:74px clamp(470px,42vw,650px) 90px 0
+  padding:74px clamp(330px,31vw,440px) 90px 0
 }
 .hero-copy{
-  width:min(700px,100%);
-  max-width:700px
+  width:min(760px,100%);
+  max-width:760px
 }
-.hero h1{max-width:760px}
+.hero h1{max-width:790px}
 
 .hero-doctor-edge{
   position:absolute;
   z-index:4;
-  top:50%;
-  right:clamp(28px,4.5vw,76px);
-  bottom:auto;
-  width:clamp(390px,34vw,540px);
-  height:auto;
+  top:54%;
+  right:clamp(42px,6vw,96px);
+  width:clamp(300px,27vw,385px);
   aspect-ratio:4/5;
-  border-radius:40px;
+  border-radius:30px;
   overflow:visible;
   background:transparent;
   border:0;
-  box-shadow:none;
-  backdrop-filter:none
+  box-shadow:none
 }
 .hero-doctor-edge:before{
   content:"";
   position:absolute;
   z-index:-1;
-  inset:-18px;
-  border-radius:50px;
-  background:linear-gradient(135deg,rgba(39,180,246,.42),rgba(99,229,202,.30));
-  filter:blur(28px);
-  opacity:.62;
+  inset:-10px;
+  border-radius:38px;
+  background:linear-gradient(135deg,rgba(45,182,246,.28),rgba(121,230,200,.20));
+  filter:blur(20px);
+  opacity:.46;
   pointer-events:none
 }
 .hero-doctor-edge>img{
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center 18%;
-  border-radius:40px;
-  border:1px solid rgba(255,255,255,.28);
-  box-shadow:0 34px 90px rgba(0,17,45,.30);
-  transform:scale(1);
-  transition:transform 1s cubic-bezier(.16,1,.3,1),box-shadow .5s ease
+  object-position:center 17%;
+  border-radius:30px;
+  border:1px solid rgba(255,255,255,.24);
+  box-shadow:0 24px 62px rgba(0,17,45,.24);
+  transition:transform .85s cubic-bezier(.16,1,.3,1),box-shadow .4s ease
 }
 .hero-doctor-edge:hover>img{
-  transform:scale(1.018);
-  box-shadow:0 42px 100px rgba(0,17,45,.34)
+  transform:translateY(-3px) scale(1.012);
+  box-shadow:0 30px 72px rgba(0,17,45,.27)
 }
 .hero-doctor-edge:after{
   content:"";
   position:absolute;
   z-index:2;
-  inset:56% 0 0;
-  border-radius:0 0 40px 40px;
-  background:linear-gradient(transparent,rgba(3,28,55,.26));
+  inset:62% 0 0;
+  border-radius:0 0 30px 30px;
+  background:linear-gradient(transparent,rgba(3,28,55,.22));
   pointer-events:none
 }
 .hero-doctor-edge .hero-doctor-card{
-  left:20px;
+  left:14px;
   right:auto;
-  bottom:20px;
-  width:auto;
-  min-width:224px;
-  max-width:calc(100% - 40px);
-  padding:8px 12px 8px 9px;
-  border-radius:17px;
-  gap:8px;
-  background:rgba(255,255,255,.88);
-  border:1px solid rgba(255,255,255,.70);
-  box-shadow:0 14px 38px rgba(0,23,58,.14)
+  bottom:14px;
+  min-width:0;
+  max-width:calc(100% - 28px);
+  padding:7px 10px 7px 8px;
+  border-radius:15px;
+  gap:7px;
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(255,255,255,.66);
+  box-shadow:0 10px 28px rgba(0,23,58,.12)
 }
 .hero-doctor-edge .hero-doctor-card>img{
-  width:34px;
-  height:34px;
+  width:28px;
+  height:28px;
   object-fit:contain
 }
-.hero-doctor-edge .hero-doctor-card strong{font-size:11px}
-.hero-doctor-edge .hero-doctor-card span{font-size:9px}
+.hero-doctor-edge .hero-doctor-card strong{font-size:10px}
+.hero-doctor-edge .hero-doctor-card span{font-size:8px}
 
 .hero-doctor-edge.enter{
   opacity:0;
-  transform:translate(72px,-48%) scale(.965);
-  filter:blur(7px)
+  transform:translate(52px,-50%) scale(.97);
+  filter:blur(6px)
 }
 .ready .hero-doctor-edge.enter{
-  animation:portraitCardIn 1.05s .20s cubic-bezier(.16,1,.3,1) forwards
+  animation:portraitSmallIn .95s .20s cubic-bezier(.16,1,.3,1) forwards
 }
-@keyframes portraitCardIn{
-  to{opacity:1;transform:translate(0,-48%) scale(1);filter:none}
+@keyframes portraitSmallIn{
+  to{opacity:1;transform:translate(0,-50%) scale(1);filter:none}
 }
-.hero-scroll{left:calc(50% - min(17vw,215px))}
+.hero-scroll{left:calc(50% - min(12vw,150px))}
 
 @media(max-width:1180px){
   .hero-inner{
     width:calc(100% - 48px);
-    padding-right:clamp(410px,42vw,500px)
+    padding-right:clamp(300px,33vw,390px)
   }
   .hero-doctor-edge{
-    right:24px;
-    width:clamp(370px,38vw,470px)
+    right:26px;
+    width:clamp(285px,29vw,350px)
   }
   .hero h1{font-size:clamp(57px,7vw,82px)}
   .hero-copy>p{font-size:17px}
@@ -886,15 +881,15 @@ button{font:inherit}
 @media(max-width:900px){
   .hero-inner{
     width:calc(100% - 36px);
-    padding-right:43vw
+    padding-right:36vw
   }
   .hero-doctor-edge{
     right:18px;
-    width:39vw;
-    border-radius:30px
+    width:31vw;
+    border-radius:26px
   }
-  .hero-doctor-edge>img{border-radius:30px}
-  .hero-doctor-edge:after{border-radius:0 0 30px 30px}
+  .hero-doctor-edge>img{border-radius:26px}
+  .hero-doctor-edge:after{border-radius:0 0 26px 26px}
   .hero h1{font-size:clamp(49px,7vw,65px)}
   .hero-copy>p{font-size:15px}
   .hero-trust{grid-template-columns:1fr;gap:7px;margin-top:27px}
@@ -909,7 +904,7 @@ button{font:inherit}
   .hero-inner{
     width:var(--shell);
     min-height:auto;
-    padding:78px 0 30px;
+    padding:78px 0 28px;
     display:block
   }
   .hero-copy{width:100%;max-width:none}
@@ -925,39 +920,35 @@ button{font:inherit}
     position:relative;
     top:auto;
     right:auto;
-    bottom:auto;
-    width:min(88vw,430px);
+    width:min(76vw,340px);
     aspect-ratio:4/5;
-    margin:0 auto 42px;
-    border-radius:30px
+    margin:0 auto 40px;
+    border-radius:26px
   }
   .hero-doctor-edge>img{
-    border-radius:30px;
+    border-radius:26px;
     object-position:center 16%
   }
-  .hero-doctor-edge:after{border-radius:0 0 30px 30px}
-  .hero-doctor-edge:before{inset:-10px;border-radius:38px;filter:blur(22px)}
+  .hero-doctor-edge:after{border-radius:0 0 26px 26px}
+  .hero-doctor-edge:before{inset:-8px;border-radius:32px;filter:blur(18px)}
   .hero-doctor-edge .hero-doctor-card{
-    left:14px;
-    right:14px;
-    bottom:14px;
-    min-width:0;
-    max-width:none;
-    width:auto
+    left:10px;
+    bottom:10px;
+    max-width:calc(100% - 20px)
   }
   .hero-doctor-edge.enter{
     opacity:0;
-    transform:translateY(24px) scale(.985);
-    filter:blur(5px)
+    transform:translateY(20px) scale(.985);
+    filter:blur(4px)
   }
   .ready .hero-doctor-edge.enter{
-    animation:enter .8s .14s cubic-bezier(.16,1,.3,1) forwards
+    animation:enter .75s .14s cubic-bezier(.16,1,.3,1) forwards
   }
   .hero-scroll{display:none}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-doctor-edge>img{transition:none}
   .hero-doctor-edge:hover>img{transform:none}
-  .hero-doctor-edge.enter{opacity:1;transform:translateY(-48%);filter:none}
+  .hero-doctor-edge.enter{opacity:1;transform:translateY(-50%);filter:none}
   .ready .hero-doctor-edge.enter{animation:none}
 }
