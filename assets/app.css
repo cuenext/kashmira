@@ -763,7 +763,7 @@ button{font:inherit}
   .care-experience.is-playing .care-progress span{animation:none;transform:scaleX(1)}
 }
 
-/* ===== v16 smaller editorial portrait ===== */
+/* ===== v17 minimal hero portrait ===== */
 .hero{
   min-height:100svh;
   padding-top:68px;
@@ -777,22 +777,22 @@ button{font:inherit}
   margin:0 auto;
   display:flex;
   align-items:center;
-  padding:74px clamp(330px,31vw,440px) 90px 0
+  padding:74px 300px 90px 0
 }
 .hero-copy{
-  width:min(760px,100%);
-  max-width:760px
+  width:min(800px,100%);
+  max-width:800px
 }
-.hero h1{max-width:790px}
+.hero h1{max-width:820px}
 
 .hero-doctor-edge{
   position:absolute;
   z-index:4;
-  top:54%;
-  right:clamp(42px,6vw,96px);
-  width:clamp(300px,27vw,385px);
+  top:56%;
+  right:clamp(34px,5vw,78px);
+  width:clamp(220px,20vw,280px);
   aspect-ratio:4/5;
-  border-radius:30px;
+  border-radius:24px;
   overflow:visible;
   background:transparent;
   border:0;
@@ -802,94 +802,93 @@ button{font:inherit}
   content:"";
   position:absolute;
   z-index:-1;
-  inset:-10px;
-  border-radius:38px;
-  background:linear-gradient(135deg,rgba(45,182,246,.28),rgba(121,230,200,.20));
-  filter:blur(20px);
-  opacity:.46;
+  inset:-5px;
+  border-radius:29px;
+  background:linear-gradient(135deg,rgba(45,182,246,.18),rgba(121,230,200,.12));
+  filter:blur(12px);
+  opacity:.34;
   pointer-events:none
 }
 .hero-doctor-edge>img{
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center 17%;
-  border-radius:30px;
-  border:1px solid rgba(255,255,255,.24);
-  box-shadow:0 24px 62px rgba(0,17,45,.24);
-  transition:transform .85s cubic-bezier(.16,1,.3,1),box-shadow .4s ease
+  object-position:center 16%;
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,.20);
+  box-shadow:0 18px 42px rgba(0,17,45,.18);
+  transition:transform .75s cubic-bezier(.16,1,.3,1),box-shadow .35s ease
 }
 .hero-doctor-edge:hover>img{
-  transform:translateY(-3px) scale(1.012);
-  box-shadow:0 30px 72px rgba(0,17,45,.27)
+  transform:translateY(-2px) scale(1.008);
+  box-shadow:0 22px 48px rgba(0,17,45,.20)
 }
 .hero-doctor-edge:after{
   content:"";
   position:absolute;
   z-index:2;
-  inset:62% 0 0;
-  border-radius:0 0 30px 30px;
-  background:linear-gradient(transparent,rgba(3,28,55,.22));
+  inset:68% 0 0;
+  border-radius:0 0 24px 24px;
+  background:linear-gradient(transparent,rgba(3,28,55,.17));
   pointer-events:none
 }
 .hero-doctor-edge .hero-doctor-card{
-  left:14px;
-  right:auto;
-  bottom:14px;
+  left:9px;
+  right:9px;
+  bottom:9px;
   min-width:0;
-  max-width:calc(100% - 28px);
-  padding:7px 10px 7px 8px;
-  border-radius:15px;
-  gap:7px;
-  background:rgba(255,255,255,.86);
-  border:1px solid rgba(255,255,255,.66);
-  box-shadow:0 10px 28px rgba(0,23,58,.12)
+  max-width:none;
+  width:auto;
+  padding:6px 8px;
+  border-radius:12px;
+  gap:6px;
+  background:rgba(255,255,255,.84);
+  border:1px solid rgba(255,255,255,.58);
+  box-shadow:0 7px 20px rgba(0,23,58,.09)
 }
 .hero-doctor-edge .hero-doctor-card>img{
-  width:28px;
-  height:28px;
+  width:22px;
+  height:22px;
   object-fit:contain
 }
-.hero-doctor-edge .hero-doctor-card strong{font-size:10px}
-.hero-doctor-edge .hero-doctor-card span{font-size:8px}
+.hero-doctor-edge .hero-doctor-card strong{font-size:8.5px}
+.hero-doctor-edge .hero-doctor-card span{font-size:6.5px;margin-top:1px}
 
 .hero-doctor-edge.enter{
   opacity:0;
-  transform:translate(52px,-50%) scale(.97);
-  filter:blur(6px)
+  transform:translate(34px,-50%) scale(.98);
+  filter:blur(4px)
 }
 .ready .hero-doctor-edge.enter{
-  animation:portraitSmallIn .95s .20s cubic-bezier(.16,1,.3,1) forwards
+  animation:portraitMiniIn .82s .18s cubic-bezier(.16,1,.3,1) forwards
 }
-@keyframes portraitSmallIn{
+@keyframes portraitMiniIn{
   to{opacity:1;transform:translate(0,-50%) scale(1);filter:none}
 }
-.hero-scroll{left:calc(50% - min(12vw,150px))}
+.hero-scroll{left:50%}
 
 @media(max-width:1180px){
   .hero-inner{
     width:calc(100% - 48px);
-    padding-right:clamp(300px,33vw,390px)
+    padding-right:260px
   }
   .hero-doctor-edge{
-    right:26px;
-    width:clamp(285px,29vw,350px)
+    right:24px;
+    width:230px
   }
-  .hero h1{font-size:clamp(57px,7vw,82px)}
-  .hero-copy>p{font-size:17px}
 }
 @media(max-width:900px){
   .hero-inner{
     width:calc(100% - 36px);
-    padding-right:36vw
+    padding-right:220px
   }
   .hero-doctor-edge{
-    right:18px;
-    width:31vw;
-    border-radius:26px
+    right:16px;
+    width:195px;
+    border-radius:22px
   }
-  .hero-doctor-edge>img{border-radius:26px}
-  .hero-doctor-edge:after{border-radius:0 0 26px 26px}
+  .hero-doctor-edge>img{border-radius:22px}
+  .hero-doctor-edge:after{border-radius:0 0 22px 22px}
   .hero h1{font-size:clamp(49px,7vw,65px)}
   .hero-copy>p{font-size:15px}
   .hero-trust{grid-template-columns:1fr;gap:7px;margin-top:27px}
@@ -904,7 +903,7 @@ button{font:inherit}
   .hero-inner{
     width:var(--shell);
     min-height:auto;
-    padding:78px 0 28px;
+    padding:78px 0 26px;
     display:block
   }
   .hero-copy{width:100%;max-width:none}
@@ -920,29 +919,29 @@ button{font:inherit}
     position:relative;
     top:auto;
     right:auto;
-    width:min(76vw,340px);
+    width:min(58vw,250px);
     aspect-ratio:4/5;
-    margin:0 auto 40px;
-    border-radius:26px
+    margin:0 auto 38px;
+    border-radius:22px
   }
   .hero-doctor-edge>img{
-    border-radius:26px;
+    border-radius:22px;
     object-position:center 16%
   }
-  .hero-doctor-edge:after{border-radius:0 0 26px 26px}
-  .hero-doctor-edge:before{inset:-8px;border-radius:32px;filter:blur(18px)}
+  .hero-doctor-edge:after{border-radius:0 0 22px 22px}
+  .hero-doctor-edge:before{inset:-5px;border-radius:27px;filter:blur(12px)}
   .hero-doctor-edge .hero-doctor-card{
-    left:10px;
-    bottom:10px;
-    max-width:calc(100% - 20px)
+    left:8px;
+    right:8px;
+    bottom:8px
   }
   .hero-doctor-edge.enter{
     opacity:0;
-    transform:translateY(20px) scale(.985);
-    filter:blur(4px)
+    transform:translateY(16px) scale(.99);
+    filter:blur(3px)
   }
   .ready .hero-doctor-edge.enter{
-    animation:enter .75s .14s cubic-bezier(.16,1,.3,1) forwards
+    animation:enter .65s .12s cubic-bezier(.16,1,.3,1) forwards
   }
   .hero-scroll{display:none}
 }
