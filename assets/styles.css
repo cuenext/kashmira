@@ -1,33 +1,263 @@
 :root{
-  --ink:#17342f;--ink-2:#24443e;--paper:#f7f5f0;--warm:#efeae1;--sage:#d9e5de;--mint:#cfe0d8;--cream:#fffdf8;--muted:#687773;--line:rgba(23,52,47,.12);--white:#fff;--shadow:0 28px 70px rgba(20,47,42,.12);--shell:min(1180px,calc(100% - 40px));--radius:28px
+  --bg:#f5f5f7;
+  --surface:#ffffff;
+  --ink:#1d1d1f;
+  --muted:#6e6e73;
+  --line:rgba(0,0,0,.08);
+  --accent:#116b61;
+  --dark:#111214;
+  --soft:#e9f2ef;
+  --shell:min(1120px,calc(100% - 40px));
+  --wide:min(1240px,calc(100% - 32px));
+  --radius:34px;
+  --shadow:0 18px 50px rgba(0,0,0,.08);
 }
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}img{display:block;width:100%;height:auto}button{font:inherit}.shell{width:var(--shell);margin-inline:auto}.skip-link{position:absolute;left:-9999px;top:10px;background:white;padding:10px 14px;z-index:100}.skip-link:focus{left:10px}
-.site-header{position:fixed;inset:0 0 auto;z-index:70;transition:background .28s ease,border-color .28s ease,backdrop-filter .28s ease}.site-header.scrolled{background:rgba(247,245,240,.84);backdrop-filter:blur(18px) saturate(130%);border-bottom:1px solid var(--line)}.nav-wrap{height:82px;display:flex;align-items:center;justify-content:space-between;gap:28px}
-.brand{display:flex;align-items:center;gap:12px}.brand-mark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:var(--ink);color:white;font-weight:800;font-size:18px;box-shadow:0 10px 30px rgba(0,0,0,.15)}.brand-copy{display:flex;flex-direction:column;line-height:1.05}.brand-copy strong{font-size:14px}.brand-copy small{font-size:11px;color:var(--muted);margin-top:5px}
-.brand-light .brand-mark{background:rgba(255,255,255,.16);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.25)}.hero-header:not(.scrolled) .brand-copy{color:#fff}.hero-header:not(.scrolled) .brand-copy small{color:rgba(255,255,255,.76)}.hero-header.scrolled .brand-light .brand-mark{background:var(--ink);border-color:transparent}
-.main-nav{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:650}.hero-header:not(.scrolled) .main-nav>a:not(.nav-cta){color:rgba(255,255,255,.88)}.site-header.scrolled .main-nav>a:not(.nav-cta),body:not(.home) .main-nav>a:not(.nav-cta){color:#42534f}.main-nav>a.active{opacity:1}.nav-cta{padding:11px 17px;border-radius:999px;background:#fff;color:var(--ink)!important}.site-header.scrolled .nav-cta,body:not(.home) .nav-cta{background:var(--ink);color:white!important}.menu-toggle{display:none;background:none;border:0;font-weight:750}.light-toggle{color:#fff}.site-header.scrolled .light-toggle,body:not(.home) .light-toggle{color:var(--ink)}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#47766c;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.eyebrow.light{color:rgba(255,255,255,.8)}
-.button{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border-radius:999px;font-size:14px;font-weight:760;transition:transform .22s ease,background .22s ease,box-shadow .22s ease}.button:hover{transform:translateY(-2px)}.light-button{background:#fff;color:var(--ink);box-shadow:0 12px 30px rgba(0,0,0,.14)}.glass-button{border:1px solid rgba(255,255,255,.34);background:rgba(255,255,255,.08);color:white;backdrop-filter:blur(12px)}.dark-button{background:var(--ink);color:white;box-shadow:0 12px 28px rgba(23,52,47,.18)}.text-link{font-size:14px;font-weight:760;display:inline-flex;align-items:center;gap:8px;margin-top:18px}.dark-link{color:var(--ink)}
-.cinematic-hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#17342f;color:white}.hero-photo{position:absolute;inset:0;background:url("https://silwadi.ae/assets/review/pediatric-clinic/dscf2888.webp") center 52%/cover no-repeat;transform:scale(1.035);animation:heroDrift 18s ease-in-out infinite alternate}.hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,28,25,.9) 0%,rgba(13,32,29,.72) 37%,rgba(13,32,29,.2) 72%,rgba(13,32,29,.24) 100%),linear-gradient(0deg,rgba(9,25,22,.5),transparent 48%)}@keyframes heroDrift{to{transform:scale(1.07)}}.hero-content{position:relative;z-index:2;padding-top:155px;padding-bottom:86px;display:flex;align-items:flex-end;justify-content:space-between;gap:50px}.hero-copy{max-width:760px}.hero-copy h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(64px,8.2vw,116px);line-height:.9;letter-spacing:-.055em;font-weight:500;margin:22px 0 14px;max-width:850px}.hero-kicker{font-family:Georgia,serif;font-size:clamp(27px,3vw,42px);line-height:1.1;margin:0 0 18px;color:#edf4ef}.hero-text{font-size:18px;line-height:1.65;color:rgba(255,255,255,.8);max-width:640px;margin:0}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}.hero-facts{display:flex;flex-direction:column;gap:26px;padding:26px 0 4px;min-width:185px}.hero-facts div{display:flex;flex-direction:column;border-left:1px solid rgba(255,255,255,.3);padding-left:16px}.hero-facts strong{font-family:Georgia,serif;font-size:28px;font-weight:500}.hero-facts span{font-size:11px;color:rgba(255,255,255,.7);margin-top:3px}.scroll-cue{position:absolute;z-index:3;left:50%;bottom:24px;transform:translateX(-50%);display:flex;align-items:center;gap:9px;color:rgba(255,255,255,.65);font-size:10px;text-transform:uppercase;letter-spacing:.14em}.scroll-cue span{width:17px;height:27px;border-radius:999px;border:1px solid rgba(255,255,255,.45);position:relative}.scroll-cue span:after{content:"";position:absolute;width:3px;height:5px;border-radius:999px;background:white;left:6px;top:5px;animation:scrollDot 1.8s infinite}@keyframes scrollDot{50%{transform:translateY(8px);opacity:.4}}
-.doctor-intro{display:grid;grid-template-columns:.88fr 1.12fr;gap:100px;align-items:center;padding-top:125px;padding-bottom:135px}.doctor-photo-wrap{position:relative}.doctor-photo{aspect-ratio:4/5;border-radius:34px;overflow:hidden;background:#e9e6de;box-shadow:var(--shadow)}.doctor-photo img{height:100%;object-fit:cover;object-position:center top}.photo-badge{position:absolute;right:-22px;bottom:30px;background:rgba(255,255,255,.9);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.8);box-shadow:0 18px 45px rgba(24,52,47,.15);padding:16px 19px;border-radius:18px;display:flex;flex-direction:column}.photo-badge strong{font-size:13px}.photo-badge span{font-size:11px;color:var(--muted);margin-top:2px}.doctor-copy h2,.promise-heading h2,.section-head h2,.visit-copy h2,.clinic-overlay h2,.final-cta h2,.inner-hero h1,.about-copy h2,.principle-section h2,.contact-hero h1,.contact-card h2,.faq h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;letter-spacing:-.042em;line-height:1.02}.doctor-copy h2{font-size:clamp(48px,5.4vw,76px);margin:14px 0 22px}.big-copy{font-size:21px;line-height:1.55;color:#344944;margin:0 0 20px}.doctor-copy>p:not(.big-copy){font-size:16px;color:var(--muted);max-width:650px}.mini-credentials{display:flex;gap:8px;flex-wrap:wrap;margin-top:25px}.mini-credentials span{padding:10px 13px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.55);font-size:11px;font-weight:700}
-.promise-band{background:var(--ink);color:white;margin:0 14px;border-radius:40px}.promise-grid{padding-top:100px;padding-bottom:105px;display:grid;grid-template-columns:.8fr 1.2fr;gap:85px;align-items:start}.promise-heading h2{font-size:clamp(46px,5vw,68px);margin:14px 0 0;max-width:500px}.promise-items{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.promise-card{min-height:250px;padding:25px;border-radius:24px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.09);display:flex;flex-direction:column}.promise-card span{font-size:11px;color:#a8d1c7;margin-bottom:auto}.promise-card h3{font-size:21px;margin:38px 0 8px}.promise-card p{margin:0;font-size:13px;color:#c8d3d0}
-.care-section{padding-top:125px;padding-bottom:130px}.section-head{display:grid;grid-template-columns:1fr .82fr;gap:80px;align-items:end;margin-bottom:48px}.section-head h2{font-size:clamp(46px,5vw,68px);margin:12px 0 0}.section-head>p{font-size:16px;color:var(--muted);margin:0;max-width:540px}.care-editorial{display:grid;grid-template-columns:1.05fr .95fr;gap:14px}.care-card{border-radius:28px;overflow:hidden;background:#fff;border:1px solid rgba(255,255,255,.8);min-height:310px}.care-a,.care-b{display:grid;grid-template-columns:1.05fr .95fr}.care-c,.care-d{min-height:260px}.care-c{background:#e7ece7}.care-d{background:#efe5dd}.care-media{min-height:320px;background-size:cover;background-position:center}.clinic-one{background-image:url("https://silwadi.ae/assets/review/pediatric-clinic/dscf2905.webp")}.clinic-two{background-image:url("https://silwadi.ae/assets/review/pediatric-clinic/dscf2896.webp")}.care-body{padding:30px;display:flex;flex-direction:column}.care-body>span{font-size:11px;color:#66827a;margin-bottom:auto}.care-body h3{font-size:29px;line-height:1.08;margin:44px 0 10px;letter-spacing:-.025em}.care-body p{font-size:14px;color:var(--muted);margin:0}.care-c .care-body h3,.care-d .care-body h3{margin-top:54px}
-.visit-section{background:var(--warm);padding:118px 0}.visit-grid{display:grid;grid-template-columns:.88fr 1.12fr;gap:100px}.visit-copy h2{font-size:clamp(46px,5vw,70px);margin:14px 0 18px}.visit-copy p{font-size:17px;color:var(--muted);max-width:520px}.visit-copy .button{margin-top:18px}.visit-steps{display:flex;flex-direction:column}.visit-step{display:grid;grid-template-columns:58px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid rgba(23,52,47,.13)}.visit-step:first-child{padding-top:0}.step-no{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:white;font-weight:800;font-size:13px}.visit-step strong{font-size:23px}.visit-step p{font-size:14px;color:var(--muted);margin:5px 0 0}
-.clinic-moment{margin-top:110px;margin-bottom:95px;min-height:620px;border-radius:38px;overflow:hidden;position:relative;background:#17342f}.clinic-image{position:absolute;inset:0;background:url("https://silwadi.ae/assets/review/pediatric-clinic/dscf2894.webp") center/cover no-repeat}.clinic-moment:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,30,26,.78),rgba(11,30,26,.08) 58%)}.clinic-overlay{position:absolute;z-index:2;left:52px;right:52px;bottom:46px;color:white;display:flex;align-items:flex-end;justify-content:space-between;gap:35px}.clinic-overlay h2{font-size:clamp(42px,4.7vw,66px);max-width:790px;margin:12px 0 0}.credentials-strip{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;padding-bottom:110px;color:#536762;font-size:12px;font-weight:720}.credentials-strip i{width:4px;height:4px;border-radius:50%;background:#9fb0aa}
-.final-cta{background:var(--ink);color:white}.final-cta-inner{padding-top:78px;padding-bottom:80px;display:flex;align-items:flex-end;justify-content:space-between;gap:60px}.final-cta h2{font-size:clamp(46px,5vw,68px);max-width:730px;margin:12px 0}.final-cta p{color:#c9d6d2;margin:0}.cta-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+.skip-link{position:absolute;left:-9999px;top:8px;background:white;padding:10px 14px;z-index:100}
+.skip-link:focus{left:8px}
+.wide-shell{width:var(--wide);margin-inline:auto}
+.nav-shell{width:min(1080px,calc(100% - 32px));margin-inline:auto;height:54px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:80;background:rgba(245,245,247,.82);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid rgba(0,0,0,.04)}
+.wordmark{font-size:14px;font-weight:650;letter-spacing:-.01em;white-space:nowrap}
+.site-nav{display:flex;align-items:center;gap:25px;font-size:12px;color:#424245}
+.site-nav a{transition:opacity .2s ease}
+.site-nav a:hover{opacity:.62}
+.site-nav .active{color:#000}
+.nav-book{background:var(--accent);color:#fff!important;padding:7px 13px;border-radius:999px;font-weight:650}
+.menu-toggle{display:none;border:0;background:none;font-size:12px;font-weight:650;color:#1d1d1f}
+main{padding-top:54px}
+.hero-clean{padding:76px 16px 0}
+.hero-copy{text-align:center;max-width:910px;margin:0 auto 52px}
+.hero-label,.kicker{display:block;font-size:14px;font-weight:650;color:var(--accent);letter-spacing:-.01em}
+.hero-clean h1{font-size:clamp(54px,7vw,92px);line-height:.95;letter-spacing:-.058em;margin:14px 0 18px;font-weight:700}
+.hero-clean .hero-copy>p{font-size:clamp(20px,2.2vw,29px);letter-spacing:-.025em;color:var(--muted);margin:0}
+.hero-actions{display:flex;justify-content:center;align-items:center;gap:22px;margin-top:29px;flex-wrap:wrap}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 22px;border-radius:999px;font-size:15px;font-weight:650;transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
+.button:hover{transform:translateY(-1px)}
+.button-primary{background:var(--accent);color:white}
+.button-white{background:white;color:var(--ink)}
+.button-link{font-size:17px;color:#1667b1;font-weight:500}
+.button-link span{font-size:22px;vertical-align:-1px;margin-left:2px}
+.strong-link{font-weight:600}
+.hero-stage{position:relative;width:var(--wide);margin:0 auto;min-height:690px;border-radius:42px;overflow:hidden;background:#d7ddd9;box-shadow:0 10px 35px rgba(0,0,0,.06)}
+.hero-room{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 53%}
+.doctor-float{position:absolute;left:32px;bottom:28px;display:flex;align-items:center;gap:13px;padding:10px 18px 10px 10px;border-radius:999px;background:rgba(255,255,255,.88);backdrop-filter:blur(20px) saturate(140%);box-shadow:0 12px 35px rgba(0,0,0,.13);border:1px solid rgba(255,255,255,.7)}
+.doctor-float img{width:54px;height:54px;border-radius:50%;object-fit:cover;object-position:center top;background:#eee}
+.doctor-float div{display:flex;flex-direction:column;line-height:1.15}
+.doctor-float strong{font-size:13px}
+.doctor-float span{font-size:11px;color:var(--muted);margin-top:4px}
+.section-space{padding-top:130px;padding-bottom:130px}
+.center-copy{text-align:center;max-width:920px}
+.center-copy h2,.doctor-feature-copy h2,.care-head h2,.gallery-heading h2,.booking-panel h2,.page-hero h1,.about-copy h2,.contact-hero h1{font-size:clamp(46px,5.6vw,76px);line-height:.98;letter-spacing:-.052em;font-weight:700;margin:13px 0 20px}
+.center-copy p{max-width:760px;margin:0 auto;color:var(--muted);font-size:20px;letter-spacing:-.02em}
+.visual-story{display:grid;grid-template-columns:1.45fr .8fr;gap:14px}
+.visual-stack{display:grid;grid-template-rows:1fr 1fr;gap:14px}
+.visual-card{position:relative;border-radius:34px;overflow:hidden;background:#ddd;min-height:330px}
+.visual-card-large{min-height:675px}
+.visual-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.visual-card:after{content:"";position:absolute;inset:auto 0 0;height:46%;background:linear-gradient(transparent,rgba(0,0,0,.56))}
+.visual-caption{position:absolute;z-index:2;left:28px;right:28px;bottom:25px}
+.visual-caption-light{color:white}
+.visual-caption span{display:block;font-size:12px;font-weight:600;opacity:.78;margin-bottom:5px}
+.visual-caption h3{font-size:clamp(23px,2.6vw,38px);line-height:1.04;letter-spacing:-.04em;margin:0;font-weight:650}
+.doctor-feature{background:#fff;margin-top:130px}
+.doctor-feature-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:90px;align-items:center}
+.doctor-portrait-card{height:700px;border-radius:36px;overflow:hidden;background:#e9e9e7}
+.doctor-portrait-card img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.doctor-feature-copy{max-width:650px}
+.doctor-feature-copy h2{margin-top:13px}
+.feature-lead{font-size:25px;line-height:1.25;letter-spacing:-.025em;margin:0 0 26px}
+.credentials-minimal{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:23px}
+.credentials-minimal span{font-size:12px;padding:9px 12px;background:var(--bg);border-radius:999px;color:#4b4b4f}
+.care-showcase{background:var(--dark);color:white;padding:120px 0}
+.kicker-light{color:#9dcfc6}
+.care-head{max-width:760px;margin-bottom:46px}
+.care-head h2{margin-bottom:0}
+.care-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.care-tile{min-height:280px;padding:26px;border-radius:30px;background:#1d1f22;display:flex;flex-direction:column}
+.care-tile>span{font-size:12px;color:#8f9298}
+.care-tile h3{font-size:28px;line-height:1.02;letter-spacing:-.035em;margin:auto 0 12px}
+.care-tile p{font-size:13px;line-height:1.45;color:#b9bbc0;margin:0}
+.gallery-heading{max-width:870px;margin-bottom:42px}
+.gallery-heading h2{margin-bottom:0}
+.photo-rail{display:grid;grid-template-columns:1.25fr .72fr .9fr;gap:14px}
+.rail-item{margin:0;border-radius:32px;overflow:hidden;background:#ddd;height:520px}
+.rail-item img{width:100%;height:100%;object-fit:cover}
+.rail-wide img{object-position:center}
+.visit-section{padding:110px 0 130px;background:#fff}
+.visit-heading{margin-bottom:50px}
+.visit-heading h2{margin-bottom:0}
+.visit-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.visit-step{background:var(--bg);border-radius:30px;padding:28px;min-height:240px;display:flex;flex-direction:column}
+.visit-step strong{width:36px;height:36px;border-radius:50%;background:white;display:grid;place-items:center;font-size:12px;box-shadow:0 3px 12px rgba(0,0,0,.05)}
+.visit-step span{font-size:26px;font-weight:700;letter-spacing:-.03em;margin:auto 0 8px}
+.visit-step p{font-size:14px;color:var(--muted);margin:0}
+.booking-panel{margin-top:110px;margin-bottom:110px;background:var(--accent);color:white;border-radius:38px;padding:58px 60px;display:flex;align-items:flex-end;justify-content:space-between;gap:40px}
+.booking-panel h2{margin:10px 0}
+.booking-panel p{font-size:18px;color:rgba(255,255,255,.78);margin:0}
 .mobile-book{display:none}
-.site-footer{border-top:1px solid var(--line);padding:45px 0 30px}.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:30px}.footer-brand{display:flex;align-items:center;gap:13px}.footer-brand>div{display:flex;flex-direction:column}.footer-brand>div span,.site-footer small{color:var(--muted);font-size:12px}.site-footer p{margin:4px 0 0;font-size:14px}.footer-bottom{grid-column:1/-1;margin-top:28px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:11px}
-/* inner pages */
-body:not(.home){padding-top:82px}.inner-page-header{background:rgba(247,245,240,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.inner-page-header .nav-cta{background:var(--ink);color:white!important}
-.inner-hero{padding-top:92px;padding-bottom:84px}.inner-hero h1{font-size:clamp(58px,7vw,96px);max-width:980px;margin:18px 0 22px}.inner-hero .lead{font-size:19px;color:var(--muted);max-width:760px}
-.about-split{display:grid;grid-template-columns:.9fr 1.1fr;gap:90px;align-items:center;padding-bottom:110px}.about-image{aspect-ratio:4/5;border-radius:34px;overflow:hidden;background:#e8e4dc;box-shadow:var(--shadow)}.about-image img{height:100%;object-fit:cover;object-position:center top}.about-copy h2{font-size:clamp(44px,5vw,66px);margin:14px 0 20px}.about-copy p{font-size:16px;color:var(--muted)}.signature-line{margin-top:28px;padding-top:22px;border-top:1px solid var(--line);font-family:Georgia,serif;font-size:24px}.facts-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:28px;overflow:hidden;margin-bottom:110px}.fact{background:#fff;padding:32px;display:flex;flex-direction:column}.fact strong{font-family:Georgia,serif;font-size:38px;font-weight:500}.fact span{font-size:11px;color:var(--muted);margin-top:4px}.principle-section{background:var(--ink);color:white;margin:0 14px;border-radius:38px;padding:95px 0}.principle-section h2{font-size:clamp(44px,5vw,66px);margin:14px 0 44px;max-width:720px}.principle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.principle{padding:28px;border-radius:24px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08)}.principle span{font-size:11px;color:#a8d1c7}.principle h3{font-size:23px;margin:38px 0 8px}.principle p{color:#c9d3d0;font-size:14px}.training{padding-top:110px;padding-bottom:115px}.training-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:85px}.training h2{font-family:Georgia,serif;font-size:clamp(44px,5vw,64px);font-weight:500;margin:14px 0}.training-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.training-item{padding:22px;border:1px solid var(--line);background:rgba(255,255,255,.6);border-radius:20px}.training-item strong{display:block;font-size:15px}.training-item span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
-.contact-hero{padding-top:88px;padding-bottom:58px}.contact-hero h1{font-size:clamp(58px,7vw,92px);margin:18px 0 22px;max-width:900px}.contact-hero p{font-size:18px;color:var(--muted);max-width:720px}.contact-grid{display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:14px;padding-bottom:80px}.contact-card{min-height:340px;padding:30px;border-radius:26px;background:#fff;border:1px solid rgba(255,255,255,.85);display:flex;flex-direction:column}.contact-card.featured{background:var(--mint)}.contact-card h2{font-size:36px;margin:12px 0 12px}.contact-card p{color:var(--muted);font-size:14px}.contact-big{font-family:Georgia,serif;font-size:30px;margin:16px 0}.contact-card .button,.contact-card .text-link{margin-top:auto;align-self:flex-start}.map-frame{min-height:440px;margin-bottom:100px;border-radius:34px;overflow:hidden;position:relative;background:url("https://silwadi.ae/assets/review/pediatric-clinic/dscf2892.webp") center/cover no-repeat}.map-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,40,35,.82),rgba(16,40,35,.18))}.map-copy{position:absolute;z-index:2;left:42px;bottom:40px;color:white;max-width:520px}.map-copy h2{font-family:Georgia,serif;font-size:46px;font-weight:500;line-height:1.05;margin:10px 0}.faq{padding-bottom:110px;max-width:920px}.faq h2{font-size:50px;margin:14px 0 35px}.faq details{border-top:1px solid var(--line);padding:20px 0}.faq details:last-child{border-bottom:1px solid var(--line)}.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;font-weight:760}.faq summary:after{content:"+";font-size:20px}.faq details[open] summary:after{content:"–"}.faq p{color:var(--muted);max-width:760px}
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .66s cubic-bezier(.2,.7,.2,1),transform .66s cubic-bezier(.2,.7,.2,1)}.reveal.is-visible{opacity:1;transform:none}
+.site-footer{padding:40px 0 30px;background:#fff}
+.footer-layout{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.footer-layout>div{display:flex;flex-direction:column;gap:4px;font-size:13px}
+.footer-layout>div:nth-child(2){align-items:flex-end}
+.footer-layout span{color:var(--muted)}
+.footer-layout a{color:#1667b1}
+.footer-bottom{grid-column:1/-1!important;border-top:1px solid var(--line);padding-top:22px;margin-top:16px;display:flex!important;flex-direction:row!important;justify-content:space-between}
+
+/* about */
+.page-hero{padding:100px 0 74px;text-align:center}
+.page-hero h1{max-width:950px;margin-inline:auto}
+.page-hero p{max-width:760px;margin:0 auto;color:var(--muted);font-size:20px}
+.about-hero-visual{width:var(--wide);margin:0 auto;display:grid;grid-template-columns:.76fr 1.24fr;gap:14px}
+.about-portrait,.about-room{border-radius:36px;overflow:hidden;height:650px;background:#ddd}
+.about-portrait img,.about-room img{width:100%;height:100%;object-fit:cover}
+.about-portrait img{object-position:center top}
+.about-room img{object-position:center}
+.about-story{padding:120px 0}
+.about-story-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:90px;align-items:start}
+.about-copy h2{margin-top:12px}
+.about-copy p{font-size:20px;color:#4d4d52;max-width:680px}
+.about-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.about-fact{background:white;border-radius:28px;padding:28px;min-height:160px;display:flex;flex-direction:column;justify-content:flex-end}
+.about-fact strong{font-size:34px;letter-spacing:-.04em}
+.about-fact span{font-size:12px;color:var(--muted);margin-top:5px}
+.approach-section{background:#fff;padding:110px 0}
+.approach-head{max-width:860px;margin-bottom:42px}
+.approach-head h2{font-size:clamp(46px,5vw,70px);line-height:.98;letter-spacing:-.05em;margin:12px 0 0}
+.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.approach-card{border-radius:30px;background:var(--bg);padding:30px;min-height:245px;display:flex;flex-direction:column}
+.approach-card span{font-size:12px;color:var(--accent)}
+.approach-card h3{font-size:27px;letter-spacing:-.035em;margin:auto 0 10px}
+.approach-card p{font-size:14px;color:var(--muted);margin:0}
+
+/* contact */
+.contact-hero{padding:100px 0 58px;text-align:center}
+.contact-hero h1{max-width:900px;margin-inline:auto}
+.contact-hero p{max-width:720px;margin:0 auto;color:var(--muted);font-size:20px}
+.contact-layout{width:var(--wide);margin:0 auto 110px;display:grid;grid-template-columns:1.05fr .95fr;gap:14px}
+.contact-booking{background:var(--accent);color:white;border-radius:36px;padding:46px;min-height:520px;display:flex;flex-direction:column}
+.contact-booking .kicker{color:#b9ddd6}
+.contact-booking h2{font-size:clamp(46px,5vw,68px);line-height:.97;letter-spacing:-.05em;margin:12px 0}
+.contact-number{font-size:28px;font-weight:650;letter-spacing:-.03em;margin:18px 0 8px}
+.contact-booking p{color:rgba(255,255,255,.76);margin:0}
+.contact-booking .button{margin-top:auto;align-self:flex-start}
+.contact-image{border-radius:36px;overflow:hidden;min-height:520px;background:#ddd}
+.contact-image img{width:100%;height:100%;object-fit:cover}
+.location-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:110px}
+.location-card{background:#fff;border-radius:30px;padding:34px;min-height:280px}
+.location-card h3{font-size:32px;letter-spacing:-.04em;margin:8px 0 12px}
+.location-card p{color:var(--muted);font-size:15px}
+.location-card a{color:#1667b1;font-size:15px}
+.faq-section{padding:0 0 120px}
+.faq-head{max-width:750px;margin-bottom:34px}
+.faq-head h2{font-size:clamp(42px,5vw,66px);line-height:.98;letter-spacing:-.05em;margin:10px 0 0}
+.faq-list details{border-top:1px solid var(--line);padding:20px 0}
+.faq-list details:last-child{border-bottom:1px solid var(--line)}
+.faq-list summary{cursor:pointer;list-style:none;font-size:17px;font-weight:600;display:flex;justify-content:space-between;gap:20px}
+.faq-list summary:after{content:"+";font-size:20px;color:var(--muted)}
+.faq-list details[open] summary:after{content:"−"}
+.faq-list p{color:var(--muted);max-width:760px;font-size:14px}
+
+/* motion */
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.is-visible{opacity:1;transform:none}
+
 @media(max-width:980px){
-  :root{--shell:min(100% - 30px,760px)}.menu-toggle{display:block}.main-nav{position:absolute;top:72px;left:15px;right:15px;background:rgba(255,253,248,.96);backdrop-filter:blur(20px);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:var(--shadow);display:none;flex-direction:column;align-items:stretch;gap:4px}.main-nav.open{display:flex}.main-nav a{padding:10px 12px;color:var(--ink)!important}.nav-cta{text-align:center}.hero-content{flex-direction:column;align-items:flex-start}.hero-facts{flex-direction:row;gap:14px;min-width:0}.hero-facts div{min-width:130px}.doctor-intro,.promise-grid,.visit-grid,.about-split,.training-grid{grid-template-columns:1fr;gap:54px}.doctor-photo-wrap{max-width:560px}.promise-items{grid-template-columns:repeat(3,1fr)}.section-head{grid-template-columns:1fr;gap:22px}.care-editorial{grid-template-columns:1fr}.clinic-overlay{align-items:flex-start;flex-direction:column}.final-cta-inner{align-items:flex-start;flex-direction:column}.cta-actions{justify-content:flex-start}.facts-row{grid-template-columns:repeat(2,1fr)}.principle-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr 1fr}.contact-card.featured{grid-column:1/-1}
+  .hero-stage{min-height:590px}
+  .visual-story{grid-template-columns:1fr}
+  .visual-stack{grid-template-columns:1fr 1fr;grid-template-rows:none}
+  .visual-card-large{min-height:590px}
+  .visual-stack .visual-card{min-height:360px}
+  .doctor-feature-grid,.about-story-grid{grid-template-columns:1fr;gap:50px}
+  .doctor-portrait-card{max-width:650px;width:100%;height:720px;margin:auto}
+  .care-grid{grid-template-columns:repeat(2,1fr)}
+  .photo-rail{grid-template-columns:1fr 1fr}
+  .rail-wide{grid-column:1/-1}
+  .visit-steps{grid-template-columns:1fr 1fr 1fr}
+  .about-hero-visual{grid-template-columns:1fr 1fr}
+  .about-portrait,.about-room{height:560px}
+  .contact-layout{grid-template-columns:1fr}
+  .contact-image{min-height:500px}
 }
-@media(max-width:640px){
-  :root{--shell:calc(100% - 28px)}.nav-wrap{height:72px}.brand-copy small{display:none}.cinematic-hero{min-height:94svh}.hero-photo{background-position:61% center}.hero-shade{background:linear-gradient(90deg,rgba(8,25,22,.91),rgba(8,25,22,.56) 76%,rgba(8,25,22,.3)),linear-gradient(0deg,rgba(8,25,22,.64),transparent 56%)}.hero-content{padding-top:126px;padding-bottom:88px}.hero-copy h1{font-size:56px;max-width:100%}.hero-kicker{font-size:28px}.hero-text{font-size:16px;max-width:95%}.hero-facts{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.hero-facts div{min-width:0;padding-left:10px}.hero-facts strong{font-size:21px}.hero-facts span{font-size:9px}.scroll-cue{display:none}.doctor-intro{padding-top:80px;padding-bottom:90px;gap:48px}.doctor-photo{border-radius:28px}.photo-badge{right:12px;bottom:16px}.doctor-copy h2{font-size:48px}.big-copy{font-size:18px}.promise-band,.principle-section{margin:0 7px;border-radius:30px}.promise-grid{padding:75px 8px}.promise-items{grid-template-columns:1fr}.promise-card{min-height:190px}.care-section{padding-top:85px;padding-bottom:90px}.section-head h2{font-size:47px}.care-editorial{gap:10px}.care-a,.care-b{grid-template-columns:1fr}.care-media{min-height:240px}.care-card{border-radius:24px}.care-body h3{font-size:26px;margin-top:32px}.visit-section{padding:82px 0}.visit-copy h2{font-size:47px}.clinic-moment{min-height:520px;margin-top:80px;margin-bottom:70px;border-radius:28px}.clinic-overlay{left:24px;right:24px;bottom:24px}.clinic-overlay h2{font-size:40px}.credentials-strip{padding-bottom:85px;gap:10px}.final-cta-inner{padding-top:62px;padding-bottom:92px}.final-cta h2{font-size:45px}.mobile-book{position:fixed;z-index:65;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(18,43,38,.9);color:white;backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.12);box-shadow:0 12px 40px rgba(0,0,0,.24);border-radius:18px;padding:12px 14px}.mobile-book span{font-size:12px;color:rgba(255,255,255,.75)}.mobile-book strong{font-size:12px;background:white;color:var(--ink);padding:8px 11px;border-radius:999px}.site-footer{padding-bottom:95px}.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:6px}.inner-hero,.contact-hero{padding-top:64px}.inner-hero h1,.contact-hero h1{font-size:52px}.about-split{padding-bottom:80px}.facts-row{grid-template-columns:1fr;margin-bottom:80px}.principle-section{padding:72px 8px}.training{padding-top:80px;padding-bottom:88px}.training-list{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.contact-card.featured{grid-column:auto}.map-frame{min-height:430px;margin-bottom:80px}.map-copy{left:24px;right:24px;bottom:24px}.map-copy h2{font-size:40px}.faq h2{font-size:44px}
+@media(max-width:700px){
+  :root{--wide:calc(100% - 24px)}
+  .nav-shell{width:calc(100% - 24px);height:50px}
+  main{padding-top:50px}
+  .wordmark{font-size:13px}
+  .menu-toggle{display:block}
+  .site-nav{display:none;position:absolute;top:50px;left:12px;right:12px;background:rgba(255,255,255,.96);backdrop-filter:blur(20px);border:1px solid var(--line);border-radius:18px;padding:12px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch;gap:2px}
+  .site-nav.open{display:flex}
+  .site-nav a{padding:10px 12px;font-size:13px}
+  .nav-book{text-align:center;margin-top:4px}
+  .hero-clean{padding:66px 12px 0}
+  .hero-copy{margin-bottom:36px}
+  .hero-label,.kicker{font-size:12px}
+  .hero-clean h1{font-size:54px;margin-top:12px}
+  .hero-clean .hero-copy>p{font-size:20px}
+  .hero-actions{gap:16px;margin-top:24px}
+  .button-link{font-size:16px}
+  .hero-stage{min-height:550px;border-radius:28px}
+  .hero-room{object-position:56% center}
+  .doctor-float{left:12px;right:12px;bottom:12px;border-radius:20px;padding:9px 12px}
+  .doctor-float img{width:48px;height:48px}
+  .section-space{padding-top:88px;padding-bottom:88px}
+  .center-copy h2,.doctor-feature-copy h2,.care-head h2,.gallery-heading h2,.booking-panel h2,.page-hero h1,.about-copy h2,.contact-hero h1{font-size:46px}
+  .center-copy p{font-size:17px}
+  .visual-story{gap:10px}
+  .visual-card,.visual-card-large{border-radius:26px;min-height:500px}
+  .visual-stack{grid-template-columns:1fr;gap:10px}
+  .visual-stack .visual-card{min-height:380px}
+  .visual-caption{left:20px;right:20px;bottom:20px}
+  .visual-caption h3{font-size:29px}
+  .doctor-feature{margin-top:88px}
+  .doctor-feature-grid{gap:38px}
+  .doctor-portrait-card{height:560px;border-radius:28px}
+  .feature-lead{font-size:21px}
+  .care-showcase{padding:88px 0}
+  .care-grid{grid-template-columns:1fr;gap:10px}
+  .care-tile{min-height:200px;border-radius:25px}
+  .gallery-heading{margin-bottom:28px}
+  .photo-rail{display:flex;overflow-x:auto;gap:10px;scroll-snap-type:x mandatory;padding-bottom:5px;margin-right:-12px}
+  .rail-item,.rail-wide{flex:0 0 86%;height:450px;border-radius:26px;scroll-snap-align:start}
+  .visit-section{padding:86px 0 100px}
+  .visit-steps{grid-template-columns:1fr;gap:10px}
+  .visit-step{min-height:180px;border-radius:24px}
+  .booking-panel{margin-top:85px;margin-bottom:85px;padding:36px 26px;border-radius:28px;flex-direction:column;align-items:flex-start}
+  .booking-panel p{font-size:16px}
+  .mobile-book{position:fixed;z-index:70;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;background:rgba(28,28,30,.9);color:white;backdrop-filter:blur(20px) saturate(160%);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:11px 12px;box-shadow:0 14px 40px rgba(0,0,0,.24);transition:opacity .25s ease}
+  .mobile-book span{font-size:12px;color:rgba(255,255,255,.72)}
+  .mobile-book strong{font-size:12px;background:white;color:#1d1d1f;border-radius:999px;padding:8px 11px}
+  .site-footer{padding-bottom:92px}
+  .footer-layout{grid-template-columns:1fr}
+  .footer-layout>div:nth-child(2){align-items:flex-start}
+  .footer-bottom{grid-column:auto!important}
+  .page-hero,.contact-hero{padding:72px 0 50px}
+  .page-hero p,.contact-hero p{font-size:17px}
+  .about-hero-visual{grid-template-columns:1fr;gap:10px}
+  .about-portrait{height:520px}
+  .about-room{height:360px}
+  .about-story{padding:86px 0}
+  .about-story-grid{gap:42px}
+  .about-copy p{font-size:17px}
+  .about-facts{grid-template-columns:1fr 1fr}
+  .about-fact{padding:22px;min-height:135px}
+  .approach-section{padding:86px 0}
+  .approach-grid{grid-template-columns:1fr;gap:10px}
+  .approach-card{min-height:190px}
+  .contact-layout{margin-bottom:85px}
+  .contact-booking{padding:32px 26px;min-height:470px;border-radius:28px}
+  .contact-image{min-height:380px;border-radius:28px}
+  .location-row{grid-template-columns:1fr;gap:10px;margin-bottom:85px}
+  .location-card{border-radius:26px}
+  .faq-section{padding-bottom:95px}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-photo{animation:none}.reveal{opacity:1;transform:none;transition:none}.button{transition:none}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .button{transition:none}
+}
