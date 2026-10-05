@@ -508,3 +508,9 @@ button{font:inherit}
   .instagram-live-accent{animation:none}
   .instagram-live-shell.visible{animation:none}
 }
+
+
+@media(prefers-reduced-motion:reduce){
+  .ticker-track,.gallery-strip,.instagram-live-accent,.care-spark{animation:none!important}
+  .care-panel,.visit-step-new,.instagram-post,.insta-follow{transition:none!important}
+}
