@@ -108,3 +108,26 @@ if(sectionPairs.length){
 }
 
 window.addEventListener('load',()=>body.classList.add('loaded'));
+
+
+const instagramShell=document.querySelector('.instagram-live-shell');
+if(instagramShell){
+  const inner=instagramShell.querySelector('.instagram-live-inner');
+  const syncInstagram=()=>{
+    const iframe=inner?.querySelector('iframe');
+    if(iframe){
+      instagramShell.classList.add('instagram-loaded');
+      instagramShell.classList.remove('instagram-failed');
+      return true;
+    }
+    return false;
+  };
+  const igObserver=new MutationObserver(()=>syncInstagram());
+  if(inner) igObserver.observe(inner,{childList:true,subtree:true});
+  window.addEventListener('load',()=>{
+    try{window.instgrm?.Embeds?.process();}catch(e){}
+    setTimeout(()=>{
+      if(!syncInstagram()) instagramShell.classList.add('instagram-failed');
+    },5500);
+  });
+}
