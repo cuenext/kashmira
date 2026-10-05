@@ -131,3 +131,76 @@ if(instagramShell){
     },5500);
   });
 }
+
+
+// v12 interactive care showcase
+const careExperience=document.querySelector('[data-care-experience]');
+if(careExperience){
+  const tabs=[...careExperience.querySelectorAll('[data-care-tab]')];
+  const slides=[...careExperience.querySelectorAll('[data-care-slide]')];
+  const copies=[...careExperience.querySelectorAll('[data-care-copy]')];
+  let active=0;
+  let timer=null;
+  let paused=false;
+
+  const activateCare=(index,userInitiated=false)=>{
+    active=(index+tabs.length)%tabs.length;
+    tabs.forEach((tab,i)=>{
+      const on=i===active;
+      tab.classList.toggle('active',on);
+      tab.setAttribute('aria-selected',String(on));
+      tab.tabIndex=on?0:-1;
+    });
+    slides.forEach((slide,i)=>slide.classList.toggle('active',i===active));
+    copies.forEach((copy,i)=>copy.classList.toggle('active',i===active));
+    careExperience.classList.remove('is-playing');
+    void careExperience.offsetWidth;
+    if(!reduceMotion&&!paused) careExperience.classList.add('is-playing');
+    if(userInitiated) restartCare();
+  };
+
+  const nextCare=()=>activateCare(active+1);
+  const restartCare=()=>{
+    clearInterval(timer);
+    if(!reduceMotion&&!paused) timer=setInterval(nextCare,6000);
+  };
+
+  tabs.forEach((tab,i)=>{
+    tab.addEventListener('click',()=>activateCare(i,true));
+    tab.addEventListener('keydown',e=>{
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+        e.preventDefault();
+        const next=e.key==='ArrowRight'?i+1:i-1;
+        const normalized=(next+tabs.length)%tabs.length;
+        activateCare(normalized,true);
+        tabs[normalized].focus();
+      }
+    });
+  });
+
+  careExperience.addEventListener('mouseenter',()=>{
+    paused=true;
+    clearInterval(timer);
+    careExperience.classList.remove('is-playing');
+  });
+  careExperience.addEventListener('mouseleave',()=>{
+    paused=false;
+    activateCare(active);
+    restartCare();
+  });
+  careExperience.addEventListener('focusin',()=>{
+    paused=true;
+    clearInterval(timer);
+    careExperience.classList.remove('is-playing');
+  });
+  careExperience.addEventListener('focusout',e=>{
+    if(!careExperience.contains(e.relatedTarget)){
+      paused=false;
+      activateCare(active);
+      restartCare();
+    }
+  });
+
+  activateCare(0);
+  restartCare();
+}
