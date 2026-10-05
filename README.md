@@ -1,21 +1,24 @@
 # Dr. Kashmira Pawar — Personal Website
 
-Production starter for Dr. Kashmira Pawar Jayprakash, Specialist Pediatric Dentist in Abu Dhabi.
+Personal website for Dr. Kashmira Pawar Jayprakash, Specialist Pediatric Dentist in Abu Dhabi.
+
+## Live preview
+https://cuenext.github.io/kashmira/
 
 ## Pages
 - Home
 - About
-- Contact
+- Contact / Booking
 
-## Verified clinical information
-Professional details in this starter are based on the current Silwadi Dental Center website and should remain aligned with the doctor's approved public credentials.
+Home also includes dedicated Care, Selected Cases, Clinic Gallery, Visit Journey, and Instagram sections.
 
-## Pending client assets/details
-- Final portrait/photo selection
-- Personal WhatsApp number
-- Official social profile links
-- Final domain selection
-- Final personal logo approval
+## Brand
+- KP pediatric logo
+- Blue / sky / aqua / mint visual system
+- Instagram: @dr.kashmirapawar
+
+## Assets
+The doctor portrait and pediatric clinic photography used by the site are stored locally in this repository under `assets/`.
 
 ## Deployment
-This is a dependency-free static site and can be deployed directly to standard cPanel/Tasjeel hosting after domain selection. Upload the contents of this repository to the site's public web root.
+GitHub Pages currently deploys directly from the `gh-pages` branch.
