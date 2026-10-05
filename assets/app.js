@@ -2,6 +2,8 @@ const body=document.body;
 const header=document.querySelector('[data-header]');
 const menu=document.querySelector('.menu');
 const nav=document.querySelector('.nav-links');
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 requestAnimationFrame(()=>body.classList.add('ready'));
 
 menu?.addEventListener('click',()=>{
@@ -43,7 +45,7 @@ if(mobileBook&&hero){
 }
 
 const bg=document.querySelector('[data-parallax-bg]');
-if(bg&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+if(bg&&!reduceMotion){
   let ticking=false;
   window.addEventListener('scroll',()=>{
     if(ticking)return;
@@ -56,7 +58,7 @@ if(bg&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   },{passive:true});
 }
 
-if(window.matchMedia('(pointer:fine)').matches){
+if(window.matchMedia('(pointer:fine)').matches&&!reduceMotion){
   document.querySelectorAll('.magnetic').forEach(el=>{
     el.addEventListener('pointermove',e=>{
       const r=el.getBoundingClientRect();
@@ -66,4 +68,43 @@ if(window.matchMedia('(pointer:fine)').matches){
     });
     el.addEventListener('pointerleave',()=>{el.style.transform='';});
   });
+
+  document.querySelectorAll('.care-panel,.instagram-post,.case-card').forEach(card=>{
+    card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-.5;
+      const py=(e.clientY-r.top)/r.height-.5;
+      const img=card.querySelector('img');
+      if(img){
+        img.style.transform='scale(1.045) translate('+(-px*5)+'px,'+(-py*5)+'px)';
+      }
+    });
+    card.addEventListener('pointerleave',()=>{
+      const img=card.querySelector('img');
+      if(img) img.style.transform='';
+    });
+  });
 }
+
+const sectionLinks=[...document.querySelectorAll('.nav-links a[href^="#"],.nav-links a[href*="#"]')];
+const sectionPairs=sectionLinks.map(link=>{
+  const href=link.getAttribute('href')||'';
+  const id=href.includes('#')?href.split('#')[1]:'';
+  return id?{link,section:document.getElementById(id)}:null;
+}).filter(x=>x?.section);
+if(sectionPairs.length){
+  const activeObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting)return;
+      sectionPairs.forEach(({link,section})=>{
+        if(section===entry.target){
+          sectionLinks.forEach(l=>l.classList.remove('section-active'));
+          link.classList.add('section-active');
+        }
+      });
+    });
+  },{rootMargin:'-30% 0px -55% 0px',threshold:0});
+  sectionPairs.forEach(({section})=>activeObserver.observe(section));
+}
+
+window.addEventListener('load',()=>body.classList.add('loaded'));
