@@ -407,3 +407,5 @@ button{font:inherit}
   .insta-profile-main{align-items:flex-start}
   .insta-badge{display:none}
 }
+
+.nav-links a.section-active{color:var(--blue);font-weight:700}
