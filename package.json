@@ -1,0 +1,25 @@
+{
+  "name": "kashmira-website",
+  "version": "1.0.0",
+  "description": "Dr. Kashmira Pawar personal pediatric dentistry website",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node tests/acceptance.cjs && node tests/audit.cjs && node tests/failure-fallback.cjs",
+    "preview": "node scripts/serve.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuenext/kashmira.git"
+  },
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/cuenext/kashmira/issues"
+  },
+  "homepage": "https://github.com/cuenext/kashmira#readme",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "playwright": "^1.64.1"
+  },
+  "private": true
+}
