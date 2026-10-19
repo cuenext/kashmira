@@ -35,3 +35,7 @@ Care copy, booking, CV, current Silwadi employment and case labels remain ground
 ## Interactive blue/pink space update · 20 October 2026
 
 The user asked for floating planets, moving rockets and a small space game inspired by drverwest.com, then explicitly requested blue/pink instead of yellow/orange. The palette and all decorative vectors follow that correction. Star Mission is an original untimed six-star collection game, with a rocket that follows selected targets, visible progress, a completion badge and replay. It offers keyboard, pointer and touch input; progress stays in memory only and resets with the page. It makes no medical or treatment claims. Current practice, professional content and clinical gallery data remain unchanged.
+
+## Homepage photo · 20 October 2026
+
+The user directly supplied IMG_6483.HEIC and requested it as the main photograph on entering the website. Home now uses that clinic portrait, with responsive WebP derivatives and descriptive alt text. Shared Person schema and social image metadata reference the same supplied photograph. See asset-provenance.md for dimensions, export details and checksums. Other photography, copy, practice details and interactions remain unchanged.

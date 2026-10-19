@@ -2,7 +2,7 @@
 
 Created 19 October 2026 from retained and user-supplied assets. Original files were preserved. Only crops, resizing, WebP compression, EXIF orientation normalization and metadata removal were applied. No facial retouching or generated image content was used.
 
-The responsive photos are 4:5. Filenames identify the requested size slot. The retained 720 x 720 professional hero portrait is cropped to 576 x 720 for its larger slot; it is deliberately not upscaled. The About portrait uses a 380 x 475 crop from the supplied 383 x 488 CV headshot; both size slots preserve that native crop without enlargement. All image files were reopened and verified.
+The earlier responsive photos are 4:5; the new homepage photo documented below retains its full 3:4 framing. Filenames identify the requested size slot. The retained 720 x 720 professional portrait is cropped to 576 x 720 for its larger slot; it is deliberately not upscaled. The About portrait uses a 380 x 475 crop from the supplied 383 x 488 CV headshot; both size slots preserve that native crop without enlargement. All image files were reopened and verified.
 
 | Output | Actual dimensions | Bytes | Source | Crop box in oriented source pixels |
 |---|---|---:|---|---|
@@ -66,3 +66,14 @@ No doctor or case photograph was edited for the space redesign. Only surrounding
 The user replaced the earlier warm accents with a blue/pink palette. All ten code-drawn play SVGs and the monogram were recolored to navy, blue, rose, pink, lilac and cool white. Their geometry was preserved and all eleven XML files were validated and visually rendered. No yellow/orange/coral remains in those vector assets. Real photography was retained unchanged.
 
 The new Star Mission uses a small inline SVG star, the existing rocket and planet illustrations, and native buttons. No images from the reference site, tracking, audio, downloads, accounts or generated medical imagery were added. Both the ambient rocket and planets are observed for viewport visibility, and every continuous/finite animation follows the shared pause and reduced-motion settings.
+
+## Supplied homepage photo · 20 October 2026
+
+The user supplied IMG_6483.HEIC and requested it as the main homepage photo. The original 3024 x 4032 image was preserved outside the repository. It shows Dr. Kashmira in a white coat holding a toothbrush and dental model in the clinic. The embedded color profile was converted to sRGB before WebP export. Both derivatives retain the complete source framing and natural appearance, without retouching or generated content. The existing responsive hero frame controls the display crop; desktop and mobile framing were visually checked. Earlier portraits remain retained, and the About photographs are unchanged.
+
+| Output | Actual dimensions | Bytes | SHA-256 |
+|---|---|---:|---|
+| assets/photos/kashmira-main-480.webp | 480 x 640 | 29,548 | 28921d39dc2e9d999af09df9ca8a077079a048ee3c328e9dc9856dd963a4d763 |
+| assets/photos/kashmira-main-1200.webp | 1200 x 1600 | 91,696 | 1f46e10e9d31bc78e34b16e91686b3bc510dedbc2b1d2e4526a1c4e57452be3e |
+
+Both outputs were reopened and checked for zero EXIF and absence of EXIF, XMP and ICCP RIFF chunks. Home prioritizes the responsive image for loading. Shared Person schema and Open Graph/Twitter image references now use the supplied photo, superseding the earlier portrait references described above.
