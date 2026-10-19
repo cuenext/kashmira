@@ -12,14 +12,14 @@ The responsive photos are 4:5. Filenames identify the requested size slot. The r
 | assets/photos/personal-960.webp | 380 x 475 | 20,872 | research-assets/cv-image-0-Image44.jpg | (1, 4, 381, 479) |
 | assets/photos/journal-480.webp | 480 x 600 | 40,844 | research-assets/1GoGpFAnTw3GwV7aOwWqcaBD6lBwSCchD__IMG_4165.JPG | (0, 250, 1242, 1802) |
 | assets/photos/journal-960.webp | 960 x 1200 | 126,962 | research-assets/1GoGpFAnTw3GwV7aOwWqcaBD6lBwSCchD__IMG_4165.JPG | (0, 250, 1242, 1802) |
-| assets/photos/social.webp | 1200 x 630 | 43,644 | website/assets/doctors/dr-kashmira-pawar-jayprakash.webp | Professional source portrait crop, 504 x 630 on designed canvas; text is drawn, no generated image. |
+| assets/photos/social.webp | 1200 x 630 | 43,156 | website/assets/doctors/dr-kashmira-pawar-jayprakash.webp | Professional source portrait crop, 504 x 630 on pink designed canvas; text is drawn, no generated image. |
 
 ## Source details
 
 - portrait and social: retained repository file assets/doctors/dr-kashmira-pawar-jayprakash.webp, 720 x 720. Adult-only professional portrait in blue scrubs with blue clinical background.
 - personal: cv-image-0-Image44.jpg, 383 x 488 professional headshot extracted unchanged from supplied local source Dr. Kashmira_Specialist Pediatric Dentist_CV_2K26_.pdf. Cropped to 380 x 475 without upscaling. The earlier supplied colourful-scrub selfie IMG_4865.JPG remains in the private research inventory and is no longer used for this asset.
 - journal: IMG_4165.JPG, Google Drive ID 1GoGpFAnTw3GwV7aOwWqcaBD6lBwSCchD, same supplied folder. Adult-only mirror portrait in yellow bee scrubs, source 1242 x 2208.
-- social.webp: simple 1200 x 630 social card using the retained professional portrait, blue background, and source-supported name, title, Dubai/Abu Dhabi geography. Text uses locally available Georgia and Arial fonts and is rasterized.
+- social.webp: simple 1200 x 630 social card using the retained professional portrait, pink paper (#fff7fa), rose text (#6b2c4d) and accent (#a23f70), and source-supported name, title, Dubai/Abu Dhabi geography. Text uses locally available Georgia and Arial fonts and is rasterized. The portrait retains its natural colours without a filter.
 
 No patient/minor media was included. The user's website request supports use of these doctor-only supplied images; no separate patient consent is inferred from the Drive folder. Complete source inventory remains outside the repository in ../research-assets/inventory.md.
 
@@ -31,4 +31,4 @@ No patient/minor media was included. The user's website request supports use of 
 - personal-960.webp: 8c8fe9bdc4bb26246ad7d2384b4406abd1f4fff758a133205cd8cbbba4cedae1
 - journal-480.webp: 37d63aff4b660a84164b0746d27713f967d0c07c2e29b3bb3aadd1de4bdcd837
 - journal-960.webp: 64a7dab0e815f06281450e1da9ab61b375320c30bb3c31fef3325b40119fe4f1
-- social.webp: 54a3b70c4cd1648ed09702eeb3b6ce698edb54cc9bc29639cb058ceb03bf547c
+- social.webp: 2015731af31227867e77a978088b1f2ec4e14a282c4de35a364a07e14e31b883
