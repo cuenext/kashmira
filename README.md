@@ -4,6 +4,8 @@ Personal pediatric dentistry website. Live: https://cuenext.github.io/kashmira/
 
 Home, About and Contact are portable static HTML, with local CSS, JavaScript, fonts and optimized WebP photography. Kashmira is the brand; clinics are practice locations. No runtime framework, database, analytics, third-party embeds or build server is needed.
 
+The pink illustrated design adds original smiling flower/cloud/butterfly doodles, paper-like photo frames, scalloped edges and drawn accents. The assets/polish.css layer styles these details; assets/app.js handles the smile burst, native accordion enhancement and motion controls. Continuous motion runs only while decorations are visible, can be paused globally and is disabled for system reduced-motion preferences. A pause preference is kept for the current browser tab session.
+
 ## Editing and preview
 
 `scripts/build.mjs` is the source for page content, shared navigation/footer and JSON-LD. Run `npm run build` after editing it. Styling is in `assets/app.css`; navigation, scroll/reveal motion and the appointment inquiry are in `assets/app.js`.
@@ -25,7 +27,7 @@ npx playwright install chromium
 npm test
 ```
 
-For an installed Edge browser set `PLAYWRIGHT_CHANNEL=msedge`. Set `SITE_URL` to a trailing-slash URL to verify a deployed copy. Tests cover the real WhatsApp draft (never send), mobile menu/focus, 15 page/breakpoint combinations, imagery, internal links/fragments, canonical/schema data, keyboard FAQ, required booking area, resize behavior, reduced motion, no-JS and interrupted-script fallbacks, and six WCAG A/AA axe scans. Accessibility output is saved in ignored `test-results/`.
+For an installed Edge browser set `PLAYWRIGHT_CHANNEL=msedge`. Set `SITE_URL` to a trailing-slash URL to verify a deployed copy. Tests cover the real WhatsApp draft (never send), mobile menu/focus, 15 page/breakpoint combinations, imagery, internal links/fragments, canonical/schema data, keyboard FAQ, required booking area, resize behavior, reduced motion, no-JS and interrupted-script fallbacks, and six WCAG A/AA axe scans. Motion checks cover smile feedback, capped particle cleanup, actual visible doodle motion, global pause, session preference across navigation and accordion height cleanup. Accessibility output is saved in ignored `test-results/`.
 
 ## Content and imagery
 
