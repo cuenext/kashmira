@@ -47,3 +47,10 @@ The user subsequently supplied the exact Drive link for IMG_6141.HEIC (18K8JDgS5
 The user then supplied IMG_6447.JPG.jpeg for the About hero and requested better framing, color and page design. The page now uses the higher-resolution original photograph, with reversible display color correction and blue/pink framing; see asset-provenance.md for exports and processing. Her face, teeth, outfit and photo geometry remain the original supplied image.
 
 The shorter introduction and three care notes reorganize the existing parent-focused approach without adding clinical promises. A compact facts row collects the already-supported experience, qualifications, self-reported licensing and four languages. On-page links organize approach, training, experience and Instagram. Education and training dates are retained; life-support wording remains training rather than a claim of current certification. The current Silwadi role is shown separately from explicitly previous UAE/India experience. No new testimonials, results, credentials or current clinics were introduced.
+
+
+## About polish and supplied branding · 20 October 2026
+
+The user requested a cleaner About presentation, specifically rejecting the floating “A little patience goes a long way” caption. That caption was removed, the portrait backplate and border were softened, the lower planet was removed, and the orbit line crossing the mobile copy was removed. The original portrait, its display color treatment and factual content remain unchanged.
+
+The user also supplied the doctor’s transparent white logo and authorized a tooth-only crop for small icons. The exact supplied mark replaces the temporary kp monogram and typed footer wordmark across all four main pages, with matching favicon and touch icons. The branded 404 page uses the same assets, root-relative project navigation and corrected UTF-8 copy. See asset-provenance.md for exact source crops and export checksums.

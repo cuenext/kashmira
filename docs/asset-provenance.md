@@ -101,3 +101,25 @@ The user supplied IMG_6447.JPG.jpeg and explicitly requested it for the About/Me
 About alone uses a 4:5 display frame with object-position 50% 32%, preserving space above her hair and showing her shoulders. A subtle, reversible sRGB SVG color matrix slightly lifts red, reduces green and balances blue; CSS contrast(1.06) and saturate(1.08) add modest separation. The original image pixels and her features remain intact. Cool blue surroundings, a pink photo mat and a white border give the beige blazer more definition without recoloring the garment. The filter is decorative, hidden from assistive technology and independent of scripts or motion.
 
 An image-editing experiment was inspected privately and rejected because it altered fine photographic details; none of that generated output is published. The exported original-photo derivatives above are the final assets. The earlier CV headshots remain retained for history and are no longer referenced by Home or About.
+
+
+## Supplied logo and icon set · 20 October 2026
+
+The user supplied a transparent 2172 x 724 PNG logo and explicitly requested it across the site, permitting a tooth-only crop for the favicon and other small icons. The original is preserved privately, SHA-256 a80a22df6f4cd40ce7fb67f158c710a2adfb0a8e5d168ab085f1b2a2dbecac0c. Its lettering and tooth outline were preserved exactly; no tracing, replacement typography or generated branding was used.
+
+The full logo crop is (80, 123, 2125, 624), producing 2045 x 501 transparent pixels. The tooth-only crop is (80, 123, 620, 624), producing 540 x 501 pixels. Alpha >=8 was used only to determine the outside crop bounds; all alpha values inside the crop remain intact. Responsive wordmarks were resized with Lanczos and encoded as lossless WebP. Square icons composite the exact tooth at 80% of the square width on site navy #14294e. All outputs were reopened and verified without embedded metadata.
+
+| Asset | Dimensions | Bytes | SHA-256 |
+|---|---|---:|---|
+| assets/brand/apple-touch-icon.png | 180 x 180 | 16,023 | a28dd3dc9d7a6a6f49c6df7cd09fc178ce22990ce3b65658b2a0022caf203d0b |
+| assets/brand/favicon.ico | 48 x 48 | 5,697 | ac7baf9b32d196c884f28419d5b04d070b8e7b468e93662f222394285e316eef |
+| assets/brand/favicon.png | 32 x 32 | 1,574 | 1c91964f4b47bc55a01cea6f82be40c35c0ab91735e0071c26da01f6ce204de1 |
+| assets/brand/icon-192.png | 192 x 192 | 17,664 | 8384abd77a523f52fe9452c15f072d1135517082657ff47a69ed83cdb9750c62 |
+| assets/brand/icon-512.png | 512 x 512 | 83,053 | bce27f5ffd65ecc098cbcc14b8953799a0b7e594bd02a804a5df30db0a74a969 |
+| assets/brand/kashmira-logo-white-1024.webp | 1024 x 251 | 75,848 | fd41d2ce07b4a21a870dd1a0f10d7a4549215ae8322ebf7fc955d84a16db3ad6 |
+| assets/brand/kashmira-logo-white-640.webp | 640 x 157 | 34,186 | 8b5ba437d5bca69241ef294b8ba2fabee5bf764c1ff6e7feeec1a14ba3656f10 |
+| assets/brand/kashmira-logo-white.png | 2045 x 501 | 352,549 | 1a8294508370ce977437b053b0ccfb6e225eb901bfcfe4833f086e3c29fdbea7 |
+| assets/brand/kashmira-logo-white.webp | 2045 x 501 | 220,878 | ee1ef6def91cc44bdbf6e2fe92163e85e1ef73bd70d52b08762a124c6bd76a1b |
+| assets/brand/kashmira-tooth-white.png | 540 x 501 | 106,459 | c28ce7d3c5298afd1e5d935ef7aaa11c4d2d2f895d4ba43eba1101ac3a619487 |
+
+Home, About, Cases and Contact use the supplied wordmark in both header and footer. The error page also carries it. Every page uses the tooth favicon (ICO with 16/32/48 sizes and 32px PNG) and 180px Apple touch icon. The earlier kp monogram remains archived in assets/mark.svg but is no longer referenced by active pages. The site’s space mascots remain decorative illustrations, distinct from the doctor’s supplied identity.
