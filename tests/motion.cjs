@@ -14,8 +14,11 @@ const base=process.env.SITE_URL||'http://127.0.0.1:4173/';
  await page.getByRole('button',{name:'Pause animations',exact:true}).click();
  assert.equal(await page.locator('.smile-particle').count(),0,'Pause clears active particles');
  assert.equal(await page.evaluate(()=>document.getAnimations().filter(a=>a.playState==='running').length),0,'Pause stops all active animation');
- await page.goto(base+'about.html');
- assert.equal(await page.getByRole('button',{name:'Resume animations',exact:true}).getAttribute('aria-pressed'),'true','Pause preference survives page navigation');
+ for(const file of ['about.html','contact.html','cases.html']){
+  await page.goto(base+file);
+  assert.equal(await page.getByRole('button',{name:'Resume animations',exact:true}).getAttribute('aria-pressed'),'true','Pause preference survives navigation to '+file);
+  assert.equal(await page.evaluate(()=>document.getAnimations().filter(animation=>animation.playState==='running').length),0,'Paused animations stay stopped on '+file);
+ }
  await page.getByRole('button',{name:'Resume animations',exact:true}).click();
  await page.goto(base);
  const details=page.locator('.care-item').first();

@@ -4,6 +4,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const base=process.env.SITE_URL||'http://127.0.0.1:4173/';
 const home=new URL('index.html',base).href;
+const gallery=new URL('cases.html',base).href;
 const counts=[4,2,2,4,4];
 const caseId=index=>'case-'+String(index+1).padStart(2,'0');
 
@@ -14,6 +15,18 @@ const caseId=index=>'case-'+String(index+1).padStart(2,'0');
   const page=await context.newPage();
   const errors=[];page.on('pageerror',error=>errors.push(error.message));
   await page.goto(home);
+  const preview=page.locator('#cases');
+  assert.equal(await preview.count(),1,'Home keeps a compact introduction to the clinical cases');
+  assert.equal(await page.locator('[data-case-tab], [data-case-panel], #case-viewer').count(),0,'The complete gallery and viewer live on their own page');
+  const previewLinks=preview.locator('a[href^="cases.html#case-"]').filter({has:page.locator('img')});
+  assert.deepEqual(await previewLinks.evaluateAll(links=>links.map(link=>link.getAttribute('href'))),['cases.html#case-01','cases.html#case-03','cases.html#case-04'],'Home previews three reviewed cases');
+  assert.equal(await preview.getByRole('link',{name:/View all cases/i}).getAttribute('href'),'cases.html','Home links to the dedicated cases page');
+  for(const link of await previewLinks.all()){
+   await link.click();
+   assert.equal(await page.locator('[data-case-tab][aria-selected="true"]').getAttribute('href'),new URL(page.url()).hash,'A preview opens the selected case');
+   await page.goto(home);
+  }
+  await page.goto(gallery);
   const tabs=page.locator('.case-tabs [data-case-tab]');
   const panels=page.locator('[data-case-panel]');
   const dialog=page.locator('#case-viewer');
@@ -53,7 +66,7 @@ const caseId=index=>'case-'+String(index+1).padStart(2,'0');
   await page.keyboard.press('Home');await selected(0);
 
   const deep=await context.newPage();
-  await deep.goto(home+'#case-03');
+  await deep.goto(gallery+'#case-03');
   assert.equal(await deep.locator('[data-case-tab][aria-selected="true"]').getAttribute('href'),'#case-03','A case can be opened directly from its URL');
   assert.equal(await deep.locator('#case-03').isVisible(),true);await deep.close();
 
@@ -113,12 +126,12 @@ const caseId=index=>'case-'+String(index+1).padStart(2,'0');
   }
 
   const nojs=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});
-  const staticPage=await nojs.newPage();await staticPage.goto(home);
+  const staticPage=await nojs.newPage();await staticPage.goto(gallery);
   for(let i=0;i<counts.length;i++){
    const panel=staticPage.locator('#'+caseId(i));
    assert.equal(await panel.isVisible(),true,'Every gallery remains available without JavaScript');
    const href=await panel.locator('.case-cover').getAttribute('href');
-   const response=await nojs.request.get(new URL(href,home).href);
+   const response=await nojs.request.get(new URL(href,gallery).href);
    assert.ok(response.ok(),'Static photo links work without JavaScript');
    assert.match(response.headers()['content-type'],/^image\//);
   }
@@ -126,13 +139,13 @@ const caseId=index=>'case-'+String(index+1).padStart(2,'0');
   await nojs.close();
 
   const reduce=await browser.newContext({reducedMotion:'reduce',viewport:{width:390,height:844}});
-  const reducedPage=await reduce.newPage();await reducedPage.goto(home);
+  const reducedPage=await reduce.newPage();await reducedPage.goto(gallery);
   await reducedPage.locator('#case-01 .case-cover').click();
   await reducedPage.locator('#case-viewer').waitFor({state:'visible'});
   assert.equal(await reducedPage.evaluate(()=>document.getAnimations().filter(animation=>animation.playState==='running').length),0,'Reduced motion opens photographs without animation');
   await reducedPage.keyboard.press('Escape');await reduce.close();
   assert.deepEqual(errors,[],'Case interactions cause no script errors');
   fs.mkdirSync('test-results',{recursive:true});fs.writeFileSync('test-results/cases-accessibility.json',JSON.stringify(axeResults,null,2));
-  console.log('PASS five case galleries, all 16 photographs, keyboard tabs, deep links, modal controls/focus, four widths, no-JS, reduced motion, and gallery/viewer accessibility');
+  console.log('PASS compact Home preview, dedicated five case galleries, all 16 photographs, keyboard tabs, deep links, modal controls/focus, four widths, no-JS, reduced motion, and gallery/viewer accessibility');
  }finally{await browser.close()}
 })().catch(error=>{console.error(error);process.exit(1)});

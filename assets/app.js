@@ -235,7 +235,7 @@
       event.preventDefault();
       const panel = document.getElementById(link.dataset.caseId);
       photos = [...panel.querySelectorAll('.case-thumb')]; photoOpener = link;
-      viewerTitle.textContent = panel.querySelector('h3').textContent;
+      viewerTitle.textContent = panel.querySelector('h2').textContent;
       showPhoto(Number(link.dataset.photoIndex));
       viewer.showModal(); document.body.classList.add('case-viewer-open');
     });
@@ -266,8 +266,7 @@
     event.preventDefault();
     if (!form.reportValidity()) return;
     const name = form.querySelector('#booking-name').value.trim();
-    const location = form.querySelector('#booking-location').value;
-    const message = `Hello Dr. Kashmira,${name ? ` I’m ${name}.` : ''} I’d like to ask about an appointment. Preferred area: ${location}. Please let me know your availability. Thank you.`;
+    const message = `Hello Dr. Kashmira,${name ? ` I’m ${name}.` : ''} I’d like to ask about an appointment at Dr. Munir Silwadi Dental Centre, Al Raha Mall, Abu Dhabi. Please let me know your availability. Thank you.`;
     const url = `https://wa.me/971505679198?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
     const status = form.querySelector('.form-status');
