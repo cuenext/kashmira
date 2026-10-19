@@ -1,0 +1,176 @@
+[
+  {
+    "id": "case-01",
+    "title": "Groper’s appliance · anterior space maintainer",
+    "images": [
+      {
+        "src": "assets/cases/case-01/01-1440.webp",
+        "thumb": "assets/cases/case-01/01-480.webp",
+        "width": 1440,
+        "height": 726,
+        "thumbWidth": 480,
+        "thumbHeight": 242,
+        "alt": "Front view of the upper and lower teeth."
+      },
+      {
+        "src": "assets/cases/case-01/02-1440.webp",
+        "thumb": "assets/cases/case-01/02-480.webp",
+        "width": 1157,
+        "height": 859,
+        "thumbWidth": 480,
+        "thumbHeight": 356,
+        "alt": "Upper dental arch with a wire appliance visible along the palate."
+      },
+      {
+        "src": "assets/cases/case-01/03-1440.webp",
+        "thumb": "assets/cases/case-01/03-480.webp",
+        "width": 1440,
+        "height": 1006,
+        "thumbWidth": 480,
+        "thumbHeight": 335,
+        "alt": "Close view of the upper teeth and palate."
+      },
+      {
+        "src": "assets/cases/case-01/04-1440.webp",
+        "thumb": "assets/cases/case-01/04-480.webp",
+        "width": 1406,
+        "height": 682,
+        "thumbWidth": 480,
+        "thumbHeight": 233,
+        "alt": "Front view of the teeth with a gap between the upper front teeth."
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "title": "Nance palatal appliance",
+    "images": [
+      {
+        "src": "assets/cases/case-02/01-1440.webp",
+        "thumb": "assets/cases/case-02/01-480.webp",
+        "width": 1439,
+        "height": 1142,
+        "thumbWidth": 480,
+        "thumbHeight": 381,
+        "alt": "Upper dental arch with a palatal appliance."
+      },
+      {
+        "src": "assets/cases/case-02/02-1440.webp",
+        "thumb": "assets/cases/case-02/02-480.webp",
+        "width": 1440,
+        "height": 1069,
+        "thumbWidth": 480,
+        "thumbHeight": 356,
+        "alt": "Close view of the upper teeth and palate."
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "title": "Zirconia crown",
+    "images": [
+      {
+        "src": "assets/cases/case-03/01-1440.webp",
+        "thumb": "assets/cases/case-03/01-480.webp",
+        "width": 1198,
+        "height": 744,
+        "thumbWidth": 480,
+        "thumbHeight": 298,
+        "alt": "Close view of the lower dental arch."
+      },
+      {
+        "src": "assets/cases/case-03/02-1440.webp",
+        "thumb": "assets/cases/case-03/02-480.webp",
+        "width": 1124,
+        "height": 719,
+        "thumbWidth": 480,
+        "thumbHeight": 307,
+        "alt": "Close view of the upper dental arch."
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "title": "Preformed band and loop space maintainer",
+    "images": [
+      {
+        "src": "assets/cases/case-04/01-1440.webp",
+        "thumb": "assets/cases/case-04/01-480.webp",
+        "width": 1440,
+        "height": 1113,
+        "thumbWidth": 480,
+        "thumbHeight": 371,
+        "alt": "Lower dental arch view with a band and loop appliance visible."
+      },
+      {
+        "src": "assets/cases/case-04/02-1440.webp",
+        "thumb": "assets/cases/case-04/02-480.webp",
+        "width": 1408,
+        "height": 1034,
+        "thumbWidth": 480,
+        "thumbHeight": 352,
+        "alt": "Lower dental arch clinical view."
+      },
+      {
+        "src": "assets/cases/case-04/03-1440.webp",
+        "thumb": "assets/cases/case-04/03-480.webp",
+        "width": 1440,
+        "height": 1920,
+        "thumbWidth": 480,
+        "thumbHeight": 640,
+        "alt": "Close view of a metal appliance held against a blue dental bib."
+      },
+      {
+        "src": "assets/cases/case-04/04-1440.webp",
+        "thumb": "assets/cases/case-04/04-480.webp",
+        "width": 1440,
+        "height": 848,
+        "thumbWidth": 480,
+        "thumbHeight": 283,
+        "alt": "Side view of the teeth with a clear lip retractor."
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "title": "Custom-made band and loop retainers",
+    "images": [
+      {
+        "src": "assets/cases/case-05/01-1440.webp",
+        "thumb": "assets/cases/case-05/01-480.webp",
+        "width": 1440,
+        "height": 1080,
+        "thumbWidth": 480,
+        "thumbHeight": 360,
+        "alt": "Lower dental arch view with a metal loop appliance visible."
+      },
+      {
+        "src": "assets/cases/case-05/02-1440.webp",
+        "thumb": "assets/cases/case-05/02-480.webp",
+        "width": 1440,
+        "height": 1084,
+        "thumbWidth": 480,
+        "thumbHeight": 361,
+        "alt": "Lower dental arch clinical view."
+      },
+      {
+        "src": "assets/cases/case-05/03-1440.webp",
+        "thumb": "assets/cases/case-05/03-480.webp",
+        "width": 1440,
+        "height": 826,
+        "thumbWidth": 480,
+        "thumbHeight": 275,
+        "alt": "Side view of the teeth with a green lip retractor."
+      },
+      {
+        "src": "assets/cases/case-05/04-1440.webp",
+        "thumb": "assets/cases/case-05/04-480.webp",
+        "width": 1440,
+        "height": 1171,
+        "thumbWidth": 480,
+        "thumbHeight": 390,
+        "alt": "Upper dental arch clinical view with metal dental restorations visible."
+      }
+    ]
+  }
+]

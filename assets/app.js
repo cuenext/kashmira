@@ -160,6 +160,107 @@
     heroArt.style.setProperty('--portrait-tilt', `${tilt.toFixed(2)}deg`);
   }, { passive: true });
   heroArt?.addEventListener('pointerleave', () => heroArt.style.setProperty('--portrait-tilt', '0deg'));
+  // Real photo links and all case articles remain available without enhancement.
+  const caseSection = document.querySelector('#cases');
+  const caseTabs = [...document.querySelectorAll('[data-case-tab]')];
+  const casePanels = [...document.querySelectorAll('[data-case-panel]')];
+  const caseTablist = document.querySelector('.case-tabs');
+  let selectedCase = null;
+  let caseEntryStop = null;
+  function selectCase(id, { focus = false, updateHash = false, animate = true } = {}) {
+    const index = casePanels.findIndex(panel => panel.id === id);
+    if (index < 0) return;
+    caseEntryStop?.();
+    caseTabs.forEach((tab, i) => {
+      tab.setAttribute('aria-selected', String(i === index));
+      tab.tabIndex = i === index ? 0 : -1;
+      casePanels[i].hidden = i !== index;
+    });
+    const panel = casePanels[index];
+    if (animate && selectedCase !== id && !motionOff() && typeof panel.animate === 'function') {
+      const animation = panel.animate([{ opacity: .35, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 260, easing: 'cubic-bezier(.2,.7,.2,1)' });
+      const stop = () => { animation.cancel(); effects.delete(stop); if (caseEntryStop === stop) caseEntryStop = null; };
+      caseEntryStop = stop; effects.add(stop); animation.finished.then(stop, stop);
+    }
+    selectedCase = id;
+    if (focus) { caseTabs[index].focus({ preventScroll: true }); if (mobile.matches) caseTabs[index].scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' }); }
+    if (updateHash) history.replaceState(null, '', `#${id}`);
+  }
+  if (caseTabs.length && caseTabs.length === casePanels.length) {
+    caseTablist.setAttribute('role', 'tablist');
+    const setOrientation = () => caseTablist.setAttribute('aria-orientation', mobile.matches ? 'horizontal' : 'vertical');
+    setOrientation(); mobile.addEventListener('change', setOrientation);
+    caseTabs.forEach((tab, index) => {
+      tab.setAttribute('role', 'tab'); tab.setAttribute('aria-controls', casePanels[index].id);
+      casePanels[index].setAttribute('role', 'tabpanel'); casePanels[index].setAttribute('aria-labelledby', tab.id); casePanels[index].tabIndex = 0;
+      tab.addEventListener('click', event => {
+        if (event.button || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        event.preventDefault(); selectCase(casePanels[index].id, { updateHash: true });
+      });
+      tab.addEventListener('keydown', event => {
+        const previous = mobile.matches ? 'ArrowLeft' : 'ArrowUp';
+        const next = mobile.matches ? 'ArrowRight' : 'ArrowDown';
+        let target = index;
+        if (event.key === previous) target = (index + caseTabs.length - 1) % caseTabs.length;
+        else if (event.key === next) target = (index + 1) % caseTabs.length;
+        else if (event.key === 'Home') target = 0;
+        else if (event.key === 'End') target = caseTabs.length - 1;
+        else return;
+        event.preventDefault(); selectCase(casePanels[target].id, { focus: true, updateHash: true });
+      });
+    });
+    caseSection.classList.add('cases-enhanced');
+    const showHashCase = () => { if (casePanels.some(panel => `#${panel.id}` === location.hash)) selectCase(location.hash.slice(1), { animate: false }); };
+    selectCase(casePanels[0].id, { animate: false }); showHashCase();
+    window.addEventListener('hashchange', showHashCase);
+  }
+  const viewer = document.querySelector('#case-viewer');
+  if (viewer && typeof viewer.showModal === 'function') {
+    const viewerImage = viewer.querySelector('.case-viewer-image');
+    const viewerTitle = viewer.querySelector('#case-viewer-title');
+    const viewerCounter = viewer.querySelector('#case-viewer-counter');
+    let photos = [];
+    let photoIndex = 0;
+    let photoOpener = null;
+    function showPhoto(index) {
+      photoIndex = (index + photos.length) % photos.length;
+      const photo = photos[photoIndex];
+      viewerImage.src = photo.href;
+      viewerImage.alt = photo.querySelector('img').alt;
+      viewerCounter.textContent = `Photo ${photoIndex + 1} of ${photos.length}`;
+    }
+    caseSection.addEventListener('click', event => {
+      const link = event.target.closest('.case-photo');
+      if (!link || event.button || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      const panel = document.getElementById(link.dataset.caseId);
+      photos = [...panel.querySelectorAll('.case-thumb')]; photoOpener = link;
+      viewerTitle.textContent = panel.querySelector('h3').textContent;
+      showPhoto(Number(link.dataset.photoIndex));
+      viewer.showModal(); document.body.classList.add('case-viewer-open');
+    });
+    viewer.querySelector('[data-case-close]').addEventListener('click', () => viewer.close());
+    viewer.querySelector('[data-case-prev]').addEventListener('click', () => showPhoto(photoIndex - 1));
+    viewer.querySelector('[data-case-next]').addEventListener('click', () => showPhoto(photoIndex + 1));
+    viewer.addEventListener('keydown', event => {
+      if (event.key === 'Tab') {
+        const buttons = [...viewer.querySelectorAll('button')];
+        const first = buttons[0], last = buttons[buttons.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+      if (event.key === 'ArrowLeft') { event.preventDefault(); showPhoto(photoIndex - 1); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); showPhoto(photoIndex + 1); }
+      if (event.key === 'Home') { event.preventDefault(); showPhoto(0); }
+      if (event.key === 'End') { event.preventDefault(); showPhoto(photos.length - 1); }
+    });
+    viewer.addEventListener('click', event => {
+      if (event.target !== viewer) return;
+      const bounds = viewer.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) viewer.close();
+    });
+    viewer.addEventListener('close', () => { document.body.classList.remove('case-viewer-open'); photoOpener?.focus({ preventScroll: true }); });
+  }
   const form = document.querySelector('#booking-form');
   form?.addEventListener('submit', event => {
     event.preventDefault();
