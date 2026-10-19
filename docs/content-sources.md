@@ -41,3 +41,9 @@ The user asked for floating planets, moving rockets and a small space game inspi
 The user directly supplied IMG_6483.HEIC and requested it as the main photograph on entering the website. Home now uses that clinic portrait, with responsive WebP derivatives and descriptive alt text. Shared Person schema and social image metadata reference the same supplied photograph. See asset-provenance.md for dimensions, export details and checksums. Other photography, copy, practice details and interactions remain unchanged.
 
 The user subsequently supplied the exact Drive link for IMG_6141.HEIC (18K8JDgS5QHw-_zy9l62OBEZ3IgqeVQaG) and specifically requested it in Home’s “Meet your dentist” section. That section alone uses the new image. No patient name, testimonial, treatment outcome or current-practice location was inferred from the photograph.
+
+## About page refinement · 20 October 2026
+
+The user then supplied IMG_6447.JPG.jpeg for the About hero and requested better framing, color and page design. The page now uses the higher-resolution original photograph, with reversible display color correction and blue/pink framing; see asset-provenance.md for exports and processing. Her face, teeth, outfit and photo geometry remain the original supplied image.
+
+The shorter introduction and three care notes reorganize the existing parent-focused approach without adding clinical promises. A compact facts row collects the already-supported experience, qualifications, self-reported licensing and four languages. On-page links organize approach, training, experience and Instagram. Education and training dates are retained; life-support wording remains training rather than a claim of current certification. The current Silwadi role is shown separately from explicitly previous UAE/India experience. No new testimonials, results, credentials or current clinics were introduced.

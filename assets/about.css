@@ -1,0 +1,185 @@
+/* About: a personal introduction, practical details and a clear career story. */
+.page-about .about-hero{position:relative;isolation:isolate;overflow:clip;background:#edf4ff;padding:58px 0 0}
+.page-about .about-hero:before{content:'';position:absolute;width:310px;height:310px;border:1px dashed #93b6e5;border-radius:50%;right:-160px;top:30%;z-index:-1}
+.page-about .profile-intro{grid-template-columns:1.1fr .9fr;gap:95px;align-items:center;padding-bottom:48px}
+.page-about .about-copy{padding-block:12px}
+.page-about .about-copy .eyebrow{font-size:10px;margin-bottom:22px}
+.page-about .about-copy h1{font-size:clamp(78px,7.1vw,108px);line-height:1.02;letter-spacing:-.035em;margin-bottom:25px}
+.page-about .about-copy h1 .spark{right:-55px;top:19px;width:38px;height:38px;color:#cc4b92}
+.page-about .about-copy .lead{font-size:19px;line-height:1.65;max-width:460px;margin-bottom:20px}
+.page-about .about-copy>p:not(.lead){font-size:15px;line-height:1.85;max-width:430px;margin-bottom:24px}
+.page-about .about-copy .button{margin-top:0;background:#245ca3;box-shadow:none;min-height:52px}
+.page-about .about-copy .button:hover{background:#14294e}
+.profile-location{display:block;margin-top:15px;font-size:11px;font-weight:750;color:#3b5c7a}
+.page-about .about-photo{padding:12px 12px 0;width:100%;max-width:480px;justify-self:end;margin:0;isolation:isolate}
+.page-about .about-photo:before{inset:3% -3% 28px 2%;border:0;border-radius:32px;background:#f3b6d7;transform:rotate(4deg);z-index:-1}
+.page-about .about-photo>img:not(.doodle){display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 32%;border:7px solid #fff;border-radius:26px;box-shadow:0 14px 35px #14294e13;filter:url(#about-portrait-colour) contrast(1.06) saturate(1.08)}
+.portrait-colour-filter{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+.page-about .about-photo .handwritten{font:800 18px/1.5 var(--serif);color:#245ca3;margin:19px -12px 0;text-align:center}
+.page-about .about-photo>.about-daisy{right:-29px;top:20px;width:85px;height:85px}
+.page-about .about-photo>.about-butterfly{left:-40px;bottom:24px;width:98px;height:98px}
+.profile-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:25px 0 30px;border-top:1px solid #14294e26;margin-block:0;gap:0}
+.profile-facts>div{padding:0 26px;border-right:1px solid #14294e26}
+.profile-facts>div:first-child{padding-left:0}
+.profile-facts>div:last-child{border:0}
+.profile-facts dt{font-size:10px;letter-spacing:.05em;font-weight:800;color:#3b5c7a;margin-bottom:8px}
+.profile-facts dd{font:800 27px/1.25 var(--serif);margin:0;color:#14294e}
+.profile-facts dd>span{color:#b54281;font-weight:650}
+.profile-facts .profile-languages{font:750 13px/1.6 var(--sans)}
+.about-wayfinding{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:16px;border-bottom:1px solid #14294e26}
+.about-wayfinding>span{font-size:10px;color:#54718c;font-weight:800;text-transform:uppercase;letter-spacing:.07em}
+.about-wayfinding>a{display:flex;align-items:center;justify-content:space-between;gap:25px;min-height:44px;font-size:12px;font-weight:800;color:#14294e}
+.about-wayfinding>a>span{color:#b54281}
+.about-wayfinding>a:hover{color:#245ca3}
+.page-about .about-philosophy{margin-top:0;padding-block:90px;color:#dceaf8}
+.page-about .philosophy{grid-template-columns:1fr 1.08fr;gap:90px;align-items:start}
+.approach-heading .eyebrow{color:#b9e3ff}
+.page-about .philosophy h2{font-size:clamp(42px,4.2vw,58px);font-weight:800;line-height:1.12;margin-bottom:25px;color:#fff}
+.page-about .philosophy h2 em{color:#f6a6d3}
+.approach-heading>p{font-size:16px;line-height:1.8;max-width:340px;color:#dceaf8}
+.approach-notes article{display:grid;grid-template-columns:36px 1fr;gap:20px;border-bottom:1px solid #b9e3ff40;padding:24px 0}
+.approach-notes article:first-child{padding-top:0}
+.approach-notes article:last-child{border-bottom:0;padding-bottom:0}
+.approach-number{font:750 13px/1.5 var(--sans);color:#f6a6d3;padding-top:5px}
+.approach-notes h3{font:750 26px/1.25 var(--serif);color:#fff;margin:0 0 11px}
+.approach-notes p{font-size:14px;line-height:1.85;color:#dceaf8;margin:0;max-width:470px}
+.page-about .training{background:#fff}
+.page-about .training .split{grid-template-columns:1fr 1.08fr;gap:90px}
+.page-about .training h2{font-size:clamp(43px,4.2vw,59px);line-height:1.12}
+.page-about .sticky-heading>p{font-size:14px;max-width:330px}
+.page-about .timeline{border-top:0;border-left:1px solid #a4bfdf;padding-left:32px}
+.page-about .timeline article{position:relative;border-bottom:1px solid #14294e26;padding:0 0 27px;margin-bottom:26px}
+.page-about .timeline article:last-child{border:0;margin-bottom:0;padding-bottom:0}
+.page-about .timeline article:before{content:'';position:absolute;width:11px;height:11px;background:#245ca3;border:3px solid #fff;box-shadow:0 0 0 1px #245ca3;border-radius:50%;left:-38px;top:2px}
+.page-about .timeline article:nth-child(even):before{background:#cc4b92;box-shadow:0 0 0 1px #cc4b92}
+.page-about .timeline-date{font-size:10px;line-height:1.6;font-weight:800;color:#245ca3;margin-bottom:10px;letter-spacing:.06em}
+.page-about .timeline h3{font:750 29px/1.25 var(--serif);margin-bottom:11px}
+.page-about .timeline p{font-size:14px;line-height:1.85;margin-bottom:0}
+.page-about .additional-training h3{font-size:24px}
+.page-about .career{background:#edf4ff}
+.page-about .career .section-head{margin-bottom:35px}
+.page-about .career h2{font-size:clamp(44px,4.5vw,62px);line-height:1.12}
+.current-practice{display:flex;align-items:center;justify-content:space-between;gap:45px;background:#fff;border-left:5px solid #ec78bc;padding:35px 40px;border-radius:0 22px 22px 0;box-shadow:0 9px 25px #14294e06}
+.current-practice .eyebrow{font-size:10px;margin-bottom:16px;color:#245ca3}
+.current-practice h3{font:800 35px/1.15 var(--serif);margin:0 0 17px}
+.current-practice p{font-size:14px;line-height:1.75;margin:0}
+.current-practice .button{flex-shrink:0;background:#245ca3;box-shadow:none;font-size:12px;gap:25px}
+.current-practice .button:hover{background:#14294e}
+.career-history{margin-top:42px}
+.history-heading{font:750 23px/1.3 var(--serif);margin-bottom:19px;color:#14294e}
+.page-about .career-rows{border-color:#14294e26}
+.page-about .career-rows article{grid-template-columns:.65fr 1fr 1.25fr;border-color:#14294e26;gap:30px;padding:26px 0}
+.page-about .career-rows article>span{font-size:10px;line-height:1.6;color:#3b5c7a;font-weight:750}
+.page-about .career-rows h4{font:750 25px/1.3 var(--serif);margin:0}
+.page-about .career-rows p{font-size:13px;line-height:1.85;margin-bottom:0}
+.page-about .journal{background:#fff2fa;padding-block:80px}
+.page-about .journal-grid{grid-template-columns:1fr .8fr;gap:90px;align-items:center}
+.page-about .journal-grid h2{font-size:clamp(45px,4.5vw,62px);line-height:1.12}
+.page-about .journal-grid p{font-size:15px;line-height:1.8;max-width:400px}
+.page-about .journal-photo{max-width:320px;width:100%;justify-self:center;border-radius:22px;overflow:hidden;transform:rotate(2deg);box-shadow:8px 10px 0 #c7dcff}
+.page-about .journal-photo img{aspect-ratio:1;object-position:50% 28%}
+.page-about .journal-photo>span{font-size:11px}
+@media(max-width:1100px){
+  .page-about .profile-intro{gap:55px}
+  .page-about .about-copy h1{font-size:86px}
+  .page-about .about-copy .lead{font-size:17px}
+  .page-about .about-photo>.about-butterfly{left:-28px;width:80px;height:80px}
+  .page-about .philosophy,.page-about .training .split{gap:55px}
+  .profile-facts>div{padding-inline:20px}
+}
+@media(max-width:900px){
+  .page-about .about-hero{padding-top:40px}
+  .page-about .profile-intro{gap:30px;grid-template-columns:1fr 1fr}
+  .page-about .about-copy h1{font-size:70px}
+  .page-about .about-copy h1 .spark{width:25px;right:-28px;top:15px}
+  .page-about .about-copy>p:not(.lead){font-size:14px}
+  .page-about .about-photo{padding:8px 8px 0}
+  .page-about .about-photo .handwritten{font-size:15px}
+  .page-about .about-photo>.about-daisy{width:65px;height:65px;right:-18px;top:12px}
+  .page-about .about-photo>.about-butterfly{width:70px;height:70px}
+  .profile-facts dd{font-size:23px}
+  .profile-facts>div{padding-inline:14px}
+  .profile-facts .profile-languages{font-size:11px}
+  .about-wayfinding{gap:12px}
+  .about-wayfinding>span{display:none}
+  .about-wayfinding>a{font-size:11px;gap:12px}
+  .page-about .philosophy,.page-about .training .split{gap:40px}
+  .page-about .philosophy h2{font-size:43px}
+  .approach-notes article{grid-template-columns:25px 1fr;gap:11px}
+  .approach-notes h3{font-size:24px}
+  .current-practice{padding:30px;gap:25px}
+  .current-practice h3{font-size:30px}
+  .current-practice .button{gap:15px}
+  .page-about .career-rows article{gap:20px}
+  .page-about .career-rows h4{font-size:23px}
+  .page-about .journal-grid{gap:50px}
+}
+@media(max-width:700px){
+  .page-about .about-hero{padding-top:30px}
+  .page-about .profile-intro{grid-template-columns:1fr;gap:30px;padding-bottom:35px}
+  .page-about .about-copy{padding:0}
+  .page-about .about-copy .eyebrow{font-size:9px;margin-bottom:18px}
+  .page-about .about-copy h1{font-size:clamp(65px,18vw,94px);margin-bottom:20px}
+  .page-about .about-copy h1 .spark{right:-40px;top:13px;width:30px;height:30px}
+  .page-about .about-copy .lead{font-size:16px;line-height:1.65;margin-bottom:16px}
+  .page-about .about-copy>p:not(.lead){font-size:14px;line-height:1.8;margin-bottom:20px;max-width:470px}
+  .page-about .about-copy .button{font-size:12px;min-height:48px}
+  .profile-location{display:inline-block;font-size:10px;margin:0 0 0 15px}
+  .page-about .about-photo{width:86%;max-width:380px;justify-self:center;padding:8px 8px 0}
+  .page-about .about-photo>img:not(.doodle){border-width:6px;border-radius:22px;aspect-ratio:4/5;object-position:50% 32%}
+  .page-about .about-photo:before{inset:4% -3% 22px 2%;border-radius:25px}
+  .page-about .about-photo .handwritten{font-size:17px;margin:16px -14px 0}
+  .page-about .about-photo>.about-daisy{right:-20px;top:13px;width:65px;height:65px}
+  .page-about .about-photo>.about-butterfly{left:-29px;bottom:18px;width:78px;height:78px}
+  .profile-facts{grid-template-columns:1fr 1fr;gap:23px 0;padding-block:24px 28px}
+  .profile-facts>div,.profile-facts>div:first-child{padding-inline:16px}
+  .profile-facts>div:nth-child(odd){padding-left:0}
+  .profile-facts>div:nth-child(even){border-right:0}
+  .profile-facts dt{font-size:9px;margin-bottom:7px}
+  .profile-facts dd{font-size:25px}
+  .profile-facts .profile-languages{font-size:12px}
+  .about-wayfinding{display:grid;grid-template-columns:1fr 1fr;gap:0 25px;padding-block:12px}
+  .about-wayfinding>a{font-size:11px;min-height:44px}
+  .page-about .about-philosophy{padding-block:65px}
+  .page-about .philosophy{grid-template-columns:1fr;gap:32px}
+  .page-about .philosophy h2{font-size:clamp(40px,10vw,52px);margin-bottom:18px}
+  .approach-heading>p{font-size:15px;max-width:420px;margin-bottom:0}
+  .approach-notes article{grid-template-columns:28px 1fr;gap:14px;padding-block:24px}
+  .approach-notes h3{font-size:26px}
+  .approach-notes p{font-size:14px}
+  .page-about .training .split{grid-template-columns:1fr;gap:35px}
+  .page-about .training h2,.page-about .career h2{font-size:clamp(40px,10vw,53px)}
+  .page-about .sticky-heading>p{max-width:420px}
+  .page-about .timeline{padding-left:26px;margin-left:6px}
+  .page-about .timeline article:before{left:-32px}
+  .page-about .timeline h3{font-size:26px}
+  .page-about .additional-training h3{font-size:24px}
+  .page-about .timeline p{font-size:13px}
+  .page-about .timeline-date{font-size:9px}
+  .page-about .career .section-head{gap:17px}
+  .page-about .career .section-head>p{font-size:14px}
+  .current-practice{display:block;padding:27px 23px;border-radius:0 18px 18px 0}
+  .current-practice .eyebrow{font-size:9px;line-height:1.7;margin-bottom:13px}
+  .current-practice h3{font-size:30px}
+  .current-practice .button{margin-top:24px;font-size:11px;padding-inline:19px}
+  .current-practice p{font-size:13px}
+  .career-history{margin-top:35px}
+  .history-heading{font-size:24px;margin-bottom:17px}
+  .page-about .career-rows article{grid-template-columns:1fr;gap:10px;padding-block:23px}
+  .page-about .career-rows article>span{font-size:9px;padding-top:0}
+  .page-about .career-rows h4{font-size:25px}
+  .page-about .career-rows p{font-size:13px;max-width:440px}
+  .page-about .journal{padding-block:65px}
+  .page-about .journal-grid{grid-template-columns:1fr;gap:35px}
+  .page-about .journal-grid h2{font-size:46px}
+  .page-about .journal-grid p{font-size:14px}
+  .page-about .journal-photo{width:78%;max-width:300px}
+}
+@media(max-width:360px){
+  .page-about .about-copy h1{font-size:63px}
+  .page-about .about-copy h1 .spark{right:-28px;width:24px}
+  .profile-location{display:block;margin:13px 0 0}
+  .page-about .about-photo .handwritten{font-size:15px}
+  .current-practice h3{font-size:27px}
+  .current-practice .button{gap:18px}
+}

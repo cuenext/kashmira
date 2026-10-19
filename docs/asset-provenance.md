@@ -1,6 +1,6 @@
 # Photo asset provenance
 
-Created 19 October 2026 from retained and user-supplied assets. Original files were preserved. Only crops, resizing, WebP compression, EXIF orientation normalization and metadata removal were applied. No facial retouching or generated image content was used.
+Created 19 October 2026 from retained and user-supplied assets, with subsequent updates documented below. Original files were preserved. Only crops, resizing, WebP compression, EXIF orientation normalization and metadata removal were applied to published photo files. No facial retouching or generated image content was used in published photographs. The later About portrait’s reversible display color treatment is documented below.
 
 The earlier responsive photos are 4:5; the new homepage photo documented below retains its full 3:4 framing. Filenames identify the requested size slot. The retained 720 x 720 professional portrait is cropped to 576 x 720 for its larger slot; it is deliberately not upscaled. The About portrait uses a 380 x 475 crop from the supplied 383 x 488 CV headshot; both size slots preserve that native crop without enlargement. All image files were reopened and verified.
 
@@ -88,3 +88,16 @@ The 4284 x 5712 source remains outside the repository. The two WebP derivatives 
 |---|---|---:|---|
 | assets/photos/kashmira-meet-480.webp | 480 x 640 | 38,106 | c54ebe3254a349708c2c9db4a63c2effd8cee8cd0dc94223fdb9279a12e0922f |
 | assets/photos/kashmira-meet-1200.webp | 1200 x 1600 | 153,854 | 3c0f35425a1b1c403db17aeaf41cedfca40671a3278ccdfe6c8a2a5afc7c597e |
+
+## About portrait and presentation · 20 October 2026
+
+The user supplied IMG_6447.JPG.jpeg and explicitly requested it for the About/Meet Kashmira hero, with a better fit and improved color. The 5,341,464-byte original is preserved outside the repository. Its 6240 x 4160 source with EXIF orientation 8 was normalized to an upright 4160 x 6240 photograph. Published WebPs derive directly from those original pixels, without generative edits, facial retouching, clothing changes or cropping. Both outputs have no EXIF, XMP or ICCP chunks.
+
+| Output | Dimensions | Bytes | SHA-256 |
+|---|---|---:|---|
+| assets/photos/kashmira-about-480.webp | 480 x 720 | 20,946 | ebe407d0d7cff582aef8c19119af4a3b3d232a2e75da392d52ad5e88b8f98654 |
+| assets/photos/kashmira-about-1200.webp | 1200 x 1800 | 68,774 | df788bb10b8df9b527ac8e8dc3b8a784bc107dcaad88b0639defa669b6c1be0e |
+
+About alone uses a 4:5 display frame with object-position 50% 32%, preserving space above her hair and showing her shoulders. A subtle, reversible sRGB SVG color matrix slightly lifts red, reduces green and balances blue; CSS contrast(1.06) and saturate(1.08) add modest separation. The original image pixels and her features remain intact. Cool blue surroundings, a pink photo mat and a white border give the beige blazer more definition without recoloring the garment. The filter is decorative, hidden from assistive technology and independent of scripts or motion.
+
+An image-editing experiment was inspected privately and rejected because it altered fine photographic details; none of that generated output is published. The exported original-photo derivatives above are the final assets. The earlier CV headshots remain retained for history and are no longer referenced by Home or About.
