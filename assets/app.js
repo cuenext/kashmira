@@ -102,7 +102,7 @@
     for (let i = 0; i < 10; i++) {
       const particle = document.createElement('img');
       particle.className = 'smile-particle'; particle.alt = '';
-      particle.src = `assets/doodles/${i % 3 === 0 ? 'daisy' : i % 3 === 1 ? 'smile' : 'butterfly'}.svg`;
+      particle.src = `assets/play/${['sun', 'flower', 'rocket', 'tooth-friend', 'rainbow'][i % 5]}.svg`;
       particle.style.left = `${width * .5}px`; particle.style.top = `${height * .55}px`;
       burst.append(particle);
       const angle = i * Math.PI * 2 / 10 - Math.PI / 2;
@@ -122,6 +122,20 @@
     }
   });
   if (smileButton) smileButton.hidden = false;
+  const buddyPicker = document.querySelector('.buddy-picker');
+  const buddyImage = document.querySelector('#visit-buddy');
+  const buddyStatus = document.querySelector('#buddy-status');
+  const buddies = { 'tooth-friend': 'Your tooth buddy is here to say hello.', rainbow: 'A rainbow buddy, ready for a colourful hello.', rocket: 'Your rocket buddy is ready for a little adventure.' };
+  if (buddyPicker && buddyImage && buddyStatus) {
+    buddyPicker.addEventListener('click', event => {
+      const button = event.target.closest('[data-buddy]');
+      if (!button || !Object.hasOwn(buddies, button.dataset.buddy)) return;
+      buddyPicker.querySelectorAll('[data-buddy]').forEach(choice => choice.setAttribute('aria-pressed', String(choice === button)));
+      buddyImage.src = `assets/play/${button.dataset.buddy}.svg`;
+      buddyStatus.textContent = buddies[button.dataset.buddy];
+    });
+    buddyPicker.hidden = false;
+  }
   // Native details stay functional with no script or motion; enhance their height only.
   document.querySelectorAll('.care-item, .faq-list details').forEach(details => {
     const summary = details.querySelector('summary');
