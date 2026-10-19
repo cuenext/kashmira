@@ -4,7 +4,7 @@
   "description": "Dr. Kashmira Pawar personal pediatric dentistry website",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node tests/acceptance.cjs && node tests/audit.cjs && node tests/failure-fallback.cjs && node tests/motion.cjs && node tests/cases.cjs",
+    "test": "node tests/acceptance.cjs && node tests/audit.cjs && node tests/failure-fallback.cjs && node tests/motion.cjs && node tests/cases.cjs && node tests/playful.cjs",
     "preview": "node scripts/serve.cjs"
   },
   "repository": {

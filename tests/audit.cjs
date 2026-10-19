@@ -12,8 +12,13 @@ const base=process.env.SITE_URL||'http://127.0.0.1:4173/';
  const results=[];
  for(const file of ['index.html','about.html','contact.html','cases.html']){
   await page.goto(base+file);await page.evaluate(()=>document.fonts.ready);
-  // Lazy imagery is loaded by actually walking the page, not disabling loading.
-  await page.evaluate(async()=>{for(let y=0;y<document.body.scrollHeight;y+=600){scrollTo({top:y,behavior:'instant'});await new Promise(r=>setTimeout(r,90))}scrollTo({top:0,behavior:'instant'})});
+  // Visit each rendered image so browser lazy loading has a real viewport trigger.
+  // Decode completion is the signal, rather than a short arbitrary scroll delay.
+  for(const image of await page.locator('img:visible').all()){
+   await image.evaluate(el=>el.scrollIntoView({block:'center',behavior:'instant'}));
+   await image.evaluate(async el=>{await new Promise(resolve=>requestAnimationFrame(resolve));await el.decode()});
+  }
+  await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));
   await page.waitForTimeout(900);
   // Inactive case panels and the closed viewer intentionally defer their images.
   // The case-gallery checks open every panel/photo and verify those separately.

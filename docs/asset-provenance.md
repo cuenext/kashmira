@@ -54,3 +54,9 @@ The source folder misspellings were normalized in display titles. Display order 
 The image viewer uses contain sizing so all clinical content remains visible. Images are lazy-loaded and remain ordinary links without JavaScript. Clinical photographs receive no decorative overlays other than the unobtrusive viewer control.
 
 Following the user’s current-practice correction, Open Graph and Twitter metadata now use the unchanged professional portrait (assets/photos/portrait-960.webp) with neutral doctor-name alt text. The archived social.webp with former Dubai/Abu Dhabi geography is retained for history and is no longer used in the site.
+
+## Space identity · 20 October 2026
+
+The user requested a more colorful pediatric design, then chose a unique space theme inspired by drverwest.com’s immersive underwater design. All ten files in assets/play/ are original code-drawn SVGs: tooth-friend, rainbow, sun, rocket, flower, planet, brush, tooth-astronaut, moon and constellations. They are self-contained, use no external images, scripts or embedded animation, and are decorative. Main art was rendered and visually inspected before use. The original pink doodles remain preserved but are no longer referenced by the active pages or smile particles.
+
+No doctor or case photograph was edited for the space redesign. Only surrounding layout, typography and graphic framing changed. Baloo 2 and Nunito Latin variable WOFF2 fonts are served locally from assets/fonts/ with their SIL Open Font License text (Baloo2-OFL.txt and Nunito-OFL.txt). Fonts came from the official Google Fonts distribution.
