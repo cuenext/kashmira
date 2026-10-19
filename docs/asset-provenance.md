@@ -60,3 +60,9 @@ Following the user’s current-practice correction, Open Graph and Twitter metad
 The user requested a more colorful pediatric design, then chose a unique space theme inspired by drverwest.com’s immersive underwater design. All ten files in assets/play/ are original code-drawn SVGs: tooth-friend, rainbow, sun, rocket, flower, planet, brush, tooth-astronaut, moon and constellations. They are self-contained, use no external images, scripts or embedded animation, and are decorative. Main art was rendered and visually inspected before use. The original pink doodles remain preserved but are no longer referenced by the active pages or smile particles.
 
 No doctor or case photograph was edited for the space redesign. Only surrounding layout, typography and graphic framing changed. Baloo 2 and Nunito Latin variable WOFF2 fonts are served locally from assets/fonts/ with their SIL Open Font License text (Baloo2-OFL.txt and Nunito-OFL.txt). Fonts came from the official Google Fonts distribution.
+
+## Blue/pink interaction update · 20 October 2026
+
+The user replaced the earlier warm accents with a blue/pink palette. All ten code-drawn play SVGs and the monogram were recolored to navy, blue, rose, pink, lilac and cool white. Their geometry was preserved and all eleven XML files were validated and visually rendered. No yellow/orange/coral remains in those vector assets. Real photography was retained unchanged.
+
+The new Star Mission uses a small inline SVG star, the existing rocket and planet illustrations, and native buttons. No images from the reference site, tracking, audio, downloads, accounts or generated medical imagery were added. Both the ambient rocket and planets are observed for viewport visibility, and every continuous/finite animation follows the shared pause and reduced-motion settings.

@@ -27,7 +27,10 @@
   });
   reduce.addEventListener('change', applyMotion);
   applyMotion();
-  document.addEventListener('visibilitychange', () => root.classList.toggle('motion-hidden', document.hidden));
+  document.addEventListener('visibilitychange', () => {
+    root.classList.toggle('motion-hidden', document.hidden);
+    if (document.hidden) [...effects].forEach(stop => stop());
+  });
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('#site-nav');
   function setMenu(open, returnFocus = false) {
@@ -84,7 +87,7 @@
       entry.target.classList.toggle('motion-visible', entry.isIntersecting);
       entry.target.classList.toggle('scene-visible', entry.isIntersecting);
     }), { threshold: 0, rootMargin: '40px' });
-    document.querySelectorAll('.doodle, .hero-art, .journey-trail').forEach(el => scenes.observe(el));
+    document.querySelectorAll('.doodle, .hero-art, .journey-trail, .space-planet, .space-cruiser').forEach(el => scenes.observe(el));
   }
   const smileButton = document.querySelector('.send-smile');
   const smileStatus = document.querySelector('#smile-status');
@@ -102,7 +105,7 @@
     for (let i = 0; i < 10; i++) {
       const particle = document.createElement('img');
       particle.className = 'smile-particle'; particle.alt = '';
-      particle.src = `assets/play/${['sun', 'flower', 'rocket', 'tooth-friend', 'rainbow'][i % 5]}.svg`;
+      particle.src = `assets/play/${['sun', 'flower', 'rocket', 'tooth-friend', 'rainbow'][i % 5]}.svg?v=36`;
       particle.style.left = `${width * .5}px`; particle.style.top = `${height * .55}px`;
       burst.append(particle);
       const angle = i * Math.PI * 2 / 10 - Math.PI / 2;
@@ -131,10 +134,103 @@
       const button = event.target.closest('[data-buddy]');
       if (!button || !Object.hasOwn(buddies, button.dataset.buddy)) return;
       buddyPicker.querySelectorAll('[data-buddy]').forEach(choice => choice.setAttribute('aria-pressed', String(choice === button)));
-      buddyImage.src = `assets/play/${button.dataset.buddy}.svg`;
+      buddyImage.src = `assets/play/${button.dataset.buddy}.svg?v=36`;
       buddyStatus.textContent = buddies[button.dataset.buddy];
     });
     buddyPicker.hidden = false;
+  }
+  // Space play is untimed: collected stars remain reachable and motion is optional.
+  const launchButton = document.querySelector('.rocket-launch');
+  const cruiser = document.querySelector('.space-cruiser');
+  const launchStatus = document.querySelector('#launch-status');
+  let stopLaunch = null;
+  if (launchButton && cruiser && launchStatus) {
+    launchButton.hidden = false;
+    launchButton.addEventListener('click', () => {
+      launchStatus.textContent = 'Rocket away! A little hello among the stars.';
+      stopLaunch?.();
+      if (motionOff() || typeof cruiser.animate !== 'function') return;
+      const current = getComputedStyle(cruiser);
+      const animation = cruiser.animate([
+        { left: current.left, top: current.top, transform: current.transform, opacity: 1 },
+        { left: '46%', top: '0%', transform: 'rotate(35deg) scale(1.1)', opacity: 1, offset: .45 },
+        { left: '86%', top: '-15%', transform: 'rotate(45deg) scale(.85)', opacity: .2 }
+      ], { duration: 1600, easing: 'cubic-bezier(.25,.5,.45,1)' });
+      const stop = () => { animation.cancel(); effects.delete(stop); if (stopLaunch === stop) stopLaunch = null; };
+      stopLaunch = stop; effects.add(stop); animation.finished.then(stop, stop);
+    });
+  }
+  const mission = document.querySelector('#star-mission');
+  if (mission) {
+    const board = mission.querySelector('#space-game-board');
+    const start = mission.querySelector('[data-game-start]');
+    const reset = mission.querySelector('[data-game-reset]');
+    const stars = [...mission.querySelectorAll('[data-game-star]')];
+    const rocket = mission.querySelector('#mission-rocket');
+    const score = mission.querySelector('#mission-score');
+    const boardScore = mission.querySelector('[data-board-score]');
+    const status = mission.querySelector('#mission-status');
+    const badge = mission.querySelector('.mission-badge');
+    const points = [[18,19],[51,17],[84,25],[76,64],[43,79],[16,62]];
+    const collected = new Set();
+    let playing = false;
+    let stopFlight = null;
+    function moveRocket(x, y, animate = true) {
+      const style = getComputedStyle(rocket);
+      const fromX = parseFloat(style.left) / board.clientWidth * 100;
+      const fromY = parseFloat(style.top) / board.clientHeight * 100;
+      stopFlight?.();
+      rocket.style.left = `${x}%`; rocket.style.top = `${y}%`;
+      if (!animate || motionOff() || typeof rocket.animate !== 'function') return;
+      const animation = rocket.animate([
+        { left: `${fromX}%`, top: `${fromY}%` },
+        { left: `${x}%`, top: `${y}%` }
+      ], { duration: 650, easing: 'cubic-bezier(.2,.7,.2,1)' });
+      const stop = () => { animation.cancel(); effects.delete(stop); if (stopFlight === stop) stopFlight = null; };
+      stopFlight = stop; effects.add(stop); animation.finished.then(stop, stop);
+    }
+    function beginMission() {
+      collected.clear(); playing = true; stopFlight?.();
+      board.classList.add('is-playing'); board.classList.remove('is-complete');
+      badge.hidden = true; start.hidden = true; reset.hidden = true; rocket.hidden = false;
+      stars.forEach(star => {
+        star.hidden = false; star.dataset.collected = 'false';
+        star.setAttribute('aria-disabled', 'false');
+        star.setAttribute('aria-label', `Collect star ${Number(star.dataset.gameStar) + 1}`);
+      });
+      moveRocket(12, 84, false); score.textContent = '0 / 6'; boardScore.textContent = '0 / 6';
+      status.textContent = 'Mission started. Find six stars, in any order. Take your time.';
+      if (mobile.matches) board.scrollIntoView({ block: 'center', behavior: motionOff() ? 'instant' : 'smooth' });
+      stars[0].focus({ preventScroll: true });
+    }
+    function collectStar(index) {
+      if (!playing || collected.has(index)) return;
+      collected.add(index);
+      const star = stars[index];
+      star.dataset.collected = 'true'; star.setAttribute('aria-disabled', 'true');
+      star.setAttribute('aria-label', `Star ${index + 1} collected`);
+      moveRocket(...points[index]);
+      score.textContent = `${collected.size} / 6`;
+      boardScore.textContent = `${collected.size} / 6`;
+      if (collected.size === stars.length) {
+        playing = false; board.classList.add('is-complete'); badge.hidden = false; reset.hidden = false;
+        status.textContent = 'Mission complete! All six stars found. You’re a Little Explorer.';
+        reset.focus({ preventScroll: true });
+      } else status.textContent = `Star ${index + 1} collected. ${collected.size} of six found. Choose another star.`;
+    }
+    stars.forEach((star, index) => star.addEventListener('click', () => collectStar(index)));
+    board.addEventListener('keydown', event => {
+      if (!playing || !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
+      event.preventDefault();
+      const direction = event.key === 'ArrowLeft' || event.key === 'ArrowUp' ? -1 : 1;
+      const current = Math.max(0, stars.indexOf(document.activeElement));
+      for (let step = 1; step <= stars.length; step++) {
+        const index = (current + step * direction + stars.length * 2) % stars.length;
+        if (!collected.has(index)) { stars[index].focus({ preventScroll: true }); break; }
+      }
+    });
+    start.addEventListener('click', beginMission); reset.addEventListener('click', beginMission);
+    start.hidden = false;
   }
   // Native details stay functional with no script or motion; enhance their height only.
   document.querySelectorAll('.care-item, .faq-list details').forEach(details => {

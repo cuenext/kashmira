@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180" aria-hidden="true" focusable="false">
-  <g stroke="#243b61" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <ellipse cx="90" cy="94" rx="75" ry="23" transform="rotate(-20 90 94)" fill="#badff5"/>
-    <circle cx="90" cy="86" r="44" fill="#c4b5e7"/>
-    <path d="M64 61q7-8 18-10" fill="none" stroke="#fffaf0" stroke-width="5"/>
-    <path d="M105 51q9 4 14 12m-61 39q2 10 10 17" fill="none" stroke="#fffaf0"/>
-    <path d="M19.5 119.7a75 23-20 0 0 141-51.4l-15 5.5a59 12-20 0 1-110.9 40.4Z" fill="#badff5"/>
-    <path d="M38 124q19 0 43-8" fill="none" stroke="#fffaf0"/>
-    <circle cx="77" cy="80" r="2" fill="#243b61" stroke="none"/>
-    <circle cx="98" cy="75" r="2" fill="#243b61" stroke="none"/>
+  <g stroke="#162d59" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="90" cy="94" rx="75" ry="23" transform="rotate(-20 90 94)" fill="#b9e3ff"/>
+    <circle cx="90" cy="86" r="44" fill="#c7b3f3"/>
+    <path d="M64 61q7-8 18-10" fill="none" stroke="#f5faff" stroke-width="5"/>
+    <path d="M105 51q9 4 14 12m-61 39q2 10 10 17" fill="none" stroke="#f5faff"/>
+    <path d="M19.5 119.7a75 23-20 0 0 141-51.4l-15 5.5a59 12-20 0 1-110.9 40.4Z" fill="#b9e3ff"/>
+    <path d="M38 124q19 0 43-8" fill="none" stroke="#f5faff"/>
+    <circle cx="77" cy="80" r="2" fill="#162d59" stroke="none"/>
+    <circle cx="98" cy="75" r="2" fill="#162d59" stroke="none"/>
     <path d="M82 87q8 6 14-3" fill="none"/>
-    <path d="m144 31 2 6 6 2-6 2-2 6-2-6-6-2 6-2Z" fill="#f6cc57"/>
-    <circle cx="34" cy="45" r="4" fill="#ef7c67"/>
-    <circle cx="137" cy="140" r="3" fill="#117d83"/>
+    <path d="m144 31 2 6 6 2-6 2-2 6-2-6-6-2 6-2Z" fill="#f6a3d3"/>
+    <circle cx="34" cy="45" r="4" fill="#ed79b8"/>
+    <circle cx="137" cy="140" r="3" fill="#79c8ff"/>
   </g>
 </svg>
