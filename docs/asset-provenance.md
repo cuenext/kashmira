@@ -32,3 +32,7 @@ No patient/minor media was included. The user's website request supports use of 
 - journal-480.webp: 37d63aff4b660a84164b0746d27713f967d0c07c2e29b3bb3aadd1de4bdcd837
 - journal-960.webp: 64a7dab0e815f06281450e1da9ab61b375320c30bb3c31fef3325b40119fe4f1
 - social.webp: 2015731af31227867e77a978088b1f2ec4e14a282c4de35a364a07e14e31b883
+
+## Original decorative vectors
+
+The four small line illustrations in assets/doodles/ (daisy.svg, cloud.svg, butterfly.svg and smile.svg) were drawn for this site in SVG code. They use the pink identity and contain no external references, fonts, text, photographs or embedded animation. They are decorative and hidden from assistive technology. Motion is controlled by the site so pause/reduced-motion preferences apply to all four.
