@@ -40,6 +40,25 @@ const assert = require('node:assert/strict');
   await page.keyboard.press('Escape');
   assert.equal(await menu.getAttribute('aria-expanded'),'false');
   assert.equal(await menu.evaluate(el=>document.activeElement===el),true,'Escape must return menu focus');
+  // Landscape phones must keep the last navigation actions reachable.
+  await page.setViewportSize({width:640,height:320});
+  await menu.click();
+  const navigation=page.locator('#site-nav');
+  const menuBounds=await navigation.boundingBox();
+  assert.ok(menuBounds.y+menuBounds.height<=320+1,'Open mobile menu must fit a short landscape viewport');
+  const bookingLink=navigation.locator('.button');
+  await bookingLink.focus();
+  const bookingBounds=await bookingLink.boundingBox();
+  assert.ok(bookingBounds.y>=menuBounds.y&&bookingBounds.y+bookingBounds.height<=320+1,'Keyboard users can reach the final booking action in landscape');
+  await page.keyboard.press('Escape');
+  assert.equal(await menu.getAttribute('aria-expanded'),'false');
+  await page.setViewportSize({width:390,height:844});
+  await page.goto(base+'contact.html');
+  await menu.click();
+  const navLinkCount=await navigation.locator('a').count();
+  for(let i=0;i<=navLinkCount;i++)await page.keyboard.press('Tab');
+  assert.equal(await page.evaluate(()=>!!document.activeElement.closest('.site-header')),false,'Tab can leave the navigation disclosure');
+  assert.equal(await menu.getAttribute('aria-expanded'),'false','Leaving the header by keyboard closes the menu so it cannot cover the next control');
   for (const file of ['', 'about.html','contact.html','cases.html']) {
     for (const width of [320,390,768,1024,1440]) {
       await page.setViewportSize({width,height:900});
