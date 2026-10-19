@@ -77,3 +77,14 @@ The user supplied IMG_6483.HEIC and requested it as the main homepage photo. The
 | assets/photos/kashmira-main-1200.webp | 1200 x 1600 | 91,696 | 1f46e10e9d31bc78e34b16e91686b3bc510dedbc2b1d2e4526a1c4e57452be3e |
 
 Both outputs were reopened and checked for zero EXIF and absence of EXIF, XMP and ICCP RIFF chunks. Home prioritizes the responsive image for loading. Shared Person schema and Open Graph/Twitter image references now use the supplied photo, superseding the earlier portrait references described above.
+
+## Home introduction photo · 20 October 2026
+
+The user explicitly selected IMG_6141.HEIC, Drive file 18K8JDgS5QHw-_zy9l62OBEZ3IgqeVQaG, to replace the photograph in Home’s “Meet your dentist” section. Drive metadata matched the retained 2,411,152-byte original. The image shows Dr. Kashmira with a young patient; the initial general inventory had not selected it for publication. This later, specific website request supplies the selection for this section. No patient name, testimonial, outcome or clinic affiliation was added to the page text or alt text.
+
+The 4284 x 5712 source remains outside the repository. The two WebP derivatives retain full framing and natural appearance, with the embedded color profile converted to sRGB, no retouching and no upscaling. The existing responsive frame controls the display crop. Home’s main hero and About photographs remain unchanged by this replacement. Both outputs were reopened and verified without EXIF, XMP or ICCP chunks.
+
+| Output | Dimensions | Bytes | SHA-256 |
+|---|---|---:|---|
+| assets/photos/kashmira-meet-480.webp | 480 x 640 | 38,106 | c54ebe3254a349708c2c9db4a63c2effd8cee8cd0dc94223fdb9279a12e0922f |
+| assets/photos/kashmira-meet-1200.webp | 1200 x 1600 | 153,854 | 3c0f35425a1b1c403db17aeaf41cedfca40671a3278ccdfe6c8a2a5afc7c597e |

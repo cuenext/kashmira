@@ -39,3 +39,5 @@ The user asked for floating planets, moving rockets and a small space game inspi
 ## Homepage photo · 20 October 2026
 
 The user directly supplied IMG_6483.HEIC and requested it as the main photograph on entering the website. Home now uses that clinic portrait, with responsive WebP derivatives and descriptive alt text. Shared Person schema and social image metadata reference the same supplied photograph. See asset-provenance.md for dimensions, export details and checksums. Other photography, copy, practice details and interactions remain unchanged.
+
+The user subsequently supplied the exact Drive link for IMG_6141.HEIC (18K8JDgS5QHw-_zy9l62OBEZ3IgqeVQaG) and specifically requested it in Home’s “Meet your dentist” section. That section alone uses the new image. No patient name, testimonial, treatment outcome or current-practice location was inferred from the photograph.
