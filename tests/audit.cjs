@@ -15,7 +15,9 @@ const base=process.env.SITE_URL||'http://127.0.0.1:4173/';
   // Lazy imagery is loaded by actually walking the page, not disabling loading.
   await page.evaluate(async()=>{for(let y=0;y<document.body.scrollHeight;y+=600){scrollTo({top:y,behavior:'instant'});await new Promise(r=>setTimeout(r,90))}scrollTo({top:0,behavior:'instant'})});
   await page.waitForTimeout(900);
-  const failures=await page.locator('img').evaluateAll(images=>images.filter(i=>!i.complete||!i.naturalWidth).map(i=>i.currentSrc));
+  // Inactive case panels and the closed viewer intentionally defer their images.
+  // The case-gallery checks open every panel/photo and verify those separately.
+  const failures=await page.locator('img').evaluateAll(images=>images.filter(i=>i.getClientRects().length&&(!i.complete||!i.naturalWidth)).map(i=>i.currentSrc));
   assert.deepEqual(failures,[],file+' images must load');
   const ld=await page.locator('script[type="application/ld+json"]').textContent();
   const graph=JSON.parse(ld)['@graph'];
