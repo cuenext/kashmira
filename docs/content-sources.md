@@ -54,3 +54,12 @@ The shorter introduction and three care notes reorganize the existing parent-foc
 The user requested a cleaner About presentation, specifically rejecting the floating “A little patience goes a long way” caption. That caption was removed, the portrait backplate and border were softened, the lower planet was removed, and the orbit line crossing the mobile copy was removed. The original portrait, its display color treatment and factual content remain unchanged.
 
 The user also supplied the doctor’s transparent white logo and authorized a tooth-only crop for small icons. The exact supplied mark replaces the temporary kp monogram and typed footer wordmark across all four main pages, with matching favicon and touch icons. The branded 404 page uses the same assets, root-relative project navigation and corrected UTF-8 copy. See asset-provenance.md for exact source crops and export checksums.
+
+
+## Full editorial and engineering review · 20 October 2026
+
+The user requested a word-by-word review of the full website while keeping the existing design. All four main pages, expanded care and FAQ copy, five case galleries, form messages, accessible labels, photo descriptions, game messages, metadata and 404 copy were reviewed. Repeated diminutives, vague slogans and administrative phrasing were replaced with direct language. The main “Big feelings. Little smiles. I’m here for both.” headline and the playful space game were retained.
+
+FAQs now use the same first-person voice as the rest of the site. Booking copy states that a date and time must be confirmed; the WhatsApp action still only opens a draft. Privacy copy specifically describes the appointment request, without implying that the site cannot retain an animation preference. Qualifications, training, dates, experience, spoken languages and current/previous practice distinctions remain grounded in the previously supplied sources and user corrections. No new medical advice, outcomes, testimonials or treatment-stage claims were introduced. Treatment labels received only grammatical hyphenation; the supplied “retainers” terminology was preserved.
+
+The existing 998 ambulance reference was rechecked against [the UAE Government emergency guidance](https://u.ae/en/information-and-services/justice-safety-and-the-law/handling-emergencies) on 20 October 2026. Contact destination responses were checked; this establishes that links respond, not independent verification of professional licensing or ownership of linked accounts. See quality-review.md for review scope, fixes and validation.

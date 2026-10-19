@@ -70,6 +70,34 @@ const caseId=index=>'case-'+String(index+1).padStart(2,'0');
   assert.equal(await deep.locator('[data-case-tab][aria-selected="true"]').getAttribute('href'),'#case-03','A case can be opened directly from its URL');
   assert.equal(await deep.locator('#case-03').isVisible(),true);await deep.close();
 
+  const mobileDeep=await context.newPage();
+  async function activeTabFits(){
+   return mobileDeep.locator('.case-tabs').evaluate(list=>{
+    const strip=list.getBoundingClientRect();
+    const active=list.querySelector('[aria-selected="true"]').getBoundingClientRect();
+    return active.left>=strip.left-1&&active.right<=strip.right+1;
+   });
+  }
+  for(const width of [320,390]){
+   await mobileDeep.setViewportSize({width,height:844});
+   for(let i=0;i<counts.length;i++){
+    await mobileDeep.goto(gallery+'?deep-check='+i+'#'+caseId(i),{waitUntil:'networkidle'});
+    await mobileDeep.evaluate(()=>document.fonts.ready);
+    assert.ok(await activeTabFits(),'Direct '+caseId(i)+' keeps its selected tab visible at '+width+'px');
+    if(i===0){
+     await mobileDeep.locator('[data-case-tab]').first().focus();
+     await mobileDeep.keyboard.press('ArrowRight');
+     await mobileDeep.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+     assert.ok(await activeTabFits(),'Keyboard selection keeps the next mobile tab visible at '+width+'px');
+    }
+   }
+  }
+  await mobileDeep.setViewportSize({width:1440,height:1000});
+  await mobileDeep.locator('[data-case-tab]').nth(3).click();
+  await mobileDeep.setViewportSize({width:320,height:844});
+  assert.ok(await activeTabFits(),'The active case tab remains visible after changing to a smaller mobile viewport');
+  await mobileDeep.close();
+
   // Every supplied public derivative is opened through the actual gallery UI.
   for(let i=0;i<counts.length;i++){
    await tabs.nth(i).click();await selected(i);

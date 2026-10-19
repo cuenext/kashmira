@@ -19,3 +19,6 @@
 .booking-fallback .text-link{font-size:10px;gap:0}.button:disabled{opacity:.6;cursor:default;transform:none;box-shadow:none}
 @media(max-width:700px){.about-copy h1{font-size:clamp(70px,22vw,100px)}.about-copy h1 .spark{right:4px;top:0;width:38px}.closing h2 .spark{right:0;bottom:5px}html:not(.nav-enhanced) .nav{height:auto;min-height:78px;flex-wrap:wrap;padding-block:18px}html:not(.nav-enhanced) .nav nav{display:flex;position:static;box-shadow:none;border:0;width:100%;padding:10px 0;flex-direction:row;flex-wrap:wrap;gap:15px}html:not(.nav-enhanced) .menu-toggle{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}[data-reveal]{opacity:1!important;transform:none!important}.scroll-progress{display:none}}
+
+/* Keep every navigation action reachable on short landscape screens. */
+@media(max-width:700px){html.nav-enhanced .nav nav{max-height:calc(100vh - 78px);max-height:calc(100dvh - 78px);overflow-y:auto;overscroll-behavior:contain}}

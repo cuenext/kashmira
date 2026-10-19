@@ -48,6 +48,9 @@
   document.addEventListener('click', e => {
     if (mobile.matches && toggle?.getAttribute('aria-expanded') === 'true' && !e.target.closest('.site-header')) setMenu(false);
   });
+  document.addEventListener('focusin', e => {
+    if (mobile.matches && toggle?.getAttribute('aria-expanded') === 'true' && !e.target.closest('.site-header')) setMenu(false);
+  });
   mobile.addEventListener('change', () => setMenu(false));
   document.documentElement.classList.add('nav-enhanced');
   const header = document.querySelector('.site-header');
@@ -94,7 +97,7 @@
   const burst = document.querySelector('.smile-burst');
   let smileNumber = 0;
   smileButton?.addEventListener('click', () => {
-    const messages = ['A little smile, just for you.', 'One more smile for your day.', 'Big feelings. A little smile.'];
+    const messages = ['A smile for you!', 'Here comes another smile!', 'Smiles all round!'];
     smileStatus.textContent = messages[smileNumber++ % messages.length];
     smileButton.classList.add('is-hello');
     if (motionOff() || !burst || typeof burst.animate !== 'function') return;
@@ -128,7 +131,7 @@
   const buddyPicker = document.querySelector('.buddy-picker');
   const buddyImage = document.querySelector('#visit-buddy');
   const buddyStatus = document.querySelector('#buddy-status');
-  const buddies = { 'tooth-friend': 'Your tooth buddy is here to say hello.', rainbow: 'A rainbow buddy, ready for a colourful hello.', rocket: 'Your rocket buddy is ready for a little adventure.' };
+  const buddies = { 'tooth-friend': 'Tooth is your co-pilot. Ready for take-off!', rainbow: 'Rainbow is your co-pilot. Ready for take-off!', rocket: 'Rocket is your co-pilot. Ready for take-off!' };
   if (buddyPicker && buddyImage && buddyStatus) {
     buddyPicker.addEventListener('click', event => {
       const button = event.target.closest('[data-buddy]');
@@ -147,7 +150,7 @@
   if (launchButton && cruiser && launchStatus) {
     launchButton.hidden = false;
     launchButton.addEventListener('click', () => {
-      launchStatus.textContent = 'Rocket away! A little hello among the stars.';
+      launchStatus.textContent = 'Blast-off! Your rocket is on its way.';
       stopLaunch?.();
       if (motionOff() || typeof cruiser.animate !== 'function') return;
       const current = getComputedStyle(cruiser);
@@ -199,7 +202,7 @@
         star.setAttribute('aria-label', `Collect star ${Number(star.dataset.gameStar) + 1}`);
       });
       moveRocket(12, 84, false); score.textContent = '0 / 6'; boardScore.textContent = '0 / 6';
-      status.textContent = 'Mission started. Find six stars, in any order. Take your time.';
+      status.textContent = 'Mission started. Collect all six stars in any order. Take your time.';
       if (mobile.matches) board.scrollIntoView({ block: 'center', behavior: motionOff() ? 'instant' : 'smooth' });
       stars[0].focus({ preventScroll: true });
     }
@@ -216,7 +219,7 @@
         playing = false; board.classList.add('is-complete'); badge.hidden = false; reset.hidden = false;
         status.textContent = 'Mission complete! All six stars found. You’re a Little Explorer.';
         reset.focus({ preventScroll: true });
-      } else status.textContent = `Star ${index + 1} collected. ${collected.size} of six found. Choose another star.`;
+      } else status.textContent = `Star ${index + 1} collected. ${collected.size} of 6 stars collected. Choose another star.`;
     }
     stars.forEach((star, index) => star.addEventListener('click', () => collectStar(index)));
     board.addEventListener('keydown', event => {
@@ -277,6 +280,17 @@
   const caseTablist = document.querySelector('.case-tabs');
   let selectedCase = null;
   let caseEntryStop = null;
+  function revealSelectedCaseTab() {
+    if (!mobile.matches || !caseTablist) return;
+    const active = caseTabs.find(tab => tab.getAttribute('aria-selected') === 'true');
+    if (!active) return;
+    const strip = caseTablist.getBoundingClientRect();
+    const tab = active.getBoundingClientRect();
+    const left = strip.left + caseTablist.clientLeft;
+    const right = left + caseTablist.clientWidth;
+    // Use the tab's snap point so the browser keeps the selected label in view.
+    if (tab.left < left || tab.right > right) caseTablist.scrollLeft += tab.left - left;
+  }
   function selectCase(id, { focus = false, updateHash = false, animate = true } = {}) {
     const index = casePanels.findIndex(panel => panel.id === id);
     if (index < 0) return;
@@ -293,7 +307,8 @@
       caseEntryStop = stop; effects.add(stop); animation.finished.then(stop, stop);
     }
     selectedCase = id;
-    if (focus) { caseTabs[index].focus({ preventScroll: true }); if (mobile.matches) caseTabs[index].scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' }); }
+    if (focus) caseTabs[index].focus({ preventScroll: true });
+    revealSelectedCaseTab();
     if (updateHash) history.replaceState(null, '', `#${id}`);
   }
   if (caseTabs.length && caseTabs.length === casePanels.length) {
@@ -323,6 +338,8 @@
     const showHashCase = () => { if (casePanels.some(panel => `#${panel.id}` === location.hash)) selectCase(location.hash.slice(1), { animate: false }); };
     selectCase(casePanels[0].id, { animate: false }); showHashCase();
     window.addEventListener('hashchange', showHashCase);
+    window.addEventListener('resize', revealSelectedCaseTab, { passive: true });
+    document.fonts?.ready.then(revealSelectedCaseTab);
   }
   const viewer = document.querySelector('#case-viewer');
   if (viewer && typeof viewer.showModal === 'function') {
@@ -380,10 +397,10 @@
     const url = `https://wa.me/971505679198?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
     const status = form.querySelector('.form-status');
-    status.replaceChildren(document.createTextNode('Review and send your message in WhatsApp. If it didn’t open, '));
+    status.replaceChildren(document.createTextNode('Review your message in WhatsApp and send it when you’re ready. If WhatsApp didn’t open, '));
     const fallback = document.createElement('a');
     fallback.href = url; fallback.target = '_blank'; fallback.rel = 'noopener noreferrer';
-    fallback.textContent = 'continue here ↗'; status.append(fallback);
+    fallback.textContent = 'open your message here ↗'; status.append(fallback);
   });
   if (form) form.querySelector('button[type=submit]').disabled = false;
 })();

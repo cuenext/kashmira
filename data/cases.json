@@ -19,7 +19,7 @@
         "height": 859,
         "thumbWidth": 480,
         "thumbHeight": 356,
-        "alt": "Upper dental arch with a wire appliance visible along the palate."
+        "alt": "Upper teeth and palate, with a wire appliance visible."
       },
       {
         "src": "assets/cases/case-01/03-1440.webp",
@@ -91,7 +91,7 @@
   },
   {
     "id": "case-04",
-    "title": "Preformed band and loop space maintainer",
+    "title": "Preformed band-and-loop space maintainer",
     "images": [
       {
         "src": "assets/cases/case-04/01-1440.webp",
@@ -100,7 +100,7 @@
         "height": 1113,
         "thumbWidth": 480,
         "thumbHeight": 371,
-        "alt": "Lower dental arch view with a band and loop appliance visible."
+        "alt": "Lower teeth with a band-and-loop appliance visible."
       },
       {
         "src": "assets/cases/case-04/02-1440.webp",
@@ -109,7 +109,7 @@
         "height": 1034,
         "thumbWidth": 480,
         "thumbHeight": 352,
-        "alt": "Lower dental arch clinical view."
+        "alt": "Lower teeth viewed from above."
       },
       {
         "src": "assets/cases/case-04/03-1440.webp",
@@ -133,7 +133,7 @@
   },
   {
     "id": "case-05",
-    "title": "Custom-made band and loop retainers",
+    "title": "Custom-made band-and-loop retainers",
     "images": [
       {
         "src": "assets/cases/case-05/01-1440.webp",
@@ -142,7 +142,7 @@
         "height": 1080,
         "thumbWidth": 480,
         "thumbHeight": 360,
-        "alt": "Lower dental arch view with a metal loop appliance visible."
+        "alt": "Lower teeth with a metal loop appliance visible."
       },
       {
         "src": "assets/cases/case-05/02-1440.webp",
@@ -151,7 +151,7 @@
         "height": 1084,
         "thumbWidth": 480,
         "thumbHeight": 361,
-        "alt": "Lower dental arch clinical view."
+        "alt": "Lower teeth viewed from above."
       },
       {
         "src": "assets/cases/case-05/03-1440.webp",
@@ -169,7 +169,7 @@
         "height": 1171,
         "thumbWidth": 480,
         "thumbHeight": 390,
-        "alt": "Upper dental arch clinical view with metal dental restorations visible."
+        "alt": "Upper teeth and palate, with metal restorations visible."
       }
     ]
   }
