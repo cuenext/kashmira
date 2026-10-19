@@ -13,7 +13,7 @@ const base=process.env.SITE_URL||'http://127.0.0.1:4173/';
    await button.focus();await page.keyboard.press('Enter');
    assert.equal(await button.getAttribute('aria-pressed'),'true');
    assert.equal(await page.locator('[data-buddy][aria-pressed=true]').count(),1);
-   assert.match(await page.locator('#visit-buddy').getAttribute('src'),new RegExp(name+'\\.svg$'));
+   assert.match(new URL(await page.locator('#visit-buddy').getAttribute('src'),base).pathname,new RegExp(name+'\\.svg$'));
    assert.ok((await page.locator('#buddy-status').textContent()).length>15,'The selection has readable feedback');
   }
   await page.getByRole('button',{name:'Pause animations',exact:true}).click();
