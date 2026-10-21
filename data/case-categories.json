@@ -1,0 +1,46 @@
+[
+  {
+    "id": "restorations-crowns",
+    "label": "Restorations & crowns"
+  },
+  {
+    "id": "full-mouth-care",
+    "label": "Full-mouth care"
+  },
+  {
+    "id": "space-maintainers",
+    "label": "Space maintainers"
+  },
+  {
+    "id": "early-orthodontics",
+    "label": "Early orthodontics"
+  },
+  {
+    "id": "habit-appliances",
+    "label": "Habit appliances"
+  },
+  {
+    "id": "tooth-injury-repair",
+    "label": "Tooth injury repair"
+  },
+  {
+    "id": "replacement-teeth",
+    "label": "Replacing missing teeth"
+  },
+  {
+    "id": "root-pulp-care",
+    "label": "Root & supporting tissue care"
+  },
+  {
+    "id": "minor-laser-procedures",
+    "label": "Minor & laser procedures"
+  },
+  {
+    "id": "preventive-care",
+    "label": "Preventive care"
+  },
+  {
+    "id": "tooth-colour-care",
+    "label": "Tooth colour care"
+  }
+]

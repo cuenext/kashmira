@@ -1,0 +1,337 @@
+.page-cases .clinical-cases .section-head {
+  margin-bottom: 32px;
+}
+
+.page-cases .case-filters {
+  display: grid;
+  grid-template-columns: minmax(170px, .85fr) minmax(220px, 1.5fr) auto;
+  align-items: end;
+  gap: 16px;
+  padding: 22px;
+  margin-bottom: 14px;
+  border: 1px solid #b7cddd;
+  border-radius: 20px;
+  background: #f8fbff;
+}
+
+.page-cases .case-filters[hidden],
+.page-cases .case-tabs > a[hidden],
+.page-cases #case-no-results[hidden],
+.page-cases .case-panel[hidden] {
+  display: none;
+}
+
+.page-cases .case-filters label {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.page-cases .case-filters input,
+.page-cases .case-filters select {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 11px 13px;
+  border: 1px solid #8daac1;
+  border-radius: 10px;
+  color: var(--ink);
+  background: #fff;
+  font: 600 14px/1.5 var(--sans);
+}
+
+.page-cases #case-clear-filters {
+  min-height: 48px;
+  padding: 11px 20px;
+  border: 1px solid #a9bdd1;
+  border-radius: 50px;
+  background: #f7dce9;
+  color: var(--ink);
+  font: 750 13px/1.5 var(--sans);
+  cursor: pointer;
+}
+
+.page-cases #case-clear-filters:hover {
+  background: #efc8de;
+}
+
+.page-cases #case-results-status {
+  min-height: 24px;
+  margin: 0 0 22px;
+  font-size: 13px;
+  color: #405672;
+}
+
+.page-cases #case-no-results {
+  margin: 0 0 24px;
+  padding: 22px;
+  border: 1px solid #c4b9d2;
+  border-radius: 14px;
+  background: #f4eef9;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.page-cases .case-layout {
+  grid-template-columns: minmax(240px, .8fr) minmax(0, 1.7fr);
+  gap: 38px;
+}
+
+.page-cases .case-tabs {
+  max-height: 480px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #8baac5 #edf4fa;
+  overscroll-behavior: contain;
+  border: 1px solid #b7cddd;
+  border-radius: 16px;
+  padding: 7px;
+  background: #f8fbff;
+}
+
+.page-cases .cases-enhanced .case-tabs {
+  display: block;
+  scroll-snap-type: none;
+}
+
+.page-cases .case-tabs > a {
+  min-height: 64px;
+  padding: 14px 12px;
+  margin: 0 0 5px;
+  gap: 12px;
+  border: 0;
+  border-radius: 10px;
+  align-items: flex-start;
+  color: var(--ink);
+  transition: background .18s;
+}
+
+.page-cases .case-tabs > a:last-child {
+  margin-bottom: 0;
+}
+
+.page-cases .case-tabs > a:hover {
+  padding: 14px 12px;
+  background: #e1edf8;
+}
+
+.page-cases .case-tabs > a[aria-selected=true] {
+  padding: 14px 12px;
+  background: var(--ink);
+  color: #fff;
+}
+
+.page-cases .case-tabs > a[aria-selected=true] strong,
+.page-cases .case-tabs > a[aria-selected=true] .case-index,
+.page-cases .case-tabs > a[aria-selected=true] .case-tab-arrow {
+  color: #fff;
+}
+
+.page-cases .case-tabs strong {
+  font: 750 15px/1.45 var(--sans);
+  overflow-wrap: anywhere;
+}
+
+.page-cases .case-tabs small {
+  margin-top: 5px;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+.page-cases .case-index {
+  padding-top: 2px;
+  font: 800 12px/1.6 var(--sans);
+}
+
+.page-cases .case-tab-arrow {
+  font-size: 18px;
+}
+
+.page-cases .case-tabs > a:focus-visible {
+  outline: 3px solid #b44b82;
+  outline-offset: -3px;
+}
+
+.page-cases .case-panel h2 {
+  font-size: clamp(25px, 2.4vw, 34px);
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.page-cases .case-caption {
+  font-size: 11px;
+  letter-spacing: .04em;
+  line-height: 1.6;
+  flex-wrap: wrap;
+}
+
+.page-cases .case-panel > p:not(.case-view-hint) {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.page-cases .case-cover > img {
+  height: clamp(250px, 33vw, 460px);
+  object-fit: contain;
+}
+
+.page-cases .case-enlarge {
+  min-height: 44px;
+  font-size: 12px;
+}
+
+.page-cases .case-thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+  gap: 13px;
+  align-items: start;
+  padding: 3px;
+}
+
+.page-cases .case-thumbs > figure,
+.page-cases .case-photo-figure {
+  min-width: 0;
+  margin: 0;
+}
+
+.page-cases .case-thumb {
+  width: 100%;
+  min-height: 78px;
+  margin: 0;
+}
+
+.page-cases .case-thumb > img {
+  height: 86px;
+  object-fit: contain;
+}
+
+.page-cases .case-thumbs figcaption,
+.page-cases .case-photo-figure > figcaption {
+  margin-top: 7px;
+  color: #405672;
+  font-size: 11px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.page-cases .case-thumb-number {
+  min-width: 24px;
+  height: 24px;
+  font-size: 10px;
+}
+
+.page-cases .case-view-hint,
+.page-cases .case-note {
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.page-cases #case-viewer-caption {
+  margin: 12px 0 0;
+  color: #405672;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.page-cases .case-viewer button:disabled {
+  opacity: .45;
+  cursor: default;
+}
+
+.page-cases .case-viewer-bottom p {
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .page-cases .case-layout {
+    grid-template-columns: minmax(210px, .85fr) minmax(0, 1.3fr);
+    gap: 24px;
+  }
+
+  .page-cases .case-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .page-cases #case-clear-filters {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 700px) {
+  .page-cases .case-filters {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .page-cases #case-results-status {
+    margin-bottom: 17px;
+  }
+
+  .page-cases .case-layout {
+    display: block;
+  }
+
+  .page-cases .case-tabs,
+  .page-cases .cases-enhanced .case-tabs {
+    display: block;
+    max-height: 250px;
+    padding: 7px;
+    margin: 0 0 28px;
+  }
+
+  .page-cases .cases-enhanced .case-tabs > a,
+  .page-cases .cases-enhanced .case-tabs > a:first-child {
+    border: 0;
+    padding: 14px 12px;
+    border-radius: 10px;
+    gap: 12px;
+  }
+
+  .page-cases .case-tabs strong,
+  .page-cases .cases-enhanced .case-tabs strong {
+    font-size: 15px;
+  }
+
+  .page-cases .case-tabs small {
+    font-size: 11px;
+  }
+
+  .page-cases .case-panel h2 {
+    font-size: 26px;
+  }
+
+  .page-cases .case-cover > img {
+    height: clamp(230px, 68vw, 390px);
+  }
+
+  .page-cases .case-thumbs {
+    grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+    gap: 10px;
+  }
+
+  .page-cases .case-thumb > img {
+    height: 75px;
+  }
+
+  .page-cases .case-viewer h2 {
+    font-size: 22px;
+  }
+
+  .page-cases .case-viewer-stage {
+    height: 49dvh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-cases .case-tabs > a {
+    transition: none;
+  }
+}

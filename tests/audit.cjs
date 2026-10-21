@@ -29,6 +29,9 @@ async function currentLocations(page,context){
  const errors=[]; page.on('pageerror',e=>errors.push(e.message));
  const broken=[];page.on('response',r=>{if(r.url().startsWith(base)&&r.status()>=400)broken.push([r.status(),r.url()]);});
  const results=[];
+  // The catalog has many anchors pointing into the same HTML document and
+  // duplicate cover/thumbnail destinations. Validate each URL with one request.
+  const internalTargets=new Map();
  for(const file of ['index.html','about.html','contact.html','cases.html']){
   await page.goto(base+file);await page.evaluate(()=>document.fonts.ready);
   // Visit each rendered image so browser lazy loading has a real viewport trigger.
@@ -81,7 +84,9 @@ async function currentLocations(page,context){
   const links=await page.locator('a[href]').evaluateAll(links=>links.map(a=>a.getAttribute('href')));
   for(const link of links.filter(l=>!/^https?:|^mailto:|^tel:/.test(l))){
    const u=new URL(link,base+file);
-   const response=await context.request.get(u.href.split('#')[0]);
+   const target=u.href.split('#')[0];
+   if(!internalTargets.has(target))internalTargets.set(target,context.request.get(target));
+   const response=await internalTargets.get(target);
    assert.ok(response.ok(),file+' broken internal target '+link);
    if(u.hash){const text=await response.text();assert.ok(text.includes('id="'+u.hash.slice(1)+'"'),file+' missing fragment '+link)}
   }

@@ -123,3 +123,8 @@ The full logo crop is (80, 123, 2125, 624), producing 2045 x 501 transparent pix
 | assets/brand/kashmira-tooth-white.png | 540 x 501 | 106,459 | c28ce7d3c5298afd1e5d935ef7aaa11c4d2d2f895d4ba43eba1101ac3a619487 |
 
 Home, About, Cases and Contact use the supplied wordmark in both header and footer. The error page also carries it. Every page uses the tooth favicon (ICO with 16/32/48 sizes and 32px PNG) and 180px Apple touch icon. The earlier kp monogram remains archived in assets/mark.svg but is no longer referenced by active pages. The site’s space mascots remain decorative illustrations, distinct from the doctor’s supplied identity.
+
+
+## Canva clinical portfolio derivatives · 21 October 2026
+
+The user explicitly requested direct native publication of the cases in the doctor’s supplied portfolio. All 107 pages were visually reviewed before curation. The 505 new clinical images have full and thumbnail derivatives in `assets/cases/portfolio/` (1,010 WebP files, 16,853,746 bytes). These retain the visible author frame, orientation and aspect ratio; 12 reviewed mouth-only crops limit wider facial views. One nonclinical portrait and one Canva placeholder were excluded; two exact repeats within continuation presentations were retained once. No generated imagery or image retouching was used. All files were reopened and decoded, never enlarged, and checked for absent EXIF/XMP/ICC metadata. See [portfolio-assets.json](portfolio-assets.json) for every source-page decision, image dimensions, byte counts and SHA-256 checksum, and [portfolio-review.md](portfolio-review.md) for processing and source limits. The five existing galleries and their 16 original WebP pairs are unchanged. Private source originals and signed URLs are kept outside the repository.

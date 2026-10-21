@@ -1,0 +1,1448 @@
+{
+  "sourcePageCount": 107,
+  "source": "Independent reviewed visual curation fixture. Derived from the three completed visual review manifests and approved boundaries; never generated from production data/cases.json.",
+  "cases": [
+    {
+      "id": "case-01",
+      "imageCount": 4,
+      "sourcePages": [],
+      "category": "space-maintainers"
+    },
+    {
+      "id": "case-02",
+      "imageCount": 2,
+      "sourcePages": [],
+      "category": "space-maintainers"
+    },
+    {
+      "id": "case-03",
+      "imageCount": 2,
+      "sourcePages": [],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "case-04",
+      "imageCount": 4,
+      "sourcePages": [],
+      "category": "space-maintainers"
+    },
+    {
+      "id": "case-05",
+      "imageCount": 4,
+      "sourcePages": [],
+      "category": "space-maintainers"
+    },
+    {
+      "id": "portfolio-001",
+      "imageCount": 2,
+      "sourcePages": [
+        6
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-002",
+      "imageCount": 2,
+      "sourcePages": [
+        6
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-003",
+      "imageCount": 2,
+      "sourcePages": [
+        7
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-004",
+      "imageCount": 2,
+      "sourcePages": [
+        7
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-005",
+      "imageCount": 6,
+      "sourcePages": [
+        8
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-006",
+      "imageCount": 9,
+      "sourcePages": [
+        9
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-007",
+      "imageCount": 6,
+      "sourcePages": [
+        10
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-008",
+      "imageCount": 8,
+      "sourcePages": [
+        11
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-009",
+      "imageCount": 4,
+      "sourcePages": [
+        12
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-010",
+      "imageCount": 4,
+      "sourcePages": [
+        13
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-011",
+      "imageCount": 4,
+      "sourcePages": [
+        15
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-012",
+      "imageCount": 6,
+      "sourcePages": [
+        16
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-013",
+      "imageCount": 6,
+      "sourcePages": [
+        17
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-014",
+      "imageCount": 6,
+      "sourcePages": [
+        18
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-015",
+      "imageCount": 6,
+      "sourcePages": [
+        19
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-016",
+      "imageCount": 4,
+      "sourcePages": [
+        20
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-017",
+      "imageCount": 3,
+      "sourcePages": [
+        21
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-018",
+      "imageCount": 10,
+      "sourcePages": [
+        23,
+        24
+      ],
+      "category": "full-mouth-care"
+    },
+    {
+      "id": "portfolio-019",
+      "imageCount": 6,
+      "sourcePages": [
+        26
+      ],
+      "category": "space-maintainers"
+    },
+    {
+      "id": "portfolio-020",
+      "imageCount": 4,
+      "sourcePages": [
+        27
+      ],
+      "category": "space-maintainers"
+    },
+    {
+      "id": "portfolio-021",
+      "imageCount": 6,
+      "sourcePages": [
+        28
+      ],
+      "category": "space-maintainers"
+    },
+    {
+      "id": "portfolio-022",
+      "imageCount": 2,
+      "sourcePages": [
+        29
+      ],
+      "category": "space-maintainers"
+    },
+    {
+      "id": "portfolio-023",
+      "imageCount": 2,
+      "sourcePages": [
+        29
+      ],
+      "category": "space-maintainers"
+    },
+    {
+      "id": "portfolio-024",
+      "imageCount": 2,
+      "sourcePages": [
+        29
+      ],
+      "category": "space-maintainers"
+    },
+    {
+      "id": "portfolio-025",
+      "imageCount": 6,
+      "sourcePages": [
+        30
+      ],
+      "category": "space-maintainers"
+    },
+    {
+      "id": "portfolio-026",
+      "imageCount": 10,
+      "sourcePages": [
+        31
+      ],
+      "category": "space-maintainers"
+    },
+    {
+      "id": "portfolio-027",
+      "imageCount": 13,
+      "sourcePages": [
+        33,
+        34,
+        35
+      ],
+      "category": "early-orthodontics"
+    },
+    {
+      "id": "portfolio-028",
+      "imageCount": 14,
+      "sourcePages": [
+        36,
+        37,
+        38
+      ],
+      "category": "early-orthodontics"
+    },
+    {
+      "id": "portfolio-029",
+      "imageCount": 3,
+      "sourcePages": [
+        39
+      ],
+      "category": "early-orthodontics"
+    },
+    {
+      "id": "portfolio-030",
+      "imageCount": 3,
+      "sourcePages": [
+        40
+      ],
+      "category": "early-orthodontics"
+    },
+    {
+      "id": "portfolio-031",
+      "imageCount": 3,
+      "sourcePages": [
+        41
+      ],
+      "category": "early-orthodontics"
+    },
+    {
+      "id": "portfolio-032",
+      "imageCount": 9,
+      "sourcePages": [
+        43
+      ],
+      "category": "habit-appliances"
+    },
+    {
+      "id": "portfolio-033",
+      "imageCount": 6,
+      "sourcePages": [
+        44
+      ],
+      "category": "habit-appliances"
+    },
+    {
+      "id": "portfolio-034",
+      "imageCount": 3,
+      "sourcePages": [
+        45
+      ],
+      "category": "habit-appliances"
+    },
+    {
+      "id": "portfolio-035",
+      "imageCount": 7,
+      "sourcePages": [
+        46
+      ],
+      "category": "habit-appliances"
+    },
+    {
+      "id": "portfolio-036",
+      "imageCount": 6,
+      "sourcePages": [
+        47
+      ],
+      "category": "habit-appliances"
+    },
+    {
+      "id": "portfolio-037",
+      "imageCount": 12,
+      "sourcePages": [
+        49,
+        50
+      ],
+      "category": "tooth-injury-repair"
+    },
+    {
+      "id": "portfolio-038",
+      "imageCount": 12,
+      "sourcePages": [
+        51,
+        52
+      ],
+      "category": "tooth-injury-repair"
+    },
+    {
+      "id": "portfolio-039",
+      "imageCount": 10,
+      "sourcePages": [
+        54,
+        55
+      ],
+      "category": "replacement-teeth"
+    },
+    {
+      "id": "portfolio-040",
+      "imageCount": 4,
+      "sourcePages": [
+        56
+      ],
+      "category": "replacement-teeth"
+    },
+    {
+      "id": "portfolio-041",
+      "imageCount": 5,
+      "sourcePages": [
+        57
+      ],
+      "category": "replacement-teeth"
+    },
+    {
+      "id": "portfolio-042",
+      "imageCount": 12,
+      "sourcePages": [
+        58,
+        59
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-043",
+      "imageCount": 18,
+      "sourcePages": [
+        60,
+        61
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-044",
+      "imageCount": 4,
+      "sourcePages": [
+        62
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-045",
+      "imageCount": 5,
+      "sourcePages": [
+        63
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-046",
+      "imageCount": 6,
+      "sourcePages": [
+        64
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-047",
+      "imageCount": 4,
+      "sourcePages": [
+        65
+      ],
+      "category": "restorations-crowns"
+    },
+    {
+      "id": "portfolio-048",
+      "imageCount": 22,
+      "sourcePages": [
+        67,
+        68
+      ],
+      "category": "root-pulp-care"
+    },
+    {
+      "id": "portfolio-049",
+      "imageCount": 10,
+      "sourcePages": [
+        69
+      ],
+      "category": "root-pulp-care"
+    },
+    {
+      "id": "portfolio-050",
+      "imageCount": 14,
+      "sourcePages": [
+        70,
+        71
+      ],
+      "category": "root-pulp-care"
+    },
+    {
+      "id": "portfolio-051",
+      "imageCount": 5,
+      "sourcePages": [
+        72
+      ],
+      "category": "root-pulp-care"
+    },
+    {
+      "id": "portfolio-052",
+      "imageCount": 4,
+      "sourcePages": [
+        73
+      ],
+      "category": "root-pulp-care"
+    },
+    {
+      "id": "portfolio-053",
+      "imageCount": 5,
+      "sourcePages": [
+        74
+      ],
+      "category": "root-pulp-care"
+    },
+    {
+      "id": "portfolio-054",
+      "imageCount": 5,
+      "sourcePages": [
+        75
+      ],
+      "category": "root-pulp-care"
+    },
+    {
+      "id": "portfolio-055",
+      "imageCount": 4,
+      "sourcePages": [
+        77
+      ],
+      "category": "minor-laser-procedures"
+    },
+    {
+      "id": "portfolio-056",
+      "imageCount": 4,
+      "sourcePages": [
+        78
+      ],
+      "category": "minor-laser-procedures"
+    },
+    {
+      "id": "portfolio-057",
+      "imageCount": 3,
+      "sourcePages": [
+        79
+      ],
+      "category": "minor-laser-procedures"
+    },
+    {
+      "id": "portfolio-058",
+      "imageCount": 3,
+      "sourcePages": [
+        79
+      ],
+      "category": "minor-laser-procedures"
+    },
+    {
+      "id": "portfolio-059",
+      "imageCount": 6,
+      "sourcePages": [
+        80
+      ],
+      "category": "minor-laser-procedures"
+    },
+    {
+      "id": "portfolio-060",
+      "imageCount": 8,
+      "sourcePages": [
+        81
+      ],
+      "category": "minor-laser-procedures"
+    },
+    {
+      "id": "portfolio-061",
+      "imageCount": 7,
+      "sourcePages": [
+        82
+      ],
+      "category": "minor-laser-procedures"
+    },
+    {
+      "id": "portfolio-062",
+      "imageCount": 4,
+      "sourcePages": [
+        83
+      ],
+      "category": "minor-laser-procedures"
+    },
+    {
+      "id": "portfolio-063",
+      "imageCount": 3,
+      "sourcePages": [
+        84
+      ],
+      "category": "minor-laser-procedures"
+    },
+    {
+      "id": "portfolio-064",
+      "imageCount": 25,
+      "sourcePages": [
+        85,
+        86,
+        87,
+        88
+      ],
+      "category": "minor-laser-procedures"
+    },
+    {
+      "id": "portfolio-065",
+      "imageCount": 5,
+      "sourcePages": [
+        90
+      ],
+      "category": "minor-laser-procedures"
+    },
+    {
+      "id": "portfolio-066",
+      "imageCount": 11,
+      "sourcePages": [
+        91
+      ],
+      "category": "minor-laser-procedures"
+    },
+    {
+      "id": "portfolio-067",
+      "imageCount": 8,
+      "sourcePages": [
+        92
+      ],
+      "category": "minor-laser-procedures"
+    },
+    {
+      "id": "portfolio-068",
+      "imageCount": 5,
+      "sourcePages": [
+        93
+      ],
+      "category": "minor-laser-procedures"
+    },
+    {
+      "id": "portfolio-069",
+      "imageCount": 13,
+      "sourcePages": [
+        94
+      ],
+      "category": "minor-laser-procedures"
+    },
+    {
+      "id": "portfolio-070",
+      "imageCount": 5,
+      "sourcePages": [
+        96
+      ],
+      "category": "preventive-care"
+    },
+    {
+      "id": "portfolio-071",
+      "imageCount": 2,
+      "sourcePages": [
+        97
+      ],
+      "category": "preventive-care"
+    },
+    {
+      "id": "portfolio-072",
+      "imageCount": 3,
+      "sourcePages": [
+        97
+      ],
+      "category": "preventive-care"
+    },
+    {
+      "id": "portfolio-073",
+      "imageCount": 3,
+      "sourcePages": [
+        98
+      ],
+      "category": "preventive-care"
+    },
+    {
+      "id": "portfolio-074",
+      "imageCount": 6,
+      "sourcePages": [
+        99
+      ],
+      "category": "preventive-care"
+    },
+    {
+      "id": "portfolio-075",
+      "imageCount": 3,
+      "sourcePages": [
+        101
+      ],
+      "category": "root-pulp-care"
+    },
+    {
+      "id": "portfolio-076",
+      "imageCount": 3,
+      "sourcePages": [
+        101
+      ],
+      "category": "root-pulp-care"
+    },
+    {
+      "id": "portfolio-077",
+      "imageCount": 2,
+      "sourcePages": [
+        102
+      ],
+      "category": "root-pulp-care"
+    },
+    {
+      "id": "portfolio-078",
+      "imageCount": 2,
+      "sourcePages": [
+        102
+      ],
+      "category": "root-pulp-care"
+    },
+    {
+      "id": "portfolio-079",
+      "imageCount": 4,
+      "sourcePages": [
+        104
+      ],
+      "category": "tooth-colour-care"
+    },
+    {
+      "id": "portfolio-080",
+      "imageCount": 4,
+      "sourcePages": [
+        105
+      ],
+      "category": "tooth-colour-care"
+    },
+    {
+      "id": "portfolio-081",
+      "imageCount": 2,
+      "sourcePages": [
+        106
+      ],
+      "category": "tooth-colour-care"
+    },
+    {
+      "id": "portfolio-082",
+      "imageCount": 5,
+      "sourcePages": [
+        107
+      ],
+      "category": "tooth-colour-care"
+    }
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Portfolio cover; no case images."
+    },
+    {
+      "page": 2,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Clinician biography and portrait; not a patient case."
+    },
+    {
+      "page": 3,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Contents page."
+    },
+    {
+      "page": 4,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Contents page."
+    },
+    {
+      "page": 5,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Section divider: Anterior Aesthetic Restoration."
+    },
+    {
+      "page": 6,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-001",
+        "portfolio-002"
+      ]
+    },
+    {
+      "page": 7,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-003",
+        "portfolio-004"
+      ]
+    },
+    {
+      "page": 8,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-005"
+      ]
+    },
+    {
+      "page": 9,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-006"
+      ]
+    },
+    {
+      "page": 10,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-007"
+      ]
+    },
+    {
+      "page": 11,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-008"
+      ]
+    },
+    {
+      "page": 12,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-009"
+      ]
+    },
+    {
+      "page": 13,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-010"
+      ]
+    },
+    {
+      "page": 14,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Section divider: Semi Permanent Restorations."
+    },
+    {
+      "page": 15,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-011"
+      ]
+    },
+    {
+      "page": 16,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-012"
+      ]
+    },
+    {
+      "page": 17,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-013"
+      ]
+    },
+    {
+      "page": 18,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-014"
+      ]
+    },
+    {
+      "page": 19,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-015"
+      ]
+    },
+    {
+      "page": 20,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-016"
+      ]
+    },
+    {
+      "page": 21,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-017"
+      ]
+    },
+    {
+      "page": 22,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Section divider: Complete Oral Rehabilitation."
+    },
+    {
+      "page": 23,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-018"
+      ]
+    },
+    {
+      "page": 24,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-018"
+      ]
+    },
+    {
+      "page": 25,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Section divider: Space Management."
+    },
+    {
+      "page": 26,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-019"
+      ]
+    },
+    {
+      "page": 27,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-020"
+      ]
+    },
+    {
+      "page": 28,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-021"
+      ]
+    },
+    {
+      "page": 29,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-022",
+        "portfolio-023",
+        "portfolio-024"
+      ]
+    },
+    {
+      "page": 30,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-025"
+      ]
+    },
+    {
+      "page": 31,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-026"
+      ]
+    },
+    {
+      "page": 32,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Section divider: Interceptive Orthodontics."
+    },
+    {
+      "page": 33,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-027"
+      ]
+    },
+    {
+      "page": 34,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-027"
+      ]
+    },
+    {
+      "page": 35,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-027"
+      ]
+    },
+    {
+      "page": 36,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-028"
+      ]
+    },
+    {
+      "page": 37,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-028"
+      ]
+    },
+    {
+      "page": 38,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-028"
+      ]
+    },
+    {
+      "page": 39,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-029"
+      ]
+    },
+    {
+      "page": 40,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-030"
+      ]
+    },
+    {
+      "page": 41,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-031"
+      ]
+    },
+    {
+      "page": 42,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Section divider: Habit Breaking Appliance."
+    },
+    {
+      "page": 43,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-032"
+      ]
+    },
+    {
+      "page": 44,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-033"
+      ]
+    },
+    {
+      "page": 45,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-034"
+      ]
+    },
+    {
+      "page": 46,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-035"
+      ]
+    },
+    {
+      "page": 47,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-036"
+      ]
+    },
+    {
+      "page": 48,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Section divider: Fragment Reattachment."
+    },
+    {
+      "page": 49,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-037"
+      ]
+    },
+    {
+      "page": 50,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-037"
+      ]
+    },
+    {
+      "page": 51,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-038"
+      ]
+    },
+    {
+      "page": 52,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-038"
+      ]
+    },
+    {
+      "page": 53,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Section divider: Pediatric Prosthodontics."
+    },
+    {
+      "page": 54,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-039"
+      ]
+    },
+    {
+      "page": 55,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-039"
+      ]
+    },
+    {
+      "page": 56,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-040"
+      ]
+    },
+    {
+      "page": 57,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-041"
+      ]
+    },
+    {
+      "page": 58,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-042"
+      ]
+    },
+    {
+      "page": 59,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-042"
+      ]
+    },
+    {
+      "page": 60,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-043"
+      ]
+    },
+    {
+      "page": 61,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-043"
+      ]
+    },
+    {
+      "page": 62,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-044"
+      ]
+    },
+    {
+      "page": 63,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-045"
+      ]
+    },
+    {
+      "page": 64,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-046"
+      ]
+    },
+    {
+      "page": 65,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-047"
+      ]
+    },
+    {
+      "page": 66,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Section divider: Regenerative Endodontics."
+    },
+    {
+      "page": 67,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-048"
+      ]
+    },
+    {
+      "page": 68,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-048"
+      ]
+    },
+    {
+      "page": 69,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-049"
+      ]
+    },
+    {
+      "page": 70,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-050"
+      ]
+    },
+    {
+      "page": 71,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-050"
+      ]
+    },
+    {
+      "page": 72,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-051"
+      ]
+    },
+    {
+      "page": 73,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-052"
+      ]
+    },
+    {
+      "page": 74,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-053"
+      ]
+    },
+    {
+      "page": 75,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-054"
+      ]
+    },
+    {
+      "page": 76,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Section divider: Minor Surgical Procedure."
+    },
+    {
+      "page": 77,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-055"
+      ]
+    },
+    {
+      "page": 78,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-056"
+      ]
+    },
+    {
+      "page": 79,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-057",
+        "portfolio-058"
+      ]
+    },
+    {
+      "page": 80,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-059"
+      ]
+    },
+    {
+      "page": 81,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-060"
+      ]
+    },
+    {
+      "page": 82,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-061"
+      ]
+    },
+    {
+      "page": 83,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-062"
+      ]
+    },
+    {
+      "page": 84,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-063"
+      ]
+    },
+    {
+      "page": 85,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-064"
+      ]
+    },
+    {
+      "page": 86,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-064"
+      ]
+    },
+    {
+      "page": 87,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-064"
+      ]
+    },
+    {
+      "page": 88,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-064"
+      ]
+    },
+    {
+      "page": 89,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Section divider: Laser Surgical Procedures."
+    },
+    {
+      "page": 90,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-065"
+      ]
+    },
+    {
+      "page": 91,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-066"
+      ]
+    },
+    {
+      "page": 92,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-067"
+      ]
+    },
+    {
+      "page": 93,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-068"
+      ]
+    },
+    {
+      "page": 94,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-069"
+      ]
+    },
+    {
+      "page": 95,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Section divider: Pediatric Preventive Dentistry."
+    },
+    {
+      "page": 96,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-070"
+      ]
+    },
+    {
+      "page": 97,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-071",
+        "portfolio-072"
+      ]
+    },
+    {
+      "page": 98,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-073"
+      ]
+    },
+    {
+      "page": 99,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-074"
+      ]
+    },
+    {
+      "page": 100,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Section divider: Pulp Therapy."
+    },
+    {
+      "page": 101,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-075",
+        "portfolio-076"
+      ]
+    },
+    {
+      "page": 102,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-077",
+        "portfolio-078"
+      ]
+    },
+    {
+      "page": 103,
+      "disposition": "excluded",
+      "caseIds": [],
+      "reason": "Section divider: Teeth Albification."
+    },
+    {
+      "page": 104,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-079"
+      ]
+    },
+    {
+      "page": 105,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-080"
+      ]
+    },
+    {
+      "page": 106,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-081"
+      ]
+    },
+    {
+      "page": 107,
+      "disposition": "included",
+      "caseIds": [
+        "portfolio-082"
+      ]
+    }
+  ]
+}
