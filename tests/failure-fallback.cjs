@@ -21,8 +21,14 @@ const practices=[
    assert.equal(await page.locator('#site-nav a[href="cases.html"]').count(),1,'Navigation still links to the dedicated cases page');
   }
   assert.deepEqual(await page.locator('[data-case-panel]:visible').evaluateAll(items=>items.map(item=>item.id)),review.cases.map(item=>item.id),'Every independently reviewed gallery remains available if enhancement fails');
+  assert.deepEqual(await page.locator('.case-grid [data-case-tab]:visible').evaluateAll(items=>items.map(item=>item.getAttribute('href').slice(1))),review.cases.map(item=>item.id),'Every photo preview remains a usable native link if enhancement fails');
+  assert.equal(await page.locator('.case-grid [data-case-tab] img').count(),87,'All reviewed photo previews survive an interrupted script');
   assert.equal(await page.locator('.case-thumb[href]').count(),review.cases.reduce((total,item)=>total+item.imageCount,0),'Every reviewed image retains its direct link');
   assert.equal(await page.locator('.case-filters').isVisible(),false,'An interrupted script cannot expose inoperative search controls');
+  assert.equal(await page.locator('#case-load-more').isVisible(),false,'An interrupted script cannot expose inoperative pagination');
+  assert.equal(await page.locator('#case-detail').isVisible(),false,'An interrupted script leaves native case articles accessible');
+  await page.locator('[data-case-tab][href="#'+review.cases.at(-1).id+'"]').click();
+  assert.equal(new URL(page.url()).hash,'#'+review.cases.at(-1).id,'A photo preview still reaches its native case article');
   for(const [id,count] of [['case-01',4],['case-02',2],['case-03',2],['case-04',4],['case-05',4]])assert.equal(await page.locator('#'+id+' .case-thumb[href]').count(),count,'Original gallery '+id+' survives script failure');
   await page.goto(base+'contact.html');
   assert.equal(await page.locator('#booking-form button').isDisabled(),true,'Failed script cannot submit a personal-data GET');

@@ -275,108 +275,253 @@
   heroArt?.addEventListener('pointerleave', () => heroArt.style.setProperty('--portrait-tilt', '0deg'));
   // Real photo links and all case articles remain available without enhancement.
   const caseSection = document.querySelector('#cases');
-  const caseTabs = [...document.querySelectorAll('[data-case-tab]')];
+  const caseCards = [...document.querySelectorAll('[data-case-tab]')];
   const casePanels = [...document.querySelectorAll('[data-case-panel]')];
-  const caseTablist = document.querySelector('.case-tabs');
+  const caseGrid = document.querySelector('.case-grid');
   const caseFilters = caseSection?.querySelector('.case-filters');
   const caseCategory = document.querySelector('#case-category');
+  const caseCategoryChips = caseSection?.querySelector('.case-category-chips');
   const caseSearch = document.querySelector('#case-search');
   const caseClear = document.querySelector('#case-clear-filters');
   const caseResults = document.querySelector('#case-results-status');
   const caseEmpty = document.querySelector('#case-no-results');
+  const caseLoadMore = document.querySelector('#case-load-more');
+  const caseDetail = document.querySelector('#case-detail');
+  const viewer = document.querySelector('#case-viewer');
   let selectedCase = null;
   let caseEntryStop = null;
-  function revealSelectedCaseTab() {
-    if (!caseTablist) return;
-    const active = caseTabs.find(tab => !tab.hidden && tab.getAttribute('aria-selected') === 'true');
-    if (!active) return;
-    const strip = caseTablist.getBoundingClientRect();
-    const tab = active.getBoundingClientRect();
-    const top = strip.top + caseTablist.clientTop;
-    const bottom = top + caseTablist.clientHeight;
-    // Scroll the result list without moving the page or the focused filter.
-    if (tab.top < top) caseTablist.scrollTop += tab.top - top;
-    else if (tab.bottom > bottom) caseTablist.scrollTop += tab.bottom - bottom;
-  }
-  function selectCase(id, { focus = false, updateHash = false, animate = true } = {}) {
-    const index = casePanels.findIndex(panel => panel.id === id);
-    if (id !== null && index < 0) return;
-    caseEntryStop?.();
-    caseTabs.forEach((tab, i) => {
-      tab.setAttribute('aria-selected', String(i === index));
-      tab.tabIndex = i === index ? 0 : -1;
-      casePanels[i].hidden = i !== index;
-    });
-    const panel = casePanels[index];
-    if (panel && animate && selectedCase !== id && !motionOff() && typeof panel.animate === 'function') {
-      const animation = panel.animate([{ opacity: .35, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 260, easing: 'cubic-bezier(.2,.7,.2,1)' });
-      const stop = () => { animation.cancel(); effects.delete(stop); if (caseEntryStop === stop) caseEntryStop = null; };
-      caseEntryStop = stop; effects.add(stop); animation.finished.then(stop, stop);
-    }
-    selectedCase = id;
-    if (focus && index >= 0) caseTabs[index].focus({ preventScroll: true });
-    revealSelectedCaseTab();
-    if (updateHash && id) history.replaceState(null, '', `#${id}`);
-  }
-  if (caseTabs.length && caseTabs.length === casePanels.length && caseTablist && caseFilters && caseCategory && caseSearch && caseClear && caseResults && caseEmpty) {
+  if (caseCards.length && caseCards.length === casePanels.length && caseGrid && caseFilters && caseCategory && caseSearch && caseClear && caseResults && caseEmpty && caseLoadMore && caseDetail && typeof caseDetail.showModal === 'function') {
+    const pageSize = 12;
+    const caseDetailContent = caseDetail.querySelector('#case-detail-content');
+    const caseDetailTitle = caseDetail.querySelector('#case-detail-title');
+    const caseDetailCategory = caseDetail.querySelector('#case-detail-category');
+    const previousCase = caseDetail.querySelector('[data-case-detail-prev]');
+    const nextCase = caseDetail.querySelector('[data-case-detail-next]');
+    const caseChips = [...(caseCategoryChips?.querySelectorAll('[data-case-category]') || [])];
+    const caseById = new Map(casePanels.map((panel, index) => [panel.id, { panel, card: caseCards[index] }]));
+    const panelMarkers = new Map();
+    const coverSources = new Map();
+    const cardEffects = new Set();
+    let matchingCards = [];
+    let visibleLimit = pageSize;
+    let hasRenderedCards = false;
+    let detailScroll = null;
+    let coverRequest = 0;
+    let detailFocusFrame = null;
     const normalizeCaseSearch = value => String(value).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/&/g, ' and ').replace(/\bprevention\b/g, 'preventive').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
-    const searchText = caseTabs.map(tab => normalizeCaseSearch(tab.dataset.search || tab.textContent));
-    function filterCases({ preferredId = selectedCase, updateHash = true, animate = true } = {}) {
+    const searchText = new Map(caseCards.map(card => [card, normalizeCaseSearch(card.dataset.search || card.textContent)]));
+    function animateCaseEntry(element, { delay = 0, cards = false } = {}) {
+      if (motionOff() || document.hidden || typeof element.animate !== 'function') return null;
+      const animation = element.animate([
+        { opacity: .35, transform: 'translateY(12px)' },
+        { opacity: 1, transform: 'translateY(0)' }
+      ], { duration: 310, delay, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' });
+      const stop = () => {
+        animation.cancel(); effects.delete(stop); cardEffects.delete(stop);
+        if (caseEntryStop === stop) caseEntryStop = null;
+      };
+      effects.add(stop);
+      if (cards) cardEffects.add(stop);
+      animation.finished.then(stop, stop);
+      return stop;
+    }
+    function renderCaseCards({ animate = true } = {}) {
+      const previouslyVisible = new Set(hasRenderedCards ? caseCards.filter(card => !card.hidden) : []);
+      hasRenderedCards = true;
+      [...cardEffects].forEach(stop => stop());
+      const visibleCards = new Set(matchingCards.slice(0, visibleLimit));
+      caseCards.forEach(card => {
+        card.hidden = !visibleCards.has(card);
+        card.classList.toggle('is-current', card.getAttribute('href') === `#${selectedCase}`);
+      });
+      caseChips.forEach(chip => chip.setAttribute('aria-pressed', String(chip.dataset.caseCategory === caseCategory.value)));
+      caseEmpty.hidden = matchingCards.length > 0;
+      caseResults.textContent = `Showing ${visibleCards.size} of ${matchingCards.length} cases`;
+      caseLoadMore.hidden = visibleCards.size >= matchingCards.length;
+      if (animate) matchingCards.filter(card => visibleCards.has(card) && !previouslyVisible.has(card)).slice(0, pageSize).forEach((card, index) => animateCaseEntry(card, { delay: index * 24, cards: true }));
+    }
+    function revealCaseCard(card) {
+      const position = matchingCards.indexOf(card);
+      if (position >= visibleLimit) {
+        visibleLimit = Math.ceil((position + 1) / pageSize) * pageSize;
+        renderCaseCards({ animate: false });
+      }
+    }
+    function restoreCasePanel(id) {
+      const entry = caseById.get(id);
+      if (!entry) return;
+      ++coverRequest;
+      entry.panel.hidden = true;
+      panelMarkers.get(entry.panel).after(entry.panel);
+      const coverImage = entry.panel.querySelector('.case-cover img');
+      if (coverImage && coverSources.has(coverImage)) coverImage.setAttribute('src', coverSources.get(coverImage));
+    }
+    function finishCaseClose({ updateHash = true, returnFocus = true, preserveScroll = true } = {}) {
+      if (!selectedCase) return;
+      const closingId = selectedCase;
+      const card = caseById.get(closingId)?.card;
+      caseEntryStop?.();
+      if (viewer?.open) viewer.close();
+      restoreCasePanel(closingId);
+      selectedCase = null;
+      caseCards.forEach(item => item.classList.remove('is-current'));
+      document.body.classList.remove('case-detail-open');
+      if (updateHash && caseById.has(location.hash.slice(1))) history.replaceState(history.state, '', `${location.pathname}${location.search}`);
+      if (returnFocus && card && !card.hidden) card.focus({ preventScroll: true });
+      if (preserveScroll && detailScroll) window.scrollTo({ left: detailScroll.x, top: detailScroll.y, behavior: 'instant' });
+      if (preserveScroll && returnFocus && card && !card.hidden) {
+        const top = Math.max(0, header?.getBoundingClientRect().bottom || 0);
+        const booking = document.querySelector('.mobile-book');
+        const bottom = booking?.getClientRects().length ? Math.min(innerHeight, booking.getBoundingClientRect().top) : innerHeight;
+        const bounds = card.getBoundingClientRect();
+        if (bounds.top < top || bounds.bottom > bottom) {
+          card.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+        }
+      }
+      detailScroll = null;
+    }
+    function closeCaseDetail(options = {}) {
+      if (viewer?.open) viewer.close();
+      if (caseDetail.open) caseDetail.close();
+      finishCaseClose(options);
+    }
+    function keepCaseDetailFocus() {
+      if (!caseDetail.contains(document.activeElement)) caseDetail.querySelector('[data-case-detail-close]').focus({ preventScroll: true });
+    }
+    function scheduleCaseDetailFocus() {
+      if (detailFocusFrame !== null) return;
+      detailFocusFrame = requestAnimationFrame(() => {
+        detailFocusFrame = null;
+        if (caseDetail.open && !viewer?.open && document.hasFocus()) keepCaseDetailFocus();
+      });
+    }
+    function loadCaseCover(entry) {
+      const cover = entry.panel.querySelector('.case-cover');
+      const coverImage = cover?.querySelector('img');
+      if (!coverImage) return;
+      if (!coverSources.has(coverImage)) coverSources.set(coverImage, coverImage.getAttribute('src'));
+      const request = ++coverRequest;
+      const fullImage = new Image();
+      fullImage.decoding = 'async';
+      const showFullCover = () => {
+        if (request === coverRequest && selectedCase === entry.panel.id && caseDetail.open) coverImage.src = fullImage.src;
+      };
+      if (typeof fullImage.decode !== 'function') fullImage.onload = showFullCover;
+      fullImage.src = cover.href;
+      if (typeof fullImage.decode === 'function') fullImage.decode().then(showFullCover, () => {});
+    }
+    function openCaseDetail(id, { historyMode = 'none', animate = true } = {}) {
+      const entry = caseById.get(id);
+      if (!entry || !matchingCards.includes(entry.card)) return;
+      revealCaseCard(entry.card);
+      if (selectedCase === id && caseDetail.open) { keepCaseDetailFocus(); return; }
+      if (viewer?.open) viewer.close();
+      caseEntryStop?.();
+      if (selectedCase) restoreCasePanel(selectedCase);
+      if (!caseDetail.open) detailScroll = { x: scrollX, y: scrollY };
+      selectedCase = id;
+      caseDetailTitle.textContent = entry.panel.querySelector('h2').textContent;
+      caseDetailCategory.textContent = entry.card.dataset.categoryLabel || '';
+      loadCaseCover(entry);
+      entry.panel.hidden = false;
+      caseDetailContent.append(entry.panel);
+      caseCards.forEach(card => card.classList.toggle('is-current', card === entry.card));
+      previousCase.disabled = matchingCards.length < 2;
+      nextCase.disabled = matchingCards.length < 2;
+      document.body.classList.add('case-detail-open');
+      if (!caseDetail.open) caseDetail.showModal();
+      keepCaseDetailFocus();
+      caseDetail.scrollTop = 0;
+      caseDetailContent.scrollTop = 0;
+      if (animate) caseEntryStop = animateCaseEntry(entry.panel);
+      if (historyMode !== 'none' && location.hash !== `#${id}`) history[historyMode === 'push' ? 'pushState' : 'replaceState'](history.state, '', `${location.pathname}${location.search}#${id}`);
+    }
+    function filterCases({ animate = true, closeDetail = true } = {}) {
+      if (closeDetail && selectedCase) closeCaseDetail({ returnFocus: false });
       const query = normalizeCaseSearch(caseSearch.value);
       const category = caseCategory.value;
-      caseTabs.forEach((tab, index) => {
-        tab.hidden = !!(category && tab.dataset.category !== category) || !!(query && !searchText[index].includes(query));
-      });
-      const matches = caseTabs.filter(tab => !tab.hidden);
-      const preferred = matches.find(tab => tab.getAttribute('href') === `#${preferredId}`) || matches[0];
-      selectCase(preferred ? preferred.getAttribute('href').slice(1) : null, { updateHash, animate });
-      caseEmpty.hidden = matches.length > 0;
-      caseResults.textContent = `${matches.length} of ${caseTabs.length} cases`;
+      matchingCards = caseCards.filter(card => (!category || card.dataset.category === category) && (!query || searchText.get(card).includes(query)));
+      visibleLimit = pageSize;
+      renderCaseCards({ animate });
     }
-    caseTablist.setAttribute('role', 'tablist');
-    caseTablist.setAttribute('aria-orientation', 'vertical');
-    caseTabs.forEach((tab, index) => {
-      tab.setAttribute('role', 'tab'); tab.setAttribute('aria-controls', casePanels[index].id);
-      casePanels[index].setAttribute('role', 'tabpanel'); casePanels[index].setAttribute('aria-labelledby', tab.id); casePanels[index].tabIndex = 0;
-      tab.addEventListener('click', event => {
+    casePanels.forEach(panel => {
+      const marker = document.createComment(` Original location of ${panel.id} `);
+      panel.before(marker); panelMarkers.set(panel, marker); panel.hidden = true;
+    });
+    caseCards.forEach(card => {
+      card.setAttribute('aria-haspopup', 'dialog'); card.setAttribute('aria-controls', 'case-detail');
+      card.addEventListener('click', event => {
         if (event.button || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-        event.preventDefault(); selectCase(casePanels[index].id, { updateHash: true });
-      });
-      tab.addEventListener('keydown', event => {
-        const matches = caseTabs.filter(item => !item.hidden);
-        const position = matches.indexOf(tab);
-        let target = position;
-        if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') target = (position + matches.length - 1) % matches.length;
-        else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') target = (position + 1) % matches.length;
-        else if (event.key === 'Home') target = 0;
-        else if (event.key === 'End') target = matches.length - 1;
-        else return;
-        event.preventDefault(); selectCase(matches[target].getAttribute('href').slice(1), { focus: true, updateHash: true });
+        event.preventDefault();
+        openCaseDetail(card.getAttribute('href').slice(1), { historyMode: caseDetail.open ? 'replace' : 'push' });
       });
     });
+    caseChips.forEach(chip => chip.addEventListener('click', () => {
+      caseCategory.value = chip.dataset.caseCategory;
+      filterCases();
+    }));
     caseCategory.addEventListener('change', () => filterCases());
     caseSearch.addEventListener('input', () => filterCases());
     caseClear.addEventListener('click', () => {
       caseCategory.value = ''; caseSearch.value = ''; filterCases();
     });
+    caseLoadMore.addEventListener('click', () => {
+      const firstNewCard = matchingCards[visibleLimit];
+      visibleLimit += pageSize;
+      renderCaseCards();
+      firstNewCard?.focus();
+    });
+    caseDetail.querySelectorAll('[data-case-detail-close]').forEach(button => button.addEventListener('click', () => closeCaseDetail()));
+    function stepCase(direction) {
+      if (!selectedCase || matchingCards.length < 2) return;
+      const current = matchingCards.indexOf(caseById.get(selectedCase).card);
+      const card = matchingCards[(current + direction + matchingCards.length) % matchingCards.length];
+      openCaseDetail(card.getAttribute('href').slice(1), { historyMode: 'replace' });
+    }
+    previousCase.addEventListener('click', () => stepCase(-1));
+    nextCase.addEventListener('click', () => stepCase(1));
+    caseDetail.addEventListener('keydown', event => {
+      if (event.key !== 'Tab') return;
+      const controls = [...caseDetail.querySelectorAll('button:not(:disabled), a[href]')].filter(control => control.getClientRects().length);
+      const first = controls[0], last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    });
+    caseDetail.addEventListener('focusout', scheduleCaseDetailFocus);
+    caseDetail.addEventListener('cancel', event => {
+      if (viewer?.open) { event.preventDefault(); viewer.close(); }
+      else { event.preventDefault(); closeCaseDetail(); }
+    });
+    caseDetail.addEventListener('close', () => { if (!caseDetail.open) finishCaseClose(); });
+    caseDetail.addEventListener('click', event => {
+      if (event.target !== caseDetail) return;
+      const bounds = caseDetail.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) closeCaseDetail();
+    });
     caseSection.classList.add('cases-enhanced');
     const showHashCase = () => {
-      const tab = caseTabs.find(item => item.getAttribute('href') === location.hash);
-      if (!tab) return;
-      if (tab.hidden) {
+      const id = location.hash.slice(1);
+      const entry = caseById.get(id);
+      if (!entry) {
+        closeCaseDetail({ updateHash: false, preserveScroll: location.hash !== '#top' });
+        return;
+      }
+      if (!matchingCards.includes(entry.card)) {
         caseCategory.value = ''; caseSearch.value = '';
-        filterCases({ preferredId: location.hash.slice(1), updateHash: false, animate: false });
-      } else selectCase(location.hash.slice(1), { animate: false });
+        filterCases({ animate: false, closeDetail: false });
+      }
+      openCaseDetail(id, { animate: false });
     };
     caseCategory.value = ''; caseSearch.value = '';
-    filterCases({ preferredId: location.hash.slice(1), updateHash: false, animate: false });
+    filterCases();
     caseFilters.hidden = false;
+    if (caseCategoryChips) caseCategoryChips.hidden = false;
     showHashCase();
     window.addEventListener('hashchange', showHashCase);
-    window.addEventListener('resize', revealSelectedCaseTab, { passive: true });
-    document.fonts?.ready.then(revealSelectedCaseTab);
+    window.addEventListener('popstate', showHashCase);
+    window.addEventListener('load', scheduleCaseDetailFocus);
+    window.addEventListener('pageshow', () => { showHashCase(); scheduleCaseDetailFocus(); });
   }
-  const viewer = document.querySelector('#case-viewer');
   if (viewer && typeof viewer.showModal === 'function') {
     const viewerImage = viewer.querySelector('.case-viewer-image');
     const viewerTitle = viewer.querySelector('#case-viewer-title');
@@ -385,9 +530,21 @@
     let photos = [];
     let photoIndex = 0;
     let photoOpener = null;
+    let photoRequest = 0;
+    let photoFadeStop = null;
     function showPhoto(index) {
+      if (!photos.length) return;
       photoIndex = (index + photos.length) % photos.length;
       const photo = photos[photoIndex];
+      const request = ++photoRequest;
+      const source = photo.href;
+      photoFadeStop?.();
+      viewerImage.onload = () => {
+        if (request !== photoRequest || !viewer.open || viewerImage.currentSrc !== source || motionOff() || document.hidden || typeof viewerImage.animate !== 'function') return;
+        const animation = viewerImage.animate([{ opacity: .4 }, { opacity: 1 }], { duration: 180, easing: 'ease-out' });
+        const stop = () => { animation.cancel(); effects.delete(stop); if (photoFadeStop === stop) photoFadeStop = null; };
+        photoFadeStop = stop; effects.add(stop); animation.finished.then(stop, stop);
+      };
       viewerImage.src = photo.href;
       viewerImage.alt = photo.querySelector('img').alt;
       if (viewerCaption) viewerCaption.textContent = photo.dataset.caption || photo.closest('figure')?.querySelector('figcaption')?.textContent || viewerImage.alt;
@@ -395,7 +552,7 @@
       viewer.querySelector('[data-case-prev]').disabled = photos.length < 2;
       viewer.querySelector('[data-case-next]').disabled = photos.length < 2;
     }
-    caseSection.addEventListener('click', event => {
+    caseSection?.addEventListener('click', event => {
       const link = event.target.closest('.case-photo');
       if (!link || event.button || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
@@ -409,6 +566,7 @@
     viewer.querySelector('[data-case-prev]').addEventListener('click', () => showPhoto(photoIndex - 1));
     viewer.querySelector('[data-case-next]').addEventListener('click', () => showPhoto(photoIndex + 1));
     viewer.addEventListener('keydown', event => {
+      if (event.key === 'Escape') event.stopPropagation();
       if (event.key === 'Tab') {
         const buttons = [...viewer.querySelectorAll('button:not(:disabled)')];
         const first = buttons[0], last = buttons[buttons.length - 1];
@@ -425,7 +583,11 @@
       const bounds = viewer.getBoundingClientRect();
       if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) viewer.close();
     });
-    viewer.addEventListener('close', () => { document.body.classList.remove('case-viewer-open'); photoOpener?.focus({ preventScroll: true }); });
+    viewer.addEventListener('close', () => {
+      ++photoRequest; viewerImage.onload = null; photoFadeStop?.();
+      document.body.classList.remove('case-viewer-open');
+      if (photoOpener?.isConnected && !photoOpener.closest('[data-case-panel]')?.hidden && (!caseDetail?.contains(photoOpener) || caseDetail.open)) photoOpener.focus({ preventScroll: true });
+    });
   }
   const form = document.querySelector('#booking-form');
   if (form) {
