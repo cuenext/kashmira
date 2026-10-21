@@ -1,6 +1,9 @@
 const {chromium}=require('playwright');
 const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
 const base=process.env.SITE_URL||'http://127.0.0.1:4173/';
+const review=JSON.parse(fs.readFileSync(path.join(__dirname,'fixtures/case-review.json'),'utf8'));
 const practices=[
  {name:'Dr. Munir Silwadi Dental Centre',address:'Al Raha Mall, Abu Dhabi'},
  {name:'Dr. Sai Ganesh Medical Centre',address:'Al Karama, Dubai'},
@@ -17,8 +20,10 @@ const practices=[
    assert.equal(await page.locator('#site-nav').isVisible(),true,file+' navigation remains usable when script download fails');
    assert.equal(await page.locator('#site-nav a[href="cases.html"]').count(),1,'Navigation still links to the dedicated cases page');
   }
-  assert.equal(await page.locator('[data-case-panel]:visible').count(),5,'All case galleries remain available if their enhancement fails');
-  assert.equal(await page.locator('.case-thumb[href]').count(),16,'Every reviewed photograph retains its direct link');
+  assert.deepEqual(await page.locator('[data-case-panel]:visible').evaluateAll(items=>items.map(item=>item.id)),review.cases.map(item=>item.id),'Every independently reviewed gallery remains available if enhancement fails');
+  assert.equal(await page.locator('.case-thumb[href]').count(),review.cases.reduce((total,item)=>total+item.imageCount,0),'Every reviewed image retains its direct link');
+  assert.equal(await page.locator('.case-filters').isVisible(),false,'An interrupted script cannot expose inoperative search controls');
+  for(const [id,count] of [['case-01',4],['case-02',2],['case-03',2],['case-04',4],['case-05',4]])assert.equal(await page.locator('#'+id+' .case-thumb[href]').count(),count,'Original gallery '+id+' survives script failure');
   await page.goto(base+'contact.html');
   assert.equal(await page.locator('#booking-form button').isDisabled(),true,'Failed script cannot submit a personal-data GET');
   assert.equal(await page.locator('#booking-form [name]').count(),0,'Inquiry controls must not leak data through default form submission');

@@ -278,22 +278,29 @@
   const caseTabs = [...document.querySelectorAll('[data-case-tab]')];
   const casePanels = [...document.querySelectorAll('[data-case-panel]')];
   const caseTablist = document.querySelector('.case-tabs');
+  const caseFilters = caseSection?.querySelector('.case-filters');
+  const caseCategory = document.querySelector('#case-category');
+  const caseSearch = document.querySelector('#case-search');
+  const caseClear = document.querySelector('#case-clear-filters');
+  const caseResults = document.querySelector('#case-results-status');
+  const caseEmpty = document.querySelector('#case-no-results');
   let selectedCase = null;
   let caseEntryStop = null;
   function revealSelectedCaseTab() {
-    if (!mobile.matches || !caseTablist) return;
-    const active = caseTabs.find(tab => tab.getAttribute('aria-selected') === 'true');
+    if (!caseTablist) return;
+    const active = caseTabs.find(tab => !tab.hidden && tab.getAttribute('aria-selected') === 'true');
     if (!active) return;
     const strip = caseTablist.getBoundingClientRect();
     const tab = active.getBoundingClientRect();
-    const left = strip.left + caseTablist.clientLeft;
-    const right = left + caseTablist.clientWidth;
-    // Use the tab's snap point so the browser keeps the selected label in view.
-    if (tab.left < left || tab.right > right) caseTablist.scrollLeft += tab.left - left;
+    const top = strip.top + caseTablist.clientTop;
+    const bottom = top + caseTablist.clientHeight;
+    // Scroll the result list without moving the page or the focused filter.
+    if (tab.top < top) caseTablist.scrollTop += tab.top - top;
+    else if (tab.bottom > bottom) caseTablist.scrollTop += tab.bottom - bottom;
   }
   function selectCase(id, { focus = false, updateHash = false, animate = true } = {}) {
     const index = casePanels.findIndex(panel => panel.id === id);
-    if (index < 0) return;
+    if (id !== null && index < 0) return;
     caseEntryStop?.();
     caseTabs.forEach((tab, i) => {
       tab.setAttribute('aria-selected', String(i === index));
@@ -301,20 +308,33 @@
       casePanels[i].hidden = i !== index;
     });
     const panel = casePanels[index];
-    if (animate && selectedCase !== id && !motionOff() && typeof panel.animate === 'function') {
+    if (panel && animate && selectedCase !== id && !motionOff() && typeof panel.animate === 'function') {
       const animation = panel.animate([{ opacity: .35, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 260, easing: 'cubic-bezier(.2,.7,.2,1)' });
       const stop = () => { animation.cancel(); effects.delete(stop); if (caseEntryStop === stop) caseEntryStop = null; };
       caseEntryStop = stop; effects.add(stop); animation.finished.then(stop, stop);
     }
     selectedCase = id;
-    if (focus) caseTabs[index].focus({ preventScroll: true });
+    if (focus && index >= 0) caseTabs[index].focus({ preventScroll: true });
     revealSelectedCaseTab();
-    if (updateHash) history.replaceState(null, '', `#${id}`);
+    if (updateHash && id) history.replaceState(null, '', `#${id}`);
   }
-  if (caseTabs.length && caseTabs.length === casePanels.length) {
+  if (caseTabs.length && caseTabs.length === casePanels.length && caseTablist && caseFilters && caseCategory && caseSearch && caseClear && caseResults && caseEmpty) {
+    const normalizeCaseSearch = value => String(value).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/&/g, ' and ').replace(/\bprevention\b/g, 'preventive').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+    const searchText = caseTabs.map(tab => normalizeCaseSearch(tab.dataset.search || tab.textContent));
+    function filterCases({ preferredId = selectedCase, updateHash = true, animate = true } = {}) {
+      const query = normalizeCaseSearch(caseSearch.value);
+      const category = caseCategory.value;
+      caseTabs.forEach((tab, index) => {
+        tab.hidden = !!(category && tab.dataset.category !== category) || !!(query && !searchText[index].includes(query));
+      });
+      const matches = caseTabs.filter(tab => !tab.hidden);
+      const preferred = matches.find(tab => tab.getAttribute('href') === `#${preferredId}`) || matches[0];
+      selectCase(preferred ? preferred.getAttribute('href').slice(1) : null, { updateHash, animate });
+      caseEmpty.hidden = matches.length > 0;
+      caseResults.textContent = `${matches.length} of ${caseTabs.length} cases`;
+    }
     caseTablist.setAttribute('role', 'tablist');
-    const setOrientation = () => caseTablist.setAttribute('aria-orientation', mobile.matches ? 'horizontal' : 'vertical');
-    setOrientation(); mobile.addEventListener('change', setOrientation);
+    caseTablist.setAttribute('aria-orientation', 'vertical');
     caseTabs.forEach((tab, index) => {
       tab.setAttribute('role', 'tab'); tab.setAttribute('aria-controls', casePanels[index].id);
       casePanels[index].setAttribute('role', 'tabpanel'); casePanels[index].setAttribute('aria-labelledby', tab.id); casePanels[index].tabIndex = 0;
@@ -323,20 +343,35 @@
         event.preventDefault(); selectCase(casePanels[index].id, { updateHash: true });
       });
       tab.addEventListener('keydown', event => {
-        const previous = mobile.matches ? 'ArrowLeft' : 'ArrowUp';
-        const next = mobile.matches ? 'ArrowRight' : 'ArrowDown';
-        let target = index;
-        if (event.key === previous) target = (index + caseTabs.length - 1) % caseTabs.length;
-        else if (event.key === next) target = (index + 1) % caseTabs.length;
+        const matches = caseTabs.filter(item => !item.hidden);
+        const position = matches.indexOf(tab);
+        let target = position;
+        if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') target = (position + matches.length - 1) % matches.length;
+        else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') target = (position + 1) % matches.length;
         else if (event.key === 'Home') target = 0;
-        else if (event.key === 'End') target = caseTabs.length - 1;
+        else if (event.key === 'End') target = matches.length - 1;
         else return;
-        event.preventDefault(); selectCase(casePanels[target].id, { focus: true, updateHash: true });
+        event.preventDefault(); selectCase(matches[target].getAttribute('href').slice(1), { focus: true, updateHash: true });
       });
     });
+    caseCategory.addEventListener('change', () => filterCases());
+    caseSearch.addEventListener('input', () => filterCases());
+    caseClear.addEventListener('click', () => {
+      caseCategory.value = ''; caseSearch.value = ''; filterCases();
+    });
     caseSection.classList.add('cases-enhanced');
-    const showHashCase = () => { if (casePanels.some(panel => `#${panel.id}` === location.hash)) selectCase(location.hash.slice(1), { animate: false }); };
-    selectCase(casePanels[0].id, { animate: false }); showHashCase();
+    const showHashCase = () => {
+      const tab = caseTabs.find(item => item.getAttribute('href') === location.hash);
+      if (!tab) return;
+      if (tab.hidden) {
+        caseCategory.value = ''; caseSearch.value = '';
+        filterCases({ preferredId: location.hash.slice(1), updateHash: false, animate: false });
+      } else selectCase(location.hash.slice(1), { animate: false });
+    };
+    caseCategory.value = ''; caseSearch.value = '';
+    filterCases({ preferredId: location.hash.slice(1), updateHash: false, animate: false });
+    caseFilters.hidden = false;
+    showHashCase();
     window.addEventListener('hashchange', showHashCase);
     window.addEventListener('resize', revealSelectedCaseTab, { passive: true });
     document.fonts?.ready.then(revealSelectedCaseTab);
@@ -346,6 +381,7 @@
     const viewerImage = viewer.querySelector('.case-viewer-image');
     const viewerTitle = viewer.querySelector('#case-viewer-title');
     const viewerCounter = viewer.querySelector('#case-viewer-counter');
+    const viewerCaption = viewer.querySelector('#case-viewer-caption');
     let photos = [];
     let photoIndex = 0;
     let photoOpener = null;
@@ -354,7 +390,10 @@
       const photo = photos[photoIndex];
       viewerImage.src = photo.href;
       viewerImage.alt = photo.querySelector('img').alt;
-      viewerCounter.textContent = `Photo ${photoIndex + 1} of ${photos.length}`;
+      if (viewerCaption) viewerCaption.textContent = photo.dataset.caption || photo.closest('figure')?.querySelector('figcaption')?.textContent || viewerImage.alt;
+      viewerCounter.textContent = `Image ${photoIndex + 1} of ${photos.length}`;
+      viewer.querySelector('[data-case-prev]').disabled = photos.length < 2;
+      viewer.querySelector('[data-case-next]').disabled = photos.length < 2;
     }
     caseSection.addEventListener('click', event => {
       const link = event.target.closest('.case-photo');
@@ -371,7 +410,7 @@
     viewer.querySelector('[data-case-next]').addEventListener('click', () => showPhoto(photoIndex + 1));
     viewer.addEventListener('keydown', event => {
       if (event.key === 'Tab') {
-        const buttons = [...viewer.querySelectorAll('button')];
+        const buttons = [...viewer.querySelectorAll('button:not(:disabled)')];
         const first = buttons[0], last = buttons[buttons.length - 1];
         if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
         else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
