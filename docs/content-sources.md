@@ -1,6 +1,6 @@
 # Content and design sources
 
-Checked 19 October 2026. Original references are read-only and remain outside this repository.
+Initial references checked 19 October 2026; current-practice and portfolio evidence updated 21 October 2026. Original references are read-only and remain outside this repository. The 21 October update below is the current employment source; it supersedes the earlier Silwadi-only correction and the employment assumptions in the dated design notes.
 
 - Supplied 2026 CV: Dr. Kashmira_Specialist Pediatric Dentist_CV_2K26_.pdf. Supports title, self-reported DHA/DOH licensing, 11+ clinical years, education dates/universities, current and previous practice roles, training, languages and direct contacts. Date of birth omitted.
 - Older Dr. Kashmira - Profile.docx: corroborates pediatric scope and Al Raha practice. Its older nine-year experience statement and unsupported membership/publication claims were not used.
@@ -20,9 +20,9 @@ Full source research and its access limits remain in the task workspace as resea
 
 The five later case folders contain 26 photographs and one video. Sixteen close-up photos are published; see asset-provenance.md for source-folder IDs, filenames and export details. Treatment titles follow the supplied folder names, with spelling normalized. No dates, outcomes or treatment-stage claims were added.
 
-## Current practice correction and cases page
+## Current practice correction and cases page · 19 October 2026 · superseded for employment
 
-On 19 October 2026 the user confirmed that Dr. Kashmira currently practises only at Dr. Munir Silwadi Dental Centre, Al Raha Mall, Abu Dhabi. Hellenic Dental Clinic, Bay Avenue Dental Centre and Dr. Sai Ganesh Medical Centre are previous workplaces. This correction supersedes the CV’s part-time-current-role wording. No end dates for those roles were provided. Current-practice descriptions, booking, FAQs, geography and Person.worksFor reflect Silwadi only; previous roles remain in About.
+On 19 October 2026 the user described Dr. Munir Silwadi Dental Centre, Al Raha Mall, Abu Dhabi, as Dr. Kashmira’s only current practice, and Hellenic Dental Clinic, Bay Avenue Dental Centre and Dr. Sai Ganesh Medical Centre as previous workplaces. At that point this correction took precedence over the CV’s part-time-current-role wording. No end dates for those roles were provided. The website consequently used Silwadi-only current-practice descriptions, booking, FAQs, geography and Person.worksFor. This record is retained as provenance; the doctor’s latest message relayed on 21 October supersedes it, as recorded below.
 
 The user also requested a dedicated Cases page. Home now previews three cases and links to cases.html, which contains all five galleries and the accessible photo viewer. The sitemap, canonical metadata and navigation include the new page. Social metadata uses the retained professional portrait; the old social card with earlier geography is archived and unreferenced.
 
@@ -63,3 +63,30 @@ The user requested a word-by-word review of the full website while keeping the e
 FAQs now use the same first-person voice as the rest of the site. Booking copy states that a date and time must be confirmed; the WhatsApp action still only opens a draft. Privacy copy specifically describes the appointment request, without implying that the site cannot retain an animation preference. Qualifications, training, dates, experience, spoken languages and current/previous practice distinctions remain grounded in the previously supplied sources and user corrections. No new medical advice, outcomes, testimonials or treatment-stage claims were introduced. Treatment labels received only grammatical hyphenation; the supplied “retainers” terminology was preserved.
 
 The existing 998 ambulance reference was rechecked against [the UAE Government emergency guidance](https://u.ae/en/information-and-services/justice-safety-and-the-law/handling-emergencies) on 20 October 2026. Contact destination responses were checked; this establishes that links respond, not independent verification of professional licensing or ownership of linked accounts. See quality-review.md for review scope, fixes and validation.
+
+## Current practices restored · 21 October 2026
+
+The user supplied the doctor’s latest message: “my work place is not updated; I work in abu dhabi and dubai; Dubai 3 clinics”. This direct current confirmation supersedes the 19 October Silwadi-only correction. The supplied 2026 CV identifies the three Dubai clinics and the continuing Abu Dhabi role; those names are also corroborated by official clinic pages. A CV start date alone was not treated as proof of current employment.
+
+| Current practice | CV role and start date | Location used on the website | Official corroboration |
+| --- | --- | --- | --- |
+| Dr. Munir Silwadi Dental Centre | Specialist Pediatric Dentist, full time; January 2025–Present | Al Raha Mall, Abu Dhabi | [Doctor profile](https://silwadi.ae/doctors/dr-kashmira-pawar-jayprakash.html) identifies Al Raha Mall as her clinical base. |
+| Dr. Sai Ganesh Medical Centre | Specialist Pediatric Dentist, part time; January 2026–Present | Office 105, Crystal Business Centre, Al Karama, Dubai | [Doctor profile](https://www.saiganeshclinic.com/team/dr-kashmira-pawar) identifies Karama; the [official clinic site](https://www.saiganeshclinic.com/) supplies the branch address. |
+| Bay Avenue Dental Centre | Specialist Pediatric Dentist, part time; December 2025–Present | Office 1701, The Regal Tower, Business Bay, Dubai | [Doctor profile and clinic address](https://www.bayavenuedentalcentre.com/our-dentists/dr-kashmira-pawar/). |
+| Hellenic Dental Clinic | Specialist Pediatric Dentist, part time; November 2025–Present | Al Wasl Road, Al Bada’a, Dubai | [Official team page](https://hellenicdentalclinic.com/our-team/) names her and gives the address. The CV uses the wider Jumeirah area label. |
+
+Current practice information is centralized in `data/practices.json` and reused by the page generator, Person.worksFor structured data, Contact locations and booking choices. Family Dental Clinic, Clove Dental, Dr. Patil’s Dental Studio and external consultations remain previous experience according to the CV. No doctor-specific weekly schedule or hours have been supplied, so the website asks families to confirm availability.
+
+Booking retains the doctor’s existing WhatsApp destination. The optional parent name and native `#booking-location` selector prepare a draft only. “Help me choose” has an empty value and produces a neutral request about Abu Dhabi or Dubai availability; the four clinic values are `silwadi`, `sai-ganesh`, `bay-avenue` and `hellenic`. Selecting a clinic includes its name and address in the draft. No appointment request is sent automatically or stored by the site, and the location, date and time still need confirmation. This describes the intended updated flow; verification results are recorded separately after checks run.
+
+The newer CV remains the primary source for qualifications and dates: MDS in Pediatric and Preventive Dentistry, 2018–2021, Rajiv Gandhi University of Health Sciences; BDS, 2012–2017, Dr. D. Y. Patil Deemed University; over 11 years of clinical experience. The site retains training wording for BLS, PALS and ALS because the supplied CV does not establish current expiry dates.
+
+## Full clinical portfolio · 21 October 2026
+
+The exact full-portfolio destination was obtained from the doctor’s [supplied Linktree](https://linktr.ee/dr.Kashmirapawar): [View the full clinical portfolio](https://canva.link/fthzw69hi5kx71g). All 107 pages were inventoried in the Canva interface. Pages 1–2 contain cover and introduction material; page text for pages 3–107 is retained privately in the task workspace at `portfolio-review/portfolio-pages.json`. The number refers to pages, not individual cases.
+
+The portfolio includes restorations and crowns, full-mouth rehabilitation, space management, interceptive orthodontics, habit appliances, trauma, pediatric prosthodontics, endodontics, minor oral and laser surgery, prevention, pulp treatment and bleaching. These categories describe the linked work; they do not establish new diagnoses, treatment outcomes, availability at every practice or instructions for patients.
+
+Cases retains the five local treatment galleries and 16 published photographs, with a prominent link giving access to the complete external portfolio. No additional portfolio photographs were copied into the repository. The older portfolio biography states eight-plus years of experience and BDS 2016; those details are not imported because the newer supplied CV gives over 11 years and BDS study dates of 2012–2017. No new patient-identifying text, medical instructions, testimonials or treatment-stage claims are added.
+
+The final build and all eight test suites passed after these updates. Coverage includes all four clinic-specific and neutral WhatsApp drafts with and without a name, correct message encoding, readable selected-clinic addresses at 320/390 pixels, current-practice schema and history, no-JavaScript/interrupted-script fallbacks, the portfolio link and the retained galleries/game. Fourteen accessibility scans in the suite and an additional scan of the selected-clinic form reported zero violations in the tested states. Layouts were inspected at 320, 390, 768, 1024 and 1440 pixels. All four official clinic-profile destinations and the portfolio link returned successfully; the Canva viewer was also read directly. No appointment request was sent.

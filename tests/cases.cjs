@@ -27,6 +27,13 @@ const caseId=index=>'case-'+String(index+1).padStart(2,'0');
    await page.goto(home);
   }
   await page.goto(gallery);
+  const portfolio=page.locator('main a[href="https://canva.link/fthzw69hi5kx71g"]');
+  assert.equal(await portfolio.count(),1,'Cases includes the doctor’s verified external portfolio once in its main content');
+  assert.equal(await portfolio.isVisible(),true,'The portfolio link is visible alongside the local cases');
+  assert.match(await portfolio.innerText(),/portfolio/i,'The external destination is clearly labelled as a portfolio');
+  assert.equal(await portfolio.getAttribute('target'),'_blank','The external portfolio opens separately from the local galleries');
+  const portfolioRel=(await portfolio.getAttribute('rel')||'').split(/\s+/);
+  assert.ok(portfolioRel.includes('noopener')&&portfolioRel.includes('noreferrer'),'The portfolio link protects the originating page and referrer');
   const tabs=page.locator('.case-tabs [data-case-tab]');
   const panels=page.locator('[data-case-panel]');
   const dialog=page.locator('#case-viewer');

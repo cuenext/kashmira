@@ -3,6 +3,25 @@ const AxeBuilder=require('@axe-core/playwright').default;
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const base=process.env.SITE_URL||'http://127.0.0.1:4173/';
+const practices=[
+ {name:'Dr. Munir Silwadi Dental Centre',street:'Al Raha Mall',city:'Abu Dhabi'},
+ {name:'Dr. Sai Ganesh Medical Centre',street:'Al Karama',city:'Dubai'},
+ {name:'Bay Avenue Dental Centre',street:'Business Bay',city:'Dubai'},
+ {name:'Hellenic Dental Clinic',street:'Al Wasl Road, Al Bada’a',city:'Dubai'}
+];
+
+async function currentLocations(page,context){
+ const cards=page.locator('#locations .location-list article');
+ assert.equal(await cards.count(),4,context+' lists exactly four current clinic locations');
+ for(const practice of practices){
+  const card=cards.filter({hasText:practice.name});
+  assert.equal(await card.count(),1,context+' identifies '+practice.name+' once');
+  assert.equal(await card.isVisible(),true,context+' keeps '+practice.name+' accessible');
+  const text=await card.innerText();
+  assert.ok(text.includes(practice.street),context+' shows the verified street or area for '+practice.name);
+  assert.ok(text.includes(practice.city),context+' shows the correct city for '+practice.name);
+ }
+}
 (async()=>{
  const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHANNEL?{channel:process.env.PLAYWRIGHT_CHANNEL}:{})});
  const context=await browser.newContext();
@@ -28,15 +47,34 @@ const base=process.env.SITE_URL||'http://127.0.0.1:4173/';
   const graph=JSON.parse(ld)['@graph'];
   const doctor=graph.find(g=>g['@type']==='Person'&&g.name==='Dr. Kashmira Pawar');
   assert.ok(doctor);
-  assert.doesNotMatch(JSON.stringify(graph),/Sai Ganesh|Bay Avenue|Hellenic/i,file+' schema must not present former workplaces as current practices');
-  assert.doesNotMatch(doctor.description||'',/(?:practi[cs](?:ing|es?)|based|available|serving).{0,70}Dubai/i,file+' schema must not claim a current Dubai practice');
-  const bodyText=await page.locator('body').innerText();
-  if(file!=='about.html')assert.doesNotMatch(bodyText,/Sai Ganesh|Bay Avenue|Hellenic/i,file+' presents only the current practice');
-  else{
-   const history=await page.locator('p,h2,h3,h4,li').evaluateAll(elements=>elements.filter(el=>/Sai Ganesh|Bay Avenue|Hellenic/i.test(el.textContent)).map(el=>(el.closest('article,section,li')||el).textContent));
-   assert.ok(history.every(text=>/previous|formerly|former|past|earlier/i.test(text)),'About labels earlier workplaces explicitly as previous experience');
+  assert.ok(Array.isArray(doctor.worksFor),file+' schema represents multiple current practices');
+  assert.deepEqual(doctor.worksFor.map(practice=>practice.name).sort(),practices.map(practice=>practice.name).sort(),file+' schema names exactly the four confirmed current clinics');
+  for(const practice of practices){
+   const workplace=doctor.worksFor.find(item=>item.name===practice.name);
+   assert.equal(workplace['@type'],'Dentist',file+' identifies each workplace as a dental practice');
+   assert.equal(workplace.address?.['@type'],'PostalAddress',file+' provides structured practice addresses');
+   assert.equal(typeof workplace.address.streetAddress,'string',file+' provides a street or area for '+practice.name);
+   assert.ok(workplace.address.streetAddress.includes(practice.street),file+' schema shows the verified area for '+practice.name);
+   assert.equal(workplace.address.addressLocality,practice.city,file+' schema assigns the correct city for '+practice.name);
+   assert.equal(workplace.address.addressCountry,'AE',file+' schema assigns the correct country');
   }
-  assert.doesNotMatch(await page.locator('footer').innerText(),/Dubai/i,file+' footer does not suggest a current Dubai practice');
+  assert.match(doctor.description||'',/Abu Dhabi/i,file+' doctor schema describes current Abu Dhabi practice');
+  assert.match(doctor.description||'',/Dubai/i,file+' doctor schema describes current Dubai practice');
+  const bodyText=await page.locator('body').innerText();
+  assert.match(bodyText,/Abu Dhabi/i,file+' communicates current Abu Dhabi geography');
+  assert.match(bodyText,/Dubai/i,file+' communicates current Dubai geography');
+  if(file==='about.html'){
+   const current=(await page.locator('#experience .current-practice').allInnerTexts()).map(text=>text.replace(/\s+/g,' ').trim());
+   for(const practice of practices)assert.ok(current.some(text=>text.includes(practice.name)),practice.name+' appears in About current practice information');
+   const history=await page.locator('#experience .career-history').innerText();
+   for(const practice of practices)assert.equal(history.includes(practice.name),false,'A current clinic must not be labelled previous experience');
+   assert.match(history,/Family Dental Clinic/i,'About retains the genuinely previous Dubai role');
+   assert.match(history,/Clove Dental/i,'About retains the India work history');
+   assert.match(history,/Dr\. Patil/i,'About retains the earlier India clinical practice');
+  }
+  const footer=await page.locator('footer').innerText();
+  assert.match(footer,/Abu Dhabi/i,file+' footer includes Abu Dhabi');
+  assert.match(footer,/Dubai/i,file+' footer includes Dubai');
   const canonical=await page.locator('link[rel="canonical"]').getAttribute('href');
   assert.equal(canonical,'https://cuenext.github.io/kashmira/'+(file==='index.html'?'':file));
   assert.equal(await page.locator('script[src]').count(),1,'Shared JS must initialize only once');
@@ -56,8 +94,8 @@ const base=process.env.SITE_URL||'http://127.0.0.1:4173/';
   }
  }
  await page.goto(base+'contact.html');
- assert.equal(await page.locator('#booking-form select').count(),0,'Only the fixed current practice is available for booking');
- assert.match(await page.locator('#booking-form').innerText(),/Silwadi/i,'Fixed practice remains visible with the booking form');
+ assert.equal(await page.locator('#booking-form select#booking-location').count(),1,'Parents can choose a current clinic when making an inquiry');
+ await currentLocations(page,'Contact');
  await page.goto(base+'index.html');
  const firstFaq=page.locator('.faq-list details').first();
  await firstFaq.locator('summary').focus();await page.keyboard.press('Enter');
@@ -75,9 +113,10 @@ const base=process.env.SITE_URL||'http://127.0.0.1:4173/';
  assert.equal(await staticPage.getByRole('navigation').isVisible(),true,'Mobile navigation works without JavaScript');
  assert.equal(await staticPage.getByRole('link',{name:'Open WhatsApp to ask about an appointment ↗'}).isVisible(),true,'No-JS booking fallback');
  assert.equal(await staticPage.locator('#booking-form button').isVisible(),false,'No-JS form must not submit personal data to server');
- assert.match(await staticPage.locator('#booking-form').innerText(),/Silwadi/i,'No-JS booking still identifies the fixed practice');
- assert.equal(await staticPage.locator('#booking-form [name], #booking-form select').count(),0,'No-JS booking cannot leak a name or offer former locations');
+ assert.equal(await staticPage.locator('#booking-form [name]').count(),0,'No-JS booking controls cannot leak details through default form submission');
+ assert.equal(await staticPage.locator('#booking-form select#booking-location').count(),1,'The native clinic choice remains in the document without JavaScript');
+ await currentLocations(staticPage,'No-JS Contact');
  assert.deepEqual(errors,[]);assert.deepEqual(broken,[]);
  fs.mkdirSync('test-results',{recursive:true});fs.writeFileSync('test-results/accessibility.json',JSON.stringify(results,null,2));
- await browser.close();console.log('PASS images, internal links/fragments, current-practice body/schema, keyboard FAQ, fixed-location booking, menu resize, reduced motion, no-JS, and 8 WCAG A/AA scans');
+ await browser.close();console.log('PASS images, internal links/fragments, four current clinics and two-city body/schema, keyboard FAQ, clinic booking, menu resize, reduced motion, no-JS, and 8 WCAG A/AA scans');
 })().catch(e=>{console.error(e);process.exit(1)});

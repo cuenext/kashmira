@@ -22,3 +22,15 @@
 
 /* Keep every navigation action reachable on short landscape screens. */
 @media(max-width:700px){html.nav-enhanced .nav nav{max-height:calc(100vh - 78px);max-height:calc(100dvh - 78px);overflow-y:auto;overscroll-behavior:contain}}
+
+/* Keep clinic choices and the wider portfolio close to their existing flows. */
+#booking-location{max-width:100%;text-overflow:ellipsis}
+#booking-location-note{margin-top:-12px;margin-bottom:24px}
+.booking-selection{white-space:pre-line;overflow-wrap:break-word;margin:-10px 0 24px;padding:12px 15px;border-left:3px solid #245ca3;border-radius:0 8px 8px 0;background:#edf4ff;font-size:12px;line-height:1.8;color:var(--ink)}
+.portfolio-callout{display:flex;align-items:center;justify-content:space-between;gap:36px;padding:27px 30px;margin-bottom:38px;background:#edf4ff;border:1px solid #c5d9ed;border-radius:18px}
+.portfolio-callout .eyebrow{margin-bottom:10px}
+.portfolio-callout p{max-width:660px;font-size:14px;line-height:1.8;margin:0}
+.portfolio-action{flex-shrink:0;text-align:center}
+.portfolio-action>span{display:block;font-size:10px;color:var(--muted);margin-top:9px}
+.portfolio-link{display:flex;width:fit-content;margin-top:20px}
+@media(max-width:700px){.portfolio-callout{display:block;padding:23px 21px;margin-bottom:28px}.portfolio-callout p{font-size:13px}.portfolio-action{margin-top:22px;text-align:left}.portfolio-action .button{font-size:12px;gap:15px;padding-inline:20px}.portfolio-action>span{margin-left:4px}}
