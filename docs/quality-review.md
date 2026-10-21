@@ -2,6 +2,8 @@
 
 Reviewed 20 October 2026 for the requested final editorial and software-engineering polish.
 
+Practice information was subsequently revised on 21 October 2026 after the doctor confirmed her three Dubai clinics alongside Silwadi in Abu Dhabi. That update supersedes this review’s earlier Silwadi-only scope; see [content-sources.md](content-sources.md#current-practices-restored--21-october-2026) for the current sources and portfolio details.
+
 ## Editorial assessment
 
 My overall wording rating is **7/10 before and 9/10 after**. This is an editorial judgement, not a measured score. The original had warmth and a clear personality, but repeated “little,” “familiar” and indirect phrases such as “find your next visit.” Some section headings said less than their size suggested, and the FAQs changed between first and third person.

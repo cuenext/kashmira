@@ -1,0 +1,46 @@
+[
+  {
+    "id": "silwadi",
+    "name": "Dr. Munir Silwadi Dental Centre",
+    "city": "Abu Dhabi",
+    "area": "Al Raha",
+    "address": "Al Raha Mall, Abu Dhabi",
+    "streetAddress": "Al Raha Mall",
+    "since": "January 2025",
+    "website": "https://silwadi.ae/",
+    "profile": "https://silwadi.ae/doctors/dr-kashmira-pawar-jayprakash.html"
+  },
+  {
+    "id": "sai-ganesh",
+    "name": "Dr. Sai Ganesh Medical Centre",
+    "city": "Dubai",
+    "area": "Al Karama",
+    "address": "Office 105, Crystal Business Centre, Al Karama, Dubai",
+    "streetAddress": "Office 105, Crystal Business Centre, Al Karama",
+    "since": "January 2026",
+    "website": "https://www.saiganeshclinic.com/",
+    "profile": "https://www.saiganeshclinic.com/team/dr-kashmira-pawar"
+  },
+  {
+    "id": "bay-avenue",
+    "name": "Bay Avenue Dental Centre",
+    "city": "Dubai",
+    "area": "Business Bay",
+    "address": "Office 1701, The Regal Tower, Business Bay, Dubai",
+    "streetAddress": "Office 1701, The Regal Tower, Business Bay",
+    "since": "December 2025",
+    "website": "https://www.bayavenuedentalcentre.com/",
+    "profile": "https://www.bayavenuedentalcentre.com/our-dentists/dr-kashmira-pawar/"
+  },
+  {
+    "id": "hellenic",
+    "name": "Hellenic Dental Clinic",
+    "city": "Dubai",
+    "area": "Al Bada’a",
+    "address": "Al Wasl Road, Al Bada’a, Dubai",
+    "streetAddress": "Al Wasl Road, Al Bada’a",
+    "since": "November 2025",
+    "website": "https://hellenicdentalclinic.com/",
+    "profile": "https://hellenicdentalclinic.com/our-team/"
+  }
+]
