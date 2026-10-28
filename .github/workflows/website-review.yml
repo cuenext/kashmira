@@ -1,7 +1,5 @@
 name: Kashmira website review
 on:
-  push:
-    branches: [client-family-feedback-2026-10-28]
   pull_request:
     branches: [main]
 permissions:
