@@ -25,7 +25,7 @@ const base = process.env.SITE_URL || 'http://127.0.0.1:4173/';
     assert.equal(await page.locator('#reviews .family-proof-card').count(), 2);
     assert.equal(await page.locator('#reviews a[href*="google.com/maps/search"]').count(), 1);
     assert.equal(await page.locator('#sedation').count(), 1);
-    assert.match(await page.locator('#care').innerText(), /autism and ADHD/);
+    assert.match(await page.locator('#care').textContent(), /autism and ADHD/);
     await page.goto(base + 'about.html');
     assert.match(await page.locator('#approach').innerText(), /autism and ADHD/);
     await page.goto(base + 'contact.html');
