@@ -116,7 +116,7 @@ async function currentLocations(page,context){
  const nojs=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});
  const staticPage=await nojs.newPage();await staticPage.goto(base+'contact.html');
  assert.equal(await staticPage.getByRole('navigation').isVisible(),true,'Mobile navigation works without JavaScript');
- assert.equal(await staticPage.getByRole('link',{name:'Email Dr. Kashmira'}).isVisible(),true,'No-JS booking fallback');
+ assert.equal(await staticPage.locator('#booking-form .booking-fallback a').isVisible(),true,'No-JS booking fallback');
  assert.equal(await staticPage.locator('#booking-form button').isVisible(),false,'No-JS form must not submit personal data to server');
  assert.equal(await staticPage.locator('#booking-form [name]').count(),0,'No-JS booking controls cannot leak details through default form submission');
  assert.equal(await staticPage.locator('#booking-form select#booking-location').count(),1,'The native clinic choice remains in the document without JavaScript');
