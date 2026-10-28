@@ -1,0 +1,64 @@
+/* Family feedback refinements — 28 October 2026 */
+:root{--feedback-ink:#19385c;--feedback-blue:#dcecff;--feedback-border:rgba(33,67,111,.15)}
+html{scroll-padding-top:96px}
+body{font-size:clamp(16px,1.08vw,18px);line-height:1.65}
+.eyebrow,.section-head .eyebrow,.case-card-category,.care-item small,.profile-location,.hero-note,.portrait-label span:last-child{font-size:clamp(13px,1.03vw,15px)!important;letter-spacing:.045em}
+.section-head p,.story-copy p,.approach-notes p,.journey p,.booking-copy p,.contact-intro p,.case-library-copy p,.care-item p,.faq-list p{font-size:clamp(16px,1.18vw,19px);line-height:1.75}
+.care-item summary strong,.journey h3,.approach-notes h3,.faq-list summary{font-size:clamp(19px,1.45vw,24px)!important;line-height:1.4}
+.nav nav a{font-size:clamp(14px,1.04vw,16px)}
+.nav nav a.language-link{border:1px solid rgba(255,255,255,.34);border-radius:999px;padding:.42rem .8rem;font-family:system-ui,Tahoma,sans-serif;font-weight:600}
+.button [aria-hidden="true"],.text-link [aria-hidden="true"],.direct-links a [aria-hidden="true"],.location-actions a [aria-hidden="true"],.site-footer a [aria-hidden="true"],.case-preview-all [aria-hidden="true"],.case-card-action [aria-hidden="true"],.case-load-more-wrap [aria-hidden="true"]{display:none!important}
+.button,.button.small{letter-spacing:.01em;transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
+.button:hover{transform:translateY(-2px)}
+.hero .headline-line{line-height:1.07}
+.hero .hero-call{font-size:clamp(15px,1.05vw,18px);text-underline-offset:5px}
+.case-sort-field select{min-width:150px}
+.section.family-proof{position:relative;background:linear-gradient(160deg,#f8fbff 0%,#eaf4ff 65%,#fff 100%);overflow:hidden}
+.family-proof .shell{position:relative;z-index:1}
+.family-proof-intro{display:flex;align-items:end;justify-content:space-between;gap:2rem;margin-bottom:2rem}
+.family-proof-intro h2{max-width:680px}
+.family-proof-intro p{max-width:430px;font-size:clamp(16px,1.12vw,19px);color:#34516f}
+.family-proof-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(18px,3vw,36px)}
+.family-proof-card{background:#fff;border:1px solid var(--feedback-border);border-radius:24px;box-shadow:0 14px 50px rgba(23,66,108,.055);overflow:hidden}
+.family-proof-card .proof-content{padding:clamp(22px,3vw,38px)}
+.family-proof-card .eyebrow{color:#496d9a}
+.family-proof-card h3{font-size:clamp(23px,2.2vw,34px);line-height:1.2;color:#183657;margin:.6rem 0 1rem}
+.family-proof-card p{font-size:clamp(16px,1.12vw,18px);color:#4c6580;line-height:1.65;max-width:470px}
+.family-proof-card .button{margin-top:1.35rem}
+.family-proof-card figure{margin:0;height:100%;min-height:360px;position:relative}
+.family-proof-card figure img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
+.family-proof-card figcaption{position:absolute;inset:auto 18px 18px 18px;background:rgba(14,43,78,.82);color:#fff;border-radius:16px;padding:12px 16px;font-size:14px;backdrop-filter:blur(10px)}
+.family-proof-card .proof-symbol{display:inline-grid;place-items:center;width:48px;height:48px;border-radius:16px;background:#e4efff;color:#285687;font:700 25px/1 Georgia,serif}
+.section.sedation-guide{background:#fff}
+.sedation-guide .shell{display:grid;grid-template-columns:1fr .92fr;gap:clamp(26px,5vw,80px);align-items:center}
+.sedation-guide .sedation-copy h2{margin:.65rem 0 1.4rem}
+.sedation-guide .sedation-copy p{max-width:560px;color:#4a6380;font-size:clamp(16px,1.18vw,19px);line-height:1.75}
+.sedation-guide .sedation-note{border-left:3px solid #8db8e9;padding-left:18px;margin-top:1.25rem;font-size:15px!important}
+.sedation-guide figure{margin:0;border-radius:28px;overflow:hidden;background:#e8f2fc}
+.sedation-guide figure img{display:block;width:100%;height:400px;object-fit:cover}
+.sedation-guide figcaption{padding:12px 18px;color:#345471;font-size:14px}
+.faq-list summary,.care-item summary{min-height:58px}
+.page-arabic{direction:rtl;font-family:Tahoma,Arial,system-ui,sans-serif}
+.page-arabic .arabic-header{background:#193b65;color:#fff;padding:22px 0;position:sticky;top:0;z-index:10}
+.page-arabic .arabic-header .shell{display:flex;align-items:center;justify-content:space-between;gap:22px}
+.page-arabic .arabic-header a{color:#fff;text-decoration:none}
+.page-arabic .arabic-header nav{display:flex;align-items:center;gap:clamp(12px,2vw,28px);flex-wrap:wrap}
+.page-arabic .arabic-brand{font-weight:800;font-size:clamp(18px,2vw,25px)}
+.page-arabic .arabic-switch{padding:8px 18px;border:1px solid rgba(255,255,255,.5);border-radius:50px}
+.page-arabic .arabic-hero{background:linear-gradient(140deg,#183a66,#357eb1);color:#fff;padding:clamp(60px,8vw,110px) 0}
+.page-arabic .arabic-hero h1{font-family:Tahoma,Arial,sans-serif;font-size:clamp(33px,5vw,64px);line-height:1.35;max-width:900px}
+.page-arabic .arabic-hero p{font-size:clamp(17px,1.5vw,23px);line-height:1.9;max-width:750px}
+.page-arabic .arabic-button{display:inline-block;margin-top:20px;background:#fff;color:#17446f;padding:14px 27px;border-radius:999px;font-weight:800;text-decoration:none}
+.page-arabic .arabic-section{padding:clamp(54px,7vw,96px) 0}
+.page-arabic .arabic-section:nth-child(even){background:#f2f7ff}
+.page-arabic .arabic-section h2{font-family:Tahoma,Arial,sans-serif;font-size:clamp(27px,3vw,42px);line-height:1.4;color:#173d66}
+.page-arabic .arabic-section p,.page-arabic .arabic-section li{font-size:clamp(16px,1.22vw,19px);line-height:1.95;color:#2a4d70}
+.page-arabic .arabic-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.page-arabic .arabic-card{background:#fff;padding:26px;border-radius:20px;border:1px solid #d6e4f2}
+.page-arabic .arabic-card h3{font-size:22px;color:#173d66;margin:0 0 10px}
+.page-arabic .arabic-card p{font-size:16px}
+.page-arabic .arabic-footer{background:#153257;color:#fff;padding:40px 0}
+.page-arabic .arabic-footer a{color:#fff}
+@media(max-width:900px){.family-proof-intro{display:block}.family-proof-grid,.sedation-guide .shell{grid-template-columns:1fr}.sedation-guide figure img{height:320px}.page-arabic .arabic-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.family-proof-grid,.page-arabic .arabic-cards{grid-template-columns:1fr}.family-proof-card figure{min-height:310px}.nav nav a.language-link{align-self:flex-start}.page-arabic .arabic-header .shell{flex-wrap:wrap}.page-arabic .arabic-header nav{font-size:14px}.page-arabic .arabic-header{position:relative}}
+@media(prefers-reduced-motion:reduce){.button{transition:none}}

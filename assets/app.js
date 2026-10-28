@@ -280,6 +280,7 @@
   const caseGrid = document.querySelector('.case-grid');
   const caseFilters = caseSection?.querySelector('.case-filters');
   const caseCategory = document.querySelector('#case-category');
+  const caseSort = document.querySelector('#case-sort');
   const caseCategoryChips = caseSection?.querySelector('.case-category-chips');
   const caseSearch = document.querySelector('#case-search');
   const caseClear = document.querySelector('#case-clear-filters');
@@ -310,6 +311,18 @@
     let detailFocusFrame = null;
     const normalizeCaseSearch = value => String(value).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/&/g, ' and ').replace(/\bprevention\b/g, 'preventive').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
     const searchText = new Map(caseCards.map(card => [card, normalizeCaseSearch(card.dataset.search || card.textContent)]));
+    const originalOrder = new Map(caseCards.map((card, index) => [card, index]));
+    const caseCollator = new Intl.Collator('en', { numeric: true, sensitivity: 'base' });
+    function orderCases(items) {
+      const order = caseSort?.value || 'featured';
+      const result = [...items];
+      if (order === 'name') result.sort((a, b) => caseCollator.compare(a.querySelector('.case-card-copy strong')?.textContent || '', b.querySelector('.case-card-copy strong')?.textContent || ''));
+      else if (order === 'category') result.sort((a, b) => caseCollator.compare(a.dataset.categoryLabel || '', b.dataset.categoryLabel || '') || caseCollator.compare(a.querySelector('.case-card-copy strong')?.textContent || '', b.querySelector('.case-card-copy strong')?.textContent || ''));
+      else result.sort((a, b) => originalOrder.get(a) - originalOrder.get(b));
+      caseGrid.append(...caseCards);
+      caseGrid.append(...result);
+      return result;
+    }
     function animateCaseEntry(element, { delay = 0, cards = false } = {}) {
       if (motionOff() || document.hidden || typeof element.animate !== 'function') return null;
       const animation = element.animate([
@@ -440,7 +453,7 @@
       if (closeDetail && selectedCase) closeCaseDetail({ returnFocus: false });
       const query = normalizeCaseSearch(caseSearch.value);
       const category = caseCategory.value;
-      matchingCards = caseCards.filter(card => (!category || card.dataset.category === category) && (!query || searchText.get(card).includes(query)));
+      matchingCards = orderCases(caseCards.filter(card => (!category || card.dataset.category === category) && (!query || searchText.get(card).includes(query))));
       visibleLimit = pageSize;
       renderCaseCards({ animate });
     }
@@ -461,9 +474,10 @@
       filterCases();
     }));
     caseCategory.addEventListener('change', () => filterCases());
+    caseSort?.addEventListener('change', () => filterCases());
     caseSearch.addEventListener('input', () => filterCases());
     caseClear.addEventListener('click', () => {
-      caseCategory.value = ''; caseSearch.value = ''; filterCases();
+      caseCategory.value = ''; caseSearch.value = ''; if (caseSort) caseSort.value = 'featured'; filterCases();
     });
     caseLoadMore.addEventListener('click', () => {
       const firstNewCard = matchingCards[visibleLimit];
@@ -607,16 +621,17 @@
     const name = form.querySelector('#booking-name').value.trim();
     const clinic = form.querySelector('#booking-location').selectedOptions[0];
     const request = clinic.value
-      ? `I’d like to ask about an appointment at ${clinic.dataset.practiceName}, ${clinic.dataset.practiceAddress}. Please let me know your availability.`
-      : 'I’d like to ask about an appointment in Abu Dhabi or Dubai. Please help me choose a clinic and let me know your availability.';
-    const message = `Hello Dr. Kashmira,${name ? ` I’m ${name}.` : ''} ${request} Thank you.`;
-    const url = `https://wa.me/971505679198?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
+      ? `I would like to ask about an appointment at ${clinic.dataset.practiceName}, ${clinic.dataset.practiceAddress}. Please let me know the availability.`
+      : 'I would like to arrange a pediatric dental appointment in Abu Dhabi or Dubai. Please help me choose a clinic and confirm availability.';
+    const message = `Hello Dr. Kashmira,${name ? ` My name is ${name}.` : ''} ${request} Thank you.`;
+    const url = `mailto:drkashmirapawar@gmail.com?subject=${encodeURIComponent('Appointment enquiry — Dr. Kashmira Pawar')}&body=${encodeURIComponent(message)}`;
     const status = form.querySelector('.form-status');
-    status.replaceChildren(document.createTextNode('Review your message in WhatsApp and send it when you’re ready. If WhatsApp didn’t open, '));
+    status.replaceChildren(document.createTextNode('Your email draft should open in your email app. If it does not, '));
     const fallback = document.createElement('a');
-    fallback.href = url; fallback.target = '_blank'; fallback.rel = 'noopener noreferrer';
-    fallback.textContent = 'open your message here ↗'; status.append(fallback);
+    fallback.href = url;
+    fallback.textContent = 'open the email draft here';
+    status.append(fallback);
+    window.location.href = url;
   });
   if (form) form.querySelector('button[type=submit]').disabled = false;
 })();
