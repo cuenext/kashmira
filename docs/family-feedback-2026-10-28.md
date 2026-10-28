@@ -16,13 +16,13 @@ This report keeps the two distinct sources separate. **The handwritten paper is 
 | Photo gallery with patients | Existing 87 clinical treatment galleries remain and are accessible. Homepage patient-experience block displays an already-published photo of Dr. Kashmira with a child. | Expanded children/patient gallery awaits approved, consented assets |
 | Sort cases | Added Featured, Case name A–Z, and Treatment type sorting. | Implemented |
 | Nitrous oxide sedation photos/videos | Added a factual explanation of nitrous oxide training and assessment, using an existing clinic room as a neutral visual with transparent caption. | Actual sedation footage awaits approved media |
-| Reviews | New patient-experience section on Home with an external Google-review search link, existing patient photo, and review-ready layout. | Actual review quotes and testimonial videos await supply/verification/consent |
+| Reviews | New patient-experience section on Home with a verified Google Maps link to Al Raha clinic reviews, existing patient photo, and review-ready layout. | Actual review quotes and testimonial videos await supply/verification/consent |
 
 ## Her husband's Word document checklist
 
 | Request | Implementation | Status |
 |---|---|---|
-| Reviews tab on homepage: Google reviews, children photos, testimonial videos | New Reviews navigation anchor and section; Google search and existing authorised photograph. No unverified Google quote or made-up video. | Structure implemented; real reviews and videos pending |
+| Reviews tab on homepage: Google reviews, children photos, testimonial videos | New Reviews navigation anchor and section; Google Maps Al Raha clinic review listing and existing authorised photograph. No unverified Google quote or made-up video. | Structure implemented; real reviews and videos pending |
 | Replace homepage landing photograph | Existing About portrait is the temporary alternate. | Awaiting supplied replacement |
 | Hero title | Exact title applied. | Implemented |
 | Change Call button to contact by email, no displayed number | All personal telephone and WhatsApp links removed; enquiries now open email drafts. | Implemented with existing email pending preferred replacement |
@@ -33,7 +33,7 @@ This report keeps the two distinct sources separate. **The handwritten paper is 
 
 ## Publication safeguards
 
-- Do not invent or import Google ratings, reviews or quotations. A Google search page is **not** proof that the linked reviews mention Dr. Kashmira personally.
+- Do not invent or import Google ratings, reviews or quotations. A Google clinic review page is **not** proof that the linked reviews mention Dr. Kashmira personally.
 - Do not add identifiable patient videos, photos or testimonials without documented permission from the parent/guardian, the practice, and appropriate clinical approval.
 - Do not label a generic clinical room image as nitrous oxide administration or imply the service is available at every clinic.
 - No public mobile number remains in the website's four main pages, structured data, or new email inquiry JS.
