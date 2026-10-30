@@ -624,7 +624,7 @@
       ? `I would like to ask about an appointment at ${clinic.dataset.practiceName}, ${clinic.dataset.practiceAddress}. Please let me know the availability.`
       : 'I would like to arrange a pediatric dental appointment in Abu Dhabi or Dubai. Please help me choose a clinic and confirm availability.';
     const message = `Hello Dr. Kashmira,${name ? ` My name is ${name}.` : ''} ${request} Thank you.`;
-    const url = `mailto:drkashmirapawar@gmail.com?subject=${encodeURIComponent('Appointment enquiry — Dr. Kashmira Pawar')}&body=${encodeURIComponent(message)}`;
+    const url = `mailto:${form.dataset.contactEmail}?subject=${encodeURIComponent('Appointment enquiry — Dr. Kashmira Pawar')}&body=${encodeURIComponent(message)}`;
     const status = form.querySelector('.form-status');
     status.replaceChildren(document.createTextNode('Your email draft should open in your email app. If it does not, '));
     const fallback = document.createElement('a');

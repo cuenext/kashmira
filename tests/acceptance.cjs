@@ -26,8 +26,7 @@ const practices = [
   assert.equal(await selection.getAttribute('aria-live'),'polite','The selected-clinic summary announces changes politely');
   assert.equal(await page.locator('#booking-name').getAttribute('required'),null,'A name remains optional');
   assert.equal(await page.locator('#booking-form [name]').count(),0,'Unenhanced form controls cannot leak personal details through a native GET');
-  // Verify the message draft without making an external WhatsApp request.
-  await page.context().route(/^https:\/\/wa\.me\//,route=>route.fulfill({status:200,contentType:'text/html',body:'Appointment draft preview'}));
+  // Check generated email drafts through their fallback links; no email is sent.
   async function chooseClinic(practiceId){
     await location.selectOption(practiceId);
     const practice=practices.find(item=>item.id===practiceId);
@@ -43,19 +42,17 @@ const practices = [
   async function draft(practiceId,name){
     await chooseClinic(practiceId);
     await page.locator('#booking-name').fill(name);
-    const popupPromise=page.waitForEvent('popup');
-    await page.getByRole('button',{name:'Continue on WhatsApp'}).click();
-    const popup=await popupPromise;
-    try{
-      await popup.waitForLoadState('domcontentloaded');
-      const url=new URL(popup.url());
-      assert.equal(url.origin+url.pathname,'https://wa.me/971505679198','All inquiries use the doctor’s confirmed WhatsApp number');
-      const message=url.searchParams.get('text');
-      assert.ok(message,'WhatsApp receives an appointment draft');
-      if(name)assert.ok(message.includes(name),'Names preserve ampersands, plus signs and Unicode through message encoding');
-      else assert.doesNotMatch(message,/Sam & family/,'An anonymous inquiry does not reuse a previous name');
-      return message;
-    }finally{await popup.close()}
+    await page.getByRole('button',{name:'Open email draft'}).click();
+    const href=await page.locator('.form-status a').getAttribute('href');
+    const url=new URL(href);
+    assert.equal(url.protocol,'mailto:','All enquiries use email without exposing a mobile number');
+    assert.equal(url.pathname,'contact@drkashmira.com');
+    assert.match(url.searchParams.get('subject'),/Appointment enquiry/);
+    const message=url.searchParams.get('body');
+    assert.ok(message,'Email contains an appointment enquiry draft');
+    if(name)assert.ok(message.includes(name),'Names preserve Unicode and punctuation through message encoding');
+    else assert.doesNotMatch(message,/Sam & family/,'An anonymous enquiry does not reuse a previous name');
+    return message;
   }
   for(const name of ['Sam & family + عائلة','']){
     for(const practice of practices){

@@ -45,7 +45,7 @@ const practices=[
    assert.equal(await card.isVisible(),true,'Failed-script Contact exposes '+practice.name);
    assert.ok((await card.innerText()).includes(practice.address),'Failed-script Contact shows the correct address and city for '+practice.name);
   }
-  assert.equal(await page.getByRole('link',{name:'Open WhatsApp to ask about an appointment ↗'}).isVisible(),true);
+  assert.equal(await page.locator('#booking-form .booking-fallback a').isVisible(),true);
   console.log('PASS four-page interrupted-script navigation, static cases, and private four-clinic booking fallback');
  }finally{await browser.close()}
 })().catch(error=>{console.error(error);process.exit(1)});
