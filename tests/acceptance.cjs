@@ -46,7 +46,7 @@ const practices = [
     const href=await page.locator('.form-status a').getAttribute('href');
     const url=new URL(href);
     assert.equal(url.protocol,'mailto:','All enquiries use email without exposing a mobile number');
-    assert.equal(url.pathname,'drkashmirapawar@gmail.com');
+    assert.equal(url.pathname,'contact@drkashmira.com');
     assert.match(url.searchParams.get('subject'),/Appointment enquiry/);
     const message=url.searchParams.get('body');
     assert.ok(message,'Email contains an appointment enquiry draft');

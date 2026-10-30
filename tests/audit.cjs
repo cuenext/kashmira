@@ -2,6 +2,7 @@ const { chromium }=require('playwright');
 const AxeBuilder=require('@axe-core/playwright').default;
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
+const site=require('../data/site.json');
 const base=process.env.SITE_URL||'http://127.0.0.1:4173/';
 const practices=[
  {name:'Dr. Munir Silwadi Dental Centre',street:'Al Raha Mall',city:'Abu Dhabi'},
@@ -79,7 +80,7 @@ async function currentLocations(page,context){
   assert.match(footer,/Abu Dhabi/i,file+' footer includes Abu Dhabi');
   assert.match(footer,/Dubai/i,file+' footer includes Dubai');
   const canonical=await page.locator('link[rel="canonical"]').getAttribute('href');
-  assert.equal(canonical,'https://cuenext.github.io/kashmira/'+(file==='index.html'?'':file));
+  assert.equal(canonical,site.url+(file==='index.html'?'':file));
   assert.equal(await page.locator('script[src]').count(),1,'Shared JS must initialize only once');
   const links=await page.locator('a[href]').evaluateAll(links=>links.map(a=>a.getAttribute('href')));
   for(const link of links.filter(l=>!/^https?:|^mailto:|^tel:/.test(l))){

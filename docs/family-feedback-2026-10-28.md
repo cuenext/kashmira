@@ -9,7 +9,7 @@ This report keeps the two distinct sources separate. **The handwritten paper is 
 | Change main cover photo | The already published About portrait is used as an interim alternate in the hero; the new requested portrait has not yet been provided. | Interim — awaiting exact photo |
 | Check tagline | Replaced with the exact wording from the husband's document: “Big feelings. Little smiles. A safe space for both.” | Implemented |
 | Add “Dr. Kashmira” | Adjusted hero portrait label, About headline, navigation, and main prompts. | Implemented |
-| Remove phone and add another email | Removed personal phone link from page, schema, and enquiry JS. Emails use the existing public address `drkashmirapawar@gmail.com`, not a fabricated new address. | Interim — awaiting her chosen new email |
+| Remove phone and add another email | Removed personal phone link from page, schema, and enquiry JS. The original interim address was replaced with confirmed `contact@drkashmira.com` on 30 October, including Arabic, schema and the enquiry JS. | Implemented — official email confirmed |
 | About: additional healthcare needs, autism, ADHD | Included in English About and Care and Arabic content, with individual assessment and support framing. | Implemented |
 | Add clinical portfolio to “All my links” | Added an on-site Clinical portfolio link to the footer and About. External Linktree `linktr.ee/dr.Kashmirapawar` cannot be edited from this GitHub repository; its account owner must add the supplied full Canva portfolio `https://canva.link/fthzw69hi5kx71g` or website's cases page there. | Partially implemented — external Linktree pending |
 | Arabic for managing patients | Added `arabic.html`, Arabic-English switch, localized clinical information, doctors/clinics, case portfolio link, contact and reviews. | Arabic landing page implemented; detailed English case descriptions not fully translated |
@@ -37,7 +37,7 @@ This report keeps the two distinct sources separate. **The handwritten paper is 
 - Do not add identifiable patient videos, photos or testimonials without documented permission from the parent/guardian, the practice, and appropriate clinical approval.
 - Do not label a generic clinical room image as nitrous oxide administration or imply the service is available at every clinic.
 - No public mobile number remains in the website's four main pages, structured data, or new email inquiry JS.
-- The email on the site is provisional: `drkashmirapawar@gmail.com`. Swap once the requested email arrives.
+- The official email is confirmed as `contact@drkashmira.com`. The confirmed domain is `www.drkashmira.com`; its DNS still needs a coordinated cutover from Hostinger to GitHub Pages (see `domain-setup.md`). Later review comments were promised for tomorrow and are not treated as already supplied.
 - This GitHub change does not modify the third-party Linktree profile or the underlying domain registration/hosting provider.
 - The source branch is `client-family-feedback-2026-10-28`. The separate `gh-pages` publishing branch must receive verified site assets for live changes.
 - Run `npm ci && npm run build && npm test` and check on desktop/mobile before treating as a complete production release.
